@@ -1,12 +1,13 @@
 <?php
 /*
 Plugin Name: Login and Logout Redirect
-Plugin URI: https://github.com/patilswapnilv/login-and-logout-redirect/
-Description: Redirects users to specified url after logining in and logging out respectively.
+Plugin URI: http://github.com/patilswapnilv/loginlogoutredirect
+Description: Redirects users to specified url after logging out - say goodbye to users logging out... and seeing the logout screen :)
 Author: patilswapnilv
 Version: 1
 Text Domain: login_logout_redirect
 Author URI: http://swapnilpatil.in/
+Tags: Redirect, Redirect on Login, Redirect on Logout, Logout, Login, Login and Logout Redirect
 */
 
 /*

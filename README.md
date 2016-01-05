@@ -1,4 +1,4 @@
-#Login and Logout Redirect
+# Login-and-Logout-Redirect
 A WordPress plugin which enables you to redirect users on login and logout.
 
 Plugin URI: [https://github.com/patilswapnilv/login-and-logout-redirect](https://github.com/patilswapnilv/login-and-logout-redirect)
@@ -9,14 +9,14 @@ Tags: redirect,login, logout
 
 Requires at least: 3.5
 
-Tested up to: 4.4
+Tested up to: 4.3
 
 License: GPLv2
 
 
 ##Synopsis
 
-This is an easy way to redirect user to specific URL, on login and logout. 
+This is an easy way to redirect user to specific URL, on login and logout.
 This plugin adds extra option in Settings page (Setting>General), for specifing redirect URL for login and logout.
 
 ###Features
@@ -35,7 +35,7 @@ This plugin adds extra option in Settings page (Setting>General), for specifing 
 
 #Contribution
 
-Contributors are always welcome. 
+Contributors are always welcome.
 To contribute, just send a pull request.
 
 #License

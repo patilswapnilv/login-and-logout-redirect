@@ -2,7 +2,7 @@
 /*
 Plugin Name: Login and Logout Redirect
 Plugin URI: http://github.com/patilswapnilv/loginlogoutredirect
-Description: Redirects users to specified url after logging out - say goodbye to users logging out... and seeing the logout screen :)
+Description: Redirects users to specified url after logging in OR logging out OR Both. 
 Author: patilswapnilv
 Version: 1
 Text Domain: login_logout_redirect

@@ -1,16 +1,16 @@
 <?php
 /*
 Plugin Name: Login and Logout Redirect
-Plugin URI: https://github.com/patilswapnilv/login-and-logout-redirect
+Plugin URI: https://wordpress.org/plugins/login-and-logout-redirect/
 Description: Redirects users to specified url after logging in, logging out OR both.
-Plugin URI: http://github.com/patilswapnilv/loginlogoutredirect
-Description: Redirects users to specified url after logging in OR logging out OR Both. 
 Author: patilswapnilv
-Version: 1
-Text Domain: login_logout_redirect
 Author URI: http://swapnilpatil.in/
+Text Domain: login-and-logout-redirect
+Domain Path: /languages
+Version: 1.0.2
 Tags: Redirect, Redirect on Login, Redirect on Logout, Logout, Login, Login and Logout Redirect
 */
+
 
 /*
 
@@ -51,9 +51,9 @@ class Logout_Redirect {
 
 		// load text domain
 		if ( defined( 'SP_PLUGIN_DIR' ) && file_exists( SP_PLUGIN_DIR . '/logout-redirect.php' ) ) {
-			load_muplugin_textdomain( 'logout_redirect', 'logout-redirect-files/languages' );
+			load_muplugin_textdomain( 'login-and-logout-redirect', 'logout-redirect-files/languages' );
 		} else {
-			load_plugin_textdomain( 'logout_redirect', false, dirname( plugin_basename( __FILE__ ) ) . '/logout-redirect-files/languages' );
+			load_plugin_textdomain( 'login-and-logout-redirect', false, dirname( plugin_basename( __FILE__ ) ) . '/logout-redirect-files/languages' );
 		}
 	}
 
@@ -134,17 +134,17 @@ class Logout_Redirect {
 			return;
 		$url = $this->_get_raw_redirection_url();
 		?>
-		<h3><?php _e( 'Logout Redirect', 'logout_redirect' ); ?></h3>
+		<h3><?php _e( 'Logout Redirect', 'login-and-logout-redirect' ); ?></h3>
 		<table class="form-table">
 			<tr valign="top">
-				<th scope="row"><label for="logout_redirect_url"><?php _e( 'Redirect to', 'logout_redirect' ) ?></label></th>
+				<th scope="row"><label for="logout_redirect_url"><?php _e( 'Redirect to', 'login-and-logout-redirect' ) ?></label></th>
 				<td>
 					<input name="logout_redirect_url" type="text" id="logout_redirect_url" value="<?php echo esc_attr($url) ?>" size="40" />
 					<br />
-					<?php _e( 'The URL users will be redirected to after logout.', 'logout_redirect' ) ?>
+					<?php _e( 'The URL users will be redirected to after logout.', 'login-and-logout-redirect' ) ?>
 					<?php
 					if (defined('BP_VERSION')) {
-						printf(__('You can use these macros for your redirection: %s', 'logout_redirect'), '<code>' . join('</code>, <code>', $this->_get_macros()) . '</code>');
+						printf(__('You can use these macros for your redirection: %s', 'login-and-logout-redirect'), '<code>' . join('</code>, <code>', $this->_get_macros()) . '</code>');
 					}
 					?>
 				</td>
@@ -167,9 +167,9 @@ class Logout_Redirect {
 		if( $this->is_plugin_active_for_network( plugin_basename( __FILE__ ) ) )
 			return;
 
-		add_settings_section( 'logout_redirect_setting_section', __( 'Logout Redirect', 'logout_redirect' ), '__return_false', 'general' );
+		add_settings_section( 'logout_redirect_setting_section', __( 'Logout Redirect', 'login-and-logout-redirect' ), '__return_false', 'general' );
 
-		add_settings_field( 'logout_redirect_url', __( 'Redirect to', 'logout_redirect' ), array( &$this, 'site_option' ), 'general', 'logout_redirect_setting_section' );
+		add_settings_field( 'logout_redirect_url', __( 'Redirect to', 'login-and-logout-redirect' ), array( &$this, 'site_option' ), 'general', 'logout_redirect_setting_section' );
 
 		register_setting( 'general', 'logout_redirect_url' );
 	}
@@ -181,7 +181,7 @@ class Logout_Redirect {
 		$url = $this->_get_raw_redirection_url();
 		echo '<input name="logout_redirect_url" type="text" id="logout_redirect_url" value="' . esc_attr($url) . '" size="40" />';
 		if (defined('BP_VERSION')) {
-			printf(__('You can use these macros for your redirection: %s', 'logout_redirect'), '<code>' . join('</code>, <code>', $this->_get_macros()) . '</code>');
+			printf(__('You can use these macros for your redirection: %s', 'login-and-logout-redirect'), '<code>' . join('</code>, <code>', $this->_get_macros()) . '</code>');
 		}
 	}
 
@@ -201,7 +201,7 @@ class Logout_Redirect {
 
 }
 
-$logout_redirect =& new Logout_Redirect();
+$logout_redirect = new Logout_Redirect();
 
 
 /**
@@ -229,9 +229,9 @@ class Login_Redirect {
 
 		// load text domain
 		if ( defined( 'SP_PLUGIN_DIR' ) && file_exists( SP_PLUGIN_DIR . '/login-redirect.php' ) ) {
-			load_muplugin_textdomain( 'login_redirect', 'login-redirect-files/languages' );
+			load_muplugin_textdomain( 'login-and-logout-redirect', 'login-redirect-files/languages' );
 		} else {
-			load_plugin_textdomain( 'login_redirect', false, dirname( plugin_basename( __FILE__ ) ) . '/login-redirect-files/languages' );
+			load_plugin_textdomain( 'login-and-logout-redirect', false, dirname( plugin_basename( __FILE__ ) ) . '/login-redirect-files/languages' );
 		}
 	}
 
@@ -262,14 +262,14 @@ class Login_Redirect {
 		if( ! $this->is_plugin_active_for_network( plugin_basename( __FILE__ ) ) )
 			return;
 		?>
-		<h3><?php _e( 'Login Redirect', 'login_redirect' ); ?></h3>
+		<h3><?php _e( 'Login Redirect', 'login-and-logout-redirect' ); ?></h3>
 		<table class="form-table">
 			<tr valign="top">
-				<th scope="row"><label for="login_redirect_url"><?php _e( 'Redirect to', 'login_redirect' ) ?></label></th>
+				<th scope="row"><label for="login_redirect_url"><?php _e( 'Redirect to', 'login-and-logout-redirect' ) ?></label></th>
 				<td>
 					<input name="login_redirect_url" type="text" id="login_redirect_url" value="<?php echo esc_attr( get_site_option( 'login_redirect_url' ) ) ?>" size="40" />
 					<br />
-					<?php _e( 'The URL users will be redirected to after login.', 'login_redirect' ) ?>
+					<?php _e( 'The URL users will be redirected to after login.', 'login-and-logout-redirect' ) ?>
 				</td>
 			</tr>
 		</table>
@@ -320,4 +320,5 @@ class Login_Redirect {
 
 }
 
-$login_redirect =& new Login_Redirect();
+$login_redirect = new Login_Redirect();
+?>

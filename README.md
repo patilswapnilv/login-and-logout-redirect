@@ -9,7 +9,7 @@ Tags: redirect,login, logout
 
 Requires at least: 3.5
 
-Tested up to: 4.3
+Tested up to: 4.6
 
 License: GPLv2
 

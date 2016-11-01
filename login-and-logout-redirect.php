@@ -128,7 +128,7 @@ class LogoutRedirect {
 		$value = false;
 		$user = wp_get_current_user();
 		switch ( $macro ) {
-			case 'BP_ACTIVITY_SLUG':logout_redirect_defined_macros
+			case 'BP_ACTIVITY_SLUG':logout_redirect_defined_macros:
 
 				if ( function_exists( 'bp_get_activity_root_slug' ) ) {
 					$value = bp_get_activity_root_slug();

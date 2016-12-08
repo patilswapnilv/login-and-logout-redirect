@@ -1,18 +1,20 @@
 # Login-and-Logout-Redirect
-A WordPress plugin which enables you to redirect users on login and logout.
+A WordPress plugin which enables you to redirect users on login and logout or both, in a simplest way.
 
-Plugin URI: [https://github.com/patilswapnilv/login-and-logout-redirect](https://github.com/patilswapnilv/login-and-logout-redirect)
+**Contributors:      patilswapnilv<https://github.com/patilswapnilv/>
+**Plugin Name:       Login and Logout redirect
+**Plugin URI:        https://wordpress.org/plugins/login-and-logout-redirect/
+**Tags:              redirect,login, logout, login and logout redirect, redirect on login, redirect on logout
+**Author URI:        http://swapnilpatil.in
+**Author:            patilswapnilv
+**Donate link:       http://swapnilpatil.in/contribution
+**License:           GPL-3.0+
+**License URI:       https://www.gnu.org/licenses/gpl-3.0.en.html
+**Requires at least: 3.5
+**Tested up to:      4.7
+**Stable tag:        1.0.3
 
-Author URI: [http://swapnilpatil.in](http://swapnilpatil.in)
-
-Tags: redirect,login, logout
-
-Requires at least: 3.5
-
-Tested up to: 4.6
-
-License: GPLv2
-
+[![Build Status](https://travis-ci.org/patilswapnilv/login-and-logout-redirect.svg)](https://travis-ci.org/patilswapnilv/login-and-logout-redirect)
 
 ##Synopsis
 
@@ -39,6 +41,6 @@ Contributors are always welcome.
 To contribute, just send a pull request.
 
 #License
-This Plug-in is released under the same license as the WordPress software is released ie; the [GPLv2](http://www.gnu.org/licenses/gpl-3.0.en.html) (or later) from the [Free Software Foundation](http://www.fsf.org/). A copy of the license is included with the Plug-in, but you can also read the text of the license [here](http://www.gnu.org/licenses/gpl-3.0.en.html).
+This Plug-in is released under the same license as the WordPress software is released ie; the [GPLv3](https://www.gnu.org/licenses/gpl-3.0.en.html) (or later) from the [Free Software Foundation](http://www.fsf.org/). A copy of the license is included with the Plug-in, but you can also read the text of the license [here](http://www.gnu.org/licenses/gpl-3.0.en.html).
 
 [https://github.com/patilswapnilv/login-and-logout-redirect](https://github.com/patilswapnilv/login-and-logout-redirect)

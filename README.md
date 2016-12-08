@@ -3,7 +3,7 @@ A WordPress plugin which enables you to redirect users on login and logout or bo
 
 **Contributors:**      [patilswapnilv] <https://github.com/patilswapnilv/>  
 **Plugin Name:**       Login and Logout redirect  
-**Plugin URI:**        https://wordpress.org/plugins/login-and-logout-redirect/ 
+**Plugin URI:**        https://wordpress.org/plugins/login-and-logout-redirect/     
 **Tags:**              redirect,login, logout, login and logout redirect, redirect on login, redirect on logout   
 **Author:**            patilswapnilv    
 **Author URI:**        http://swapnilpatil.in   

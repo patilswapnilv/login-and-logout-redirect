@@ -1,18 +1,18 @@
 # Login-and-Logout-Redirect
 A WordPress plugin which enables you to redirect users on login and logout or both, in a simplest way.
 
-**Contributors:      patilswapnilv<https://github.com/patilswapnilv/>
-**Plugin Name:       Login and Logout redirect
-**Plugin URI:        https://wordpress.org/plugins/login-and-logout-redirect/
-**Tags:              redirect,login, logout, login and logout redirect, redirect on login, redirect on logout
-**Author URI:        http://swapnilpatil.in
-**Author:            patilswapnilv
-**Donate link:       http://swapnilpatil.in/contribution
-**License:           GPL-3.0+
-**License URI:       https://www.gnu.org/licenses/gpl-3.0.en.html
-**Requires at least: 3.5
-**Tested up to:      4.7
-**Stable tag:        1.0.3
+**Contributors:**      patilswapnilv<https://github.com/patilswapnilv/>
+**Plugin Name:**       Login and Logout redirect
+**Plugin URI:**        https://wordpress.org/plugins/login-and-logout-redirect/
+**Tags:**              redirect,login, logout, login and logout redirect, redirect on login, redirect on logout
+**Author URI:**        http://swapnilpatil.in
+**Author:**            patilswapnilv
+**Donate link:**       http://swapnilpatil.in/contribution
+**License:**           GPL-3.0+
+**License URI:**       https://www.gnu.org/licenses/gpl-3.0.en.html
+**Requires at least:** 3.5
+**Tested up to:**      4.7
+**Stable tag:**        1.0.3
 
 [![Build Status](https://travis-ci.org/patilswapnilv/login-and-logout-redirect.svg)](https://travis-ci.org/patilswapnilv/login-and-logout-redirect)
 

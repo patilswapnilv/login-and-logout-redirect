@@ -14,7 +14,7 @@ A WordPress plugin which enables you to redirect users on login and logout or bo
 **Tested up to:**      4.7
 **Stable tag:**        1.0.3
 
-[![Build Status](https://travis-ci.org/patilswapnilv/login-and-logout-redirect.svg)](https://travis-ci.org/patilswapnilv/login-and-logout-redirect) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/patilswapnilv/login-and-logout-redirect/badges/quality-score.png?b=master) [![Code Climate](https://codeclimate.com/github/patilswapnilv/login-and-logout-redirect/badges/gpa.svg)](https://codeclimate.com/github/patilswapnilv/login-and-logout-redirect)
+[![Build Status](https://travis-ci.org/patilswapnilv/login-and-logout-redirect.svg)](https://travis-ci.org/patilswapnilv/login-and-logout-redirect)] [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/patilswapnilv/login-and-logout-redirect/badges/quality-score.png?b=master)] [![Code Climate](https://codeclimate.com/github/patilswapnilv/login-and-logout-redirect/badges/gpa.svg)](https://codeclimate.com/github/patilswapnilv/login-and-logout-redirect)]
 
 
 ##Synopsis

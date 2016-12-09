@@ -61,8 +61,9 @@ class Tests_Functions extends WP_UnitTestCase {
 	}
 
 	function test_path_is_absolute() {
-		if ( !is_callable('path_is_absolute') )
-			$this->markTestSkipped();
+		if ( !is_callable('path_is_absolute') ) {
+					$this->markTestSkipped();
+		}
 
 		$absolute_paths = array(
 			'/',
@@ -76,13 +77,15 @@ class Tests_Functions extends WP_UnitTestCase {
 			'C:\\WINDOWS',
 			'\\\\sambashare\\foo',
 			);
-		foreach ($absolute_paths as $path)
-			$this->assertTrue( path_is_absolute($path), "path_is_absolute('$path') should return true" );
+		foreach ($absolute_paths as $path) {
+					$this->assertTrue( path_is_absolute($path), "path_is_absolute('$path') should return true" );
+		}
 	}
 
 	function test_path_is_not_absolute() {
-		if ( !is_callable('path_is_absolute') )
-			$this->markTestSkipped();
+		if ( !is_callable('path_is_absolute') ) {
+					$this->markTestSkipped();
+		}
 
 		$relative_paths = array(
 			'',
@@ -96,8 +99,9 @@ class Tests_Functions extends WP_UnitTestCase {
 			'FOO',
 			'..\\WINDOWS',
 			);
-		foreach ($relative_paths as $path)
-			$this->assertFalse( path_is_absolute($path), "path_is_absolute('$path') should return false" );
+		foreach ($relative_paths as $path) {
+					$this->assertFalse( path_is_absolute($path), "path_is_absolute('$path') should return false" );
+		}
 	}
 
 	/**
@@ -175,16 +179,18 @@ class Tests_Functions extends WP_UnitTestCase {
 			serialize(array(1,1,2,3,5,8,13)),
 			serialize( (object)array('test' => true, '3', 4) )
 		);
-		foreach ( $cases as $case )
-			$this->assertTrue( is_serialized($case), "Serialized data: $case" );
+		foreach ( $cases as $case ) {
+					$this->assertTrue( is_serialized($case), "Serialized data: $case" );
+		}
 
 		$not_serialized = array(
 			'a string',
 			'garbage:a:0:garbage;',
 			's:4:test;'
 		);
-		foreach ( $not_serialized as $case )
-			$this->assertFalse( is_serialized($case), "Test data: $case" );
+		foreach ( $not_serialized as $case ) {
+					$this->assertFalse( is_serialized($case), "Test data: $case" );
+		}
 	}
 
 	/**

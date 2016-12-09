@@ -22,9 +22,10 @@ function rand_long_str( $length ) {
 function strip_ws($txt) {
 	$lines = explode("\n", $txt);
 	$result = array();
-	foreach ($lines as $line)
-		if (trim($line))
+	foreach ($lines as $line) {
+			if (trim($line))
 			$result[] = trim($line);
+	}
 
 	return trim(join("\n", $result));
 }
@@ -50,21 +51,26 @@ class MockAction {
 	}
 
 	function current_filter() {
-		if (is_callable('current_filter'))
-			return current_filter();
+		if (is_callable('current_filter')) {
+					return current_filter();
+		}
 		global $wp_actions;
 		return end($wp_actions);
 	}
 
 	function action($arg) {
-if ($this->debug) dmp(__FUNCTION__, $this->current_filter());
+if ($this->debug) {
+    dmp(__FUNCTION__, $this->current_filter());
+}
 		$args = func_get_args();
 		$this->events[] = array('action' => __FUNCTION__, 'tag'=>$this->current_filter(), 'args'=>$args);
 		return $arg;
 	}
 
 	function action2($arg) {
-if ($this->debug) dmp(__FUNCTION__, $this->current_filter());
+if ($this->debug) {
+    dmp(__FUNCTION__, $this->current_filter());
+}
 
 		$args = func_get_args();
 		$this->events[] = array('action' => __FUNCTION__, 'tag'=>$this->current_filter(), 'args'=>$args);
@@ -72,7 +78,9 @@ if ($this->debug) dmp(__FUNCTION__, $this->current_filter());
 	}
 
 	function filter($arg) {
-if ($this->debug) dmp(__FUNCTION__, $this->current_filter());
+if ($this->debug) {
+    dmp(__FUNCTION__, $this->current_filter());
+}
 
 		$args = func_get_args();
 		$this->events[] = array('filter' => __FUNCTION__, 'tag'=>$this->current_filter(), 'args'=>$args);
@@ -80,7 +88,9 @@ if ($this->debug) dmp(__FUNCTION__, $this->current_filter());
 	}
 
 	function filter2($arg) {
-if ($this->debug) dmp(__FUNCTION__, $this->current_filter());
+if ($this->debug) {
+    dmp(__FUNCTION__, $this->current_filter());
+}
 
 		$args = func_get_args();
 		$this->events[] = array('filter' => __FUNCTION__, 'tag'=>$this->current_filter(), 'args'=>$args);
@@ -88,7 +98,9 @@ if ($this->debug) dmp(__FUNCTION__, $this->current_filter());
 	}
 
 	function filter_append($arg) {
-if ($this->debug) dmp(__FUNCTION__, $this->current_filter());
+if ($this->debug) {
+    dmp(__FUNCTION__, $this->current_filter());
+}
 
 		$args = func_get_args();
 		$this->events[] = array('filter' => __FUNCTION__, 'tag'=>$this->current_filter(), 'args'=>$args);
@@ -97,7 +109,9 @@ if ($this->debug) dmp(__FUNCTION__, $this->current_filter());
 
 	function filterall($tag, $arg=NULL) {
 	// this one doesn't return the result, so it's safe to use with the new 'all' filter
-if ($this->debug) dmp(__FUNCTION__, $this->current_filter());
+if ($this->debug) {
+    dmp(__FUNCTION__, $this->current_filter());
+}
 
 		$args = func_get_args();
 		$this->events[] = array('filter' => __FUNCTION__, 'tag'=>$tag, 'args'=>array_slice($args, 1));
@@ -112,9 +126,10 @@ if ($this->debug) dmp(__FUNCTION__, $this->current_filter());
 	function get_call_count($tag='') {
 		if ($tag) {
 			$count = 0;
-			foreach ($this->events as $e)
-				if ($e['action'] == $tag)
+			foreach ($this->events as $e) {
+							if ($e['action'] == $tag)
 					++$count;
+			}
 			return $count;
 		}
 		return count($this->events);
@@ -132,8 +147,9 @@ if ($this->debug) dmp(__FUNCTION__, $this->current_filter());
 	// return an array of args passed in calls to this action
 	function get_args() {
 		$out = array();
-		foreach ($this->events as $e)
-			$out[] = $e['args'];
+		foreach ($this->events as $e) {
+					$out[] = $e['args'];
+		}
 		return $out;
 	}
 }
@@ -198,17 +214,18 @@ function xml_find($tree /*, $el1, $el2, $el3, .. */) {
 	$n = count($a);
 	$out = array();
 
-	if ($n < 1)
-		return $out;
+	if ($n < 1) {
+			return $out;
+	}
 
 	for ($i=0; $i<count($tree); $i++) {
 #		echo "checking '{$tree[$i][name]}' == '{$a[0]}'\n";
 #		var_dump($tree[$i]['name'], $a[0]);
 		if ($tree[$i]['name'] == $a[0]) {
 #			echo "n == {$n}\n";
-			if ($n == 1)
-				$out[] = $tree[$i];
-			else {
+			if ($n == 1) {
+							$out[] = $tree[$i];
+			} else {
 				$subtree =& $tree[$i]['child'];
 				$call_args = array($subtree);
 				$call_args = array_merge($call_args, array_slice($a, 1));
@@ -222,8 +239,9 @@ function xml_find($tree /*, $el1, $el2, $el3, .. */) {
 
 function xml_join_atts($atts) {
 	$a = array();
-	foreach ($atts as $k=>$v)
-		$a[] = $k.'="'.$v.'"';
+	foreach ($atts as $k=>$v) {
+			$a[] = $k.'="'.$v.'"';
+	}
 	return join(' ', $a);
 }
 
@@ -232,14 +250,15 @@ function xml_array_dumbdown(&$data) {
 
 	foreach (array_keys($data) as $i) {
 		$name = $data[$i]['name'];
-		if (!empty($data[$i]['attributes']))
-			$name .= ' '.xml_join_atts($data[$i]['attributes']);
+		if (!empty($data[$i]['attributes'])) {
+					$name .= ' '.xml_join_atts($data[$i]['attributes']);
+		}
 
 		if (!empty($data[$i]['child'])) {
 			$out[$name][] = xml_array_dumbdown($data[$i]['child']);
+		} else {
+					$out[$name] = $data[$i]['content'];
 		}
-		else
-			$out[$name] = $data[$i]['content'];
 	}
 
 	return $out;
@@ -248,9 +267,10 @@ function xml_array_dumbdown(&$data) {
 function dmp() {
 	$args = func_get_args();
 
-	foreach ($args as $thing)
-		echo (is_scalar($thing) ? strval($thing) : var_export($thing, true)), "\n";
-}
+	foreach ($args as $thing) {
+			echo (is_scalar($thing) ? strval($thing) : var_export($thing, true)), "\n";
+	}
+	}
 
 function dmp_filter($a) {
 	dmp($a);
@@ -267,18 +287,17 @@ function get_echo($callable, $args = array()) {
 function gen_tests_array($name, $array) {
 	$out = array();
 	foreach ($array as $k=>$v) {
-		if (is_numeric($k))
-			$index = strval($k);
-		else
-			$index = "'".addcslashes($k, "\n\r\t'\\")."'";
+		if (is_numeric($k)) {
+					$index = strval($k);
+		} else {
+					$index = "'".addcslashes($k, "\n\r\t'\\")."'";
+		}
 
 		if (is_string($v)) {
 			$out[] = '$this->assertEquals( \'' . addcslashes($v, "\n\r\t'\\") . '\', $'.$name.'['.$index.'] );';
-		}
-		elseif (is_numeric($v)) {
+		} elseif (is_numeric($v)) {
 			$out[] = '$this->assertEquals( ' . $v . ', $'.$name.'['.$index.'] );';
-		}
-		elseif (is_array($v)) {
+		} elseif (is_array($v)) {
 			$out[] = gen_tests_array("{$name}[{$index}]", $v);
 		}
 	}
@@ -296,9 +315,10 @@ class MockClass {};
 function drop_tables() {
 	global $wpdb;
 	$tables = $wpdb->get_col('SHOW TABLES;');
-	foreach ($tables as $table)
-		$wpdb->query("DROP TABLE IF EXISTS {$table}");
-}
+	foreach ($tables as $table) {
+			$wpdb->query("DROP TABLE IF EXISTS {$table}");
+	}
+	}
 
 function print_backtrace() {
 	$bt = debug_backtrace();
@@ -306,10 +326,12 @@ function print_backtrace() {
 	$i = 0;
 	foreach ($bt as $stack) {
 		echo ++$i, ": ";
-		if ( isset($stack['class']) )
-			echo $stack['class'].'::';
-		if ( isset($stack['function']) )
-			echo $stack['function'].'() ';
+		if ( isset($stack['class']) ) {
+					echo $stack['class'].'::';
+		}
+		if ( isset($stack['function']) ) {
+					echo $stack['function'].'() ';
+		}
 		echo "line {$stack[line]} in {$stack[file]}\n";
 	}
 	echo "\n";
@@ -355,20 +377,24 @@ function _unregister_post_status( $status ) {
 
 function _cleanup_query_vars() {
 	// clean out globals to stop them polluting wp and wp_query
-	foreach ( $GLOBALS['wp']->public_query_vars as $v )
-		unset( $GLOBALS[$v] );
+	foreach ( $GLOBALS['wp']->public_query_vars as $v ) {
+			unset( $GLOBALS[$v] );
+	}
 
-	foreach ( $GLOBALS['wp']->private_query_vars as $v )
-		unset( $GLOBALS[$v] );
+	foreach ( $GLOBALS['wp']->private_query_vars as $v ) {
+			unset( $GLOBALS[$v] );
+	}
 
 	foreach ( get_taxonomies( array() , 'objects' ) as $t ) {
-		if ( $t->publicly_queryable && ! empty( $t->query_var ) )
-			$GLOBALS['wp']->add_query_var( $t->query_var );
+		if ( $t->publicly_queryable && ! empty( $t->query_var ) ) {
+					$GLOBALS['wp']->add_query_var( $t->query_var );
+		}
 	}
 
 	foreach ( get_post_types( array() , 'objects' ) as $t ) {
-		if ( is_post_type_viewable( $t ) && ! empty( $t->query_var ) )
-			$GLOBALS['wp']->add_query_var( $t->query_var );
+		if ( is_post_type_viewable( $t ) && ! empty( $t->query_var ) ) {
+					$GLOBALS['wp']->add_query_var( $t->query_var );
+		}
 	}
 }
 

@@ -759,10 +759,11 @@ class Tests_Multisite_Site extends WP_UnitTestCase {
 	 * the testing of the filter and for a test which does not need the database.
 	 */
 	function _domain_exists_cb( $exists, $domain, $path, $site_id ) {
-		if ( 'foo' == $domain && 'bar/' == $path )
-			return 1234;
-		else
-			return null;
+		if ( 'foo' == $domain && 'bar/' == $path ) {
+					return 1234;
+		} else {
+					return null;
+		}
 	}
 
 	function test_domain_exists_with_default_site_id() {

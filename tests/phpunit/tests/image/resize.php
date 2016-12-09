@@ -169,18 +169,21 @@ abstract class WP_Tests_Image_Resize_UnitTestCase extends WP_Image_UnitTestCase 
 	protected function resize_helper( $file, $width, $height, $crop = false ) {
 		$editor = wp_get_image_editor( $file );
 
-		if ( is_wp_error( $editor ) )
-			return $editor;
+		if ( is_wp_error( $editor ) ) {
+					return $editor;
+		}
 
 		$resized = $editor->resize( $width, $height, $crop );
-		 if ( is_wp_error( $resized ) )
-			return $resized;
+		 if ( is_wp_error( $resized ) ) {
+		 			return $resized;
+		 }
 
 		$dest_file = $editor->generate_filename();
 		$saved = $editor->save( $dest_file );
 
-		if ( is_wp_error( $saved ) )
-			return $saved;
+		if ( is_wp_error( $saved ) ) {
+					return $saved;
+		}
 
 		return $dest_file;
 	}

@@ -324,8 +324,9 @@ class Tests_Formatting_MakeClickable extends WP_UnitTestCase {
 			'code inside pre <pre>http://wordpress.org <code>http://wordpress.org</code> http://wordpress.org</pre>',
 		);
 
-		foreach ( $before as $key => $url )
-			$this->assertEquals( $expected[ $key ], make_clickable( $url ) );
+		foreach ( $before as $key => $url ) {
+					$this->assertEquals( $expected[ $key ], make_clickable( $url ) );
+		}
 	}
 
 	/**

@@ -12,8 +12,9 @@ class Tests_XMLRPC_wp_getUser extends WP_XMLRPC_UnitTestCase {
 
 		// create a super-admin
 		$this->administrator_id = $this->make_user_by_role( 'administrator' );
-		if ( is_multisite() )
-			grant_super_admin( $this->administrator_id );
+		if ( is_multisite() ) {
+					grant_super_admin( $this->administrator_id );
+		}
 	}
 
 	function tearDown() {

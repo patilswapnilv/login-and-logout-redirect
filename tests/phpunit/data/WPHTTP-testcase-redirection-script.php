@@ -3,10 +3,12 @@
 // Thanks WordPress..
 function is_ssl() {
 	if ( isset($_SERVER['HTTPS']) ) {
-		if ( 'on' == strtolower($_SERVER['HTTPS']) )
-			return true;
-		if ( '1' == $_SERVER['HTTPS'] )
-			return true;
+		if ( 'on' == strtolower($_SERVER['HTTPS']) ) {
+					return true;
+		}
+		if ( '1' == $_SERVER['HTTPS'] ) {
+					return true;
+		}
 	} elseif ( isset($_SERVER['SERVER_PORT']) && ( '443' == $_SERVER['SERVER_PORT'] ) ) {
 		return true;
 	}
@@ -14,10 +16,11 @@ function is_ssl() {
 }
 
 $url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . (!empty($_SERVER['HTTP_POST']) && 80 != $_SERVER['HTTP_POST'] ? ':' . $_SERVER['HTTP_POST'] : '');
-if ( strpos($_SERVER['REQUEST_URI'], '?') )
+if ( strpos($_SERVER['REQUEST_URI'], '?') ) {
 	$url .= substr($_SERVER['REQUEST_URI'], 0, strpos($_SERVER['REQUEST_URI'], '?'));
-else
+} else {
 	$url .= $_SERVER['REQUEST_URI'];
+}
 
 if ( isset($_GET['source']) ) {
 	highlight_file(__FILE__ );
@@ -89,10 +92,11 @@ if ( isset( $_GET['multiple-location-headers'] ) ) {
 		header( "Location: $url?multiple-location-headers=1&redirected=two", false );
 		exit;
 	}
-	if ( 'two' != $_GET['redirected'] )
-		echo 'FAIL';
-	else
-		echo 'PASS';
+	if ( 'two' != $_GET['redirected'] ) {
+			echo 'FAIL';
+	} else {
+			echo 'PASS';
+	}
 	exit;
 }
 
@@ -107,16 +111,21 @@ if ( isset( $_GET['cookie-test'] ) ) {
 		exit;
 	}
 
-	if ( empty( $_COOKIE['api_test_cookie'] ) || 'value' != $_COOKIE['api_test_cookie'] )
-		die( 'FAIL_NO_COOKIE' );
-	if ( empty( $_COOKIE['api_test_cookie_minimal'] ) )
-		die( 'FAIL_NO_MINIMAL' );
-	if ( isset( $_COOKIE['api_test_cookie_wrong_host'] ) )
-		die( 'FAIL_WRONG_HOST' );
-	if ( empty( $_COOKIE['api_test_wildcard_domain'] ) )
-		die( 'FAIL_NO_WILDCARD' );
-	if ( isset( $_COOKIE['api_test_cookie_expired'] ) )
-		die( 'FAIL_EXPIRED_COOKIE' );
+	if ( empty( $_COOKIE['api_test_cookie'] ) || 'value' != $_COOKIE['api_test_cookie'] ) {
+			die( 'FAIL_NO_COOKIE' );
+	}
+	if ( empty( $_COOKIE['api_test_cookie_minimal'] ) ) {
+			die( 'FAIL_NO_MINIMAL' );
+	}
+	if ( isset( $_COOKIE['api_test_cookie_wrong_host'] ) ) {
+			die( 'FAIL_WRONG_HOST' );
+	}
+	if ( empty( $_COOKIE['api_test_wildcard_domain'] ) ) {
+			die( 'FAIL_NO_WILDCARD' );
+	}
+	if ( isset( $_COOKIE['api_test_cookie_expired'] ) ) {
+			die( 'FAIL_EXPIRED_COOKIE' );
+	}
 
 	echo 'PASS';
 	exit;

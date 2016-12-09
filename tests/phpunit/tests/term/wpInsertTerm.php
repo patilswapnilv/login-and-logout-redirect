@@ -11,8 +11,9 @@ class Tests_Term_WpInsertTerm extends WP_UnitTestCase {
 		// insert one term into every post taxonomy
 		// otherwise term_ids and term_taxonomy_ids might be identical, which could mask bugs
 		$term = 'seed_term';
-		foreach(get_object_taxonomies('post') as $tax)
-			wp_insert_term( $term, $tax );
+		foreach(get_object_taxonomies('post') as $tax) {
+					wp_insert_term( $term, $tax );
+		}
 	}
 
 	public function test_wp_insert_delete_term() {

@@ -33,10 +33,11 @@ abstract class WP_Import_UnitTestCase extends WP_UnitTestCase {
 		// with given login or imported using details in WXR file
 		foreach ( $users as $user => $map ) {
 			$authors[$i] = $user;
-			if ( is_int( $map ) )
-				$mapping[$i] = $map;
-			else if ( is_string( $map ) )
-				$new[$i] = $map;
+			if ( is_int( $map ) ) {
+							$mapping[$i] = $map;
+			} else if ( is_string( $map ) ) {
+							$new[$i] = $map;
+			}
 
 			$i++;
 		}

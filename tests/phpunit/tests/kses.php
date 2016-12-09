@@ -166,21 +166,24 @@ EOF;
 		);
 		foreach ( $safe as $x ) {
 			$result = wp_kses_bad_protocol( wp_kses_normalize_entities( $x ), array( 'http', 'https', 'dummy' ) );
-			if ( $result != $x && $result != 'http://example.org/' )
-				$this->fail( "wp_kses_bad_protocol incorrectly blocked $x" );
+			if ( $result != $x && $result != 'http://example.org/' ) {
+							$this->fail( "wp_kses_bad_protocol incorrectly blocked $x" );
+			}
 		}
 	}
 
 	public function test_hackers_attacks() {
 		$xss = simplexml_load_file( DIR_TESTDATA . '/formatting/xssAttacks.xml' );
 		foreach ( $xss->attack as $attack ) {
-			if ( in_array( $attack->name, array( 'IMG Embedded commands 2', 'US-ASCII encoding', 'OBJECT w/Flash 2', 'Character Encoding Example' ) ) )
-				continue;
+			if ( in_array( $attack->name, array( 'IMG Embedded commands 2', 'US-ASCII encoding', 'OBJECT w/Flash 2', 'Character Encoding Example' ) ) ) {
+							continue;
+			}
 
 			$code = (string) $attack->code;
 
-			if ( $code == 'See Below' )
-				continue;
+			if ( $code == 'See Below' ) {
+							continue;
+			}
 
 			if ( substr( $code, 0, 4 ) == 'perl' ) {
 				$pos = strpos( $code, '"' ) + 1;
@@ -190,8 +193,9 @@ EOF;
 
 			$result = trim( wp_kses_data( $code ) );
 
-			if ( $result == '' || $result == 'XSS' || $result == 'alert("XSS");' || $result == "alert('XSS');" )
-				continue;
+			if ( $result == '' || $result == 'XSS' || $result == 'alert("XSS");' || $result == "alert('XSS');" ) {
+							continue;
+			}
 
 			switch ( $attack->name ) {
 				case 'XSS Locator':
@@ -303,10 +307,11 @@ EOF;
 	}
 
 	function _wp_kses_allowed_html_filter( $html, $context ) {
-		if ( 'post' == $context )
-			return array( 'a' => array( 'href' => true ) );
-		else
-			return array( 'a' => array( 'href' => false ) );
+		if ( 'post' == $context ) {
+					return array( 'a' => array( 'href' => true ) );
+		} else {
+					return array( 'a' => array( 'href' => false ) );
+		}
 	}
 
 	/**

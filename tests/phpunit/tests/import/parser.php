@@ -9,11 +9,13 @@ class Tests_Import_Parser extends WP_Import_UnitTestCase {
 	function setUp() {
 		parent::setUp();
 
-		if ( ! defined( 'WP_IMPORTING' ) )
-			define( 'WP_IMPORTING', true );
+		if ( ! defined( 'WP_IMPORTING' ) ) {
+					define( 'WP_IMPORTING', true );
+		}
 
-		if ( ! defined( 'WP_LOAD_IMPORTERS' ) )
-			define( 'WP_LOAD_IMPORTERS', true );
+		if ( ! defined( 'WP_LOAD_IMPORTERS' ) ) {
+					define( 'WP_LOAD_IMPORTERS', true );
+		}
 
 		if ( ! file_exists( DIR_TESTDATA . '/plugins/wordpress-importer/wordpress-importer.php' ) ) {
 			$this->markTestSkipped( 'WordPress Importer plugin is not installed.' );

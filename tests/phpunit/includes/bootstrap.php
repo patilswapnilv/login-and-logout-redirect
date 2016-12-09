@@ -7,9 +7,10 @@
 $config_file_path = dirname( dirname( __FILE__ ) );
 if ( ! file_exists( $config_file_path . '/wp-tests-config.php' ) ) {
 	// Support the config file from the root of the develop repository.
-	if ( basename( $config_file_path ) === 'phpunit' && basename( dirname( $config_file_path ) ) === 'tests' )
-		$config_file_path = dirname( dirname( $config_file_path ) );
-}
+	if ( basename( $config_file_path ) === 'phpunit' && basename( dirname( $config_file_path ) ) === 'tests' ) {
+			$config_file_path = dirname( dirname( $config_file_path ) );
+	}
+	}
 $config_file_path .= '/wp-tests-config.php';
 
 /*
@@ -31,8 +32,9 @@ define( 'DIR_TESTDATA', dirname( __FILE__ ) . '/../data' );
 
 define( 'WP_LANG_DIR', DIR_TESTDATA . '/languages' );
 
-if ( ! defined( 'WP_TESTS_FORCE_KNOWN_BUGS' ) )
+if ( ! defined( 'WP_TESTS_FORCE_KNOWN_BUGS' ) ) {
 	define( 'WP_TESTS_FORCE_KNOWN_BUGS', false );
+}
 
 // Cron tries to make an HTTP request to the blog, which always fails, because tests are run in CLI mode only
 define( 'DISABLE_WP_CRON', true );
@@ -130,8 +132,7 @@ class WP_PHPUnit_Util_Getopt extends PHPUnit_Util_Getopt {
 				if ( strlen( $arg ) > 1 && $arg[0] === '-' && $arg[1] === '-' ) {
 					PHPUnit_Util_Getopt::parseLongOption( substr( $arg, 2 ), $this->longOptions, $options, $argv );
 				}
-			}
-			catch ( PHPUnit_Framework_Exception $e ) {
+			} catch ( PHPUnit_Framework_Exception $e ) {
 				// Enforcing recognized arguments or correctly formed arguments is
 				// not really the concern here.
 				continue;

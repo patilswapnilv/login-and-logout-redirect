@@ -17,23 +17,26 @@ class WXR_Parser {
 			$result = $parser->parse( $file );
 
 			// If SimpleXML succeeds or this is an invalid WXR file then return the results
-			if ( ! is_wp_error( $result ) || 'SimpleXML_parse_error' != $result->get_error_code() )
-				return $result;
+			if ( ! is_wp_error( $result ) || 'SimpleXML_parse_error' != $result->get_error_code() ) {
+							return $result;
+			}
 		} else if ( extension_loaded( 'xml' ) ) {
 			$parser = new WXR_Parser_XML;
 			$result = $parser->parse( $file );
 
 			// If XMLParser succeeds or this is an invalid WXR file then return the results
-			if ( ! is_wp_error( $result ) || 'XML_parse_error' != $result->get_error_code() )
-				return $result;
+			if ( ! is_wp_error( $result ) || 'XML_parse_error' != $result->get_error_code() ) {
+							return $result;
+			}
 		}
 
 		// We have a malformed XML file, so display the error and fallthrough to regex
 		if ( isset($result) && defined('IMPORT_DEBUG') && IMPORT_DEBUG ) {
 			echo '<pre>';
 			if ( 'SimpleXML_parse_error' == $result->get_error_code() ) {
-				foreach  ( $result->get_error_data() as $error )
-					echo $error->line . ':' . $error->column . ' ' . esc_html( $error->message ) . "\n";
+				foreach  ( $result->get_error_data() as $error ) {
+									echo $error->line . ':' . $error->column . ' ' . esc_html( $error->message ) . "\n";
+				}
 			} else if ( 'XML_parse_error' == $result->get_error_code() ) {
 				$error = $result->get_error_data();
 				echo $error[0] . ':' . $error[1] . ' ' . esc_html( $error[2] );
@@ -76,26 +79,31 @@ class WXR_Parser_SimpleXML {
 		unset( $dom );
 
 		// halt if loading produces an error
-		if ( ! $xml )
-			return new WP_Error( 'SimpleXML_parse_error', __( 'There was an error when reading this WXR file', 'wordpress-importer' ), libxml_get_errors() );
+		if ( ! $xml ) {
+					return new WP_Error( 'SimpleXML_parse_error', __( 'There was an error when reading this WXR file', 'wordpress-importer' ), libxml_get_errors() );
+		}
 
 		$wxr_version = $xml->xpath('/rss/channel/wp:wxr_version');
-		if ( ! $wxr_version )
-			return new WP_Error( 'WXR_parse_error', __( 'This does not appear to be a WXR file, missing/invalid WXR version number', 'wordpress-importer' ) );
+		if ( ! $wxr_version ) {
+					return new WP_Error( 'WXR_parse_error', __( 'This does not appear to be a WXR file, missing/invalid WXR version number', 'wordpress-importer' ) );
+		}
 
 		$wxr_version = (string) trim( $wxr_version[0] );
 		// confirm that we are dealing with the correct file format
-		if ( ! preg_match( '/^\d+\.\d+$/', $wxr_version ) )
-			return new WP_Error( 'WXR_parse_error', __( 'This does not appear to be a WXR file, missing/invalid WXR version number', 'wordpress-importer' ) );
+		if ( ! preg_match( '/^\d+\.\d+$/', $wxr_version ) ) {
+					return new WP_Error( 'WXR_parse_error', __( 'This does not appear to be a WXR file, missing/invalid WXR version number', 'wordpress-importer' ) );
+		}
 
 		$base_url = $xml->xpath('/rss/channel/wp:base_site_url');
 		$base_url = (string) trim( $base_url[0] );
 
 		$namespaces = $xml->getDocNamespaces();
-		if ( ! isset( $namespaces['wp'] ) )
-			$namespaces['wp'] = 'http://wordpress.org/export/1.1/';
-		if ( ! isset( $namespaces['excerpt'] ) )
-			$namespaces['excerpt'] = 'http://wordpress.org/export/1.1/excerpt/';
+		if ( ! isset( $namespaces['wp'] ) ) {
+					$namespaces['wp'] = 'http://wordpress.org/export/1.1/';
+		}
+		if ( ! isset( $namespaces['excerpt'] ) ) {
+					$namespaces['excerpt'] = 'http://wordpress.org/export/1.1/excerpt/';
+		}
 
 		// grab authors
 		foreach ( $xml->xpath('/rss/channel/wp:author') as $author_arr ) {
@@ -201,17 +209,19 @@ class WXR_Parser_SimpleXML {
 			$post['post_password'] = (string) $wp->post_password;
 			$post['is_sticky'] = (int) $wp->is_sticky;
 
-			if ( isset($wp->attachment_url) )
-				$post['attachment_url'] = (string) $wp->attachment_url;
+			if ( isset($wp->attachment_url) ) {
+							$post['attachment_url'] = (string) $wp->attachment_url;
+			}
 
 			foreach ( $item->category as $c ) {
 				$att = $c->attributes();
-				if ( isset( $att['nicename'] ) )
-					$post['terms'][] = array(
+				if ( isset( $att['nicename'] ) ) {
+									$post['terms'][] = array(
 						'name' => (string) $c,
 						'slug' => (string) $att['nicename'],
 						'domain' => (string) $att['domain']
 					);
+				}
 			}
 
 			foreach ( $wp->postmeta as $meta ) {
@@ -302,8 +312,9 @@ class WXR_Parser_XML {
 		}
 		xml_parser_free( $xml );
 
-		if ( ! preg_match( '/^\d+\.\d+$/', $this->wxr_version ) )
-			return new WP_Error( 'WXR_parse_error', __( 'This does not appear to be a WXR file, missing/invalid WXR version number', 'wordpress-importer' ) );
+		if ( ! preg_match( '/^\d+\.\d+$/', $this->wxr_version ) ) {
+					return new WP_Error( 'WXR_parse_error', __( 'This does not appear to be a WXR file, missing/invalid WXR version number', 'wordpress-importer' ) );
+		}
 
 		return array(
 			'authors' => $this->authors,
@@ -335,7 +346,10 @@ class WXR_Parser_XML {
 				}
 				break;
 			case 'item': $this->in_post = true;
-			case 'title': if ( $this->in_post ) $this->in_tag = 'post_title'; break;
+			case 'title': if ( $this->in_post ) {
+			    $this->in_tag = 'post_title';
+			}
+			break;
 			case 'guid': $this->in_tag = 'guid'; break;
 			case 'dc:creator': $this->in_tag = 'post_author'; break;
 			case 'content:encoded': $this->in_tag = 'post_content'; break;
@@ -348,8 +362,9 @@ class WXR_Parser_XML {
 	}
 
 	function cdata( $parser, $cdata ) {
-		if ( ! trim( $cdata ) )
-			return;
+		if ( ! trim( $cdata ) ) {
+					return;
+		}
 
 		if ( false !== $this->in_tag || false !== $this->in_sub_tag ) {
 			$this->cdata .= $cdata;
@@ -362,8 +377,9 @@ class WXR_Parser_XML {
 		switch ( $tag ) {
 			case 'wp:comment':
 				unset( $this->sub_data['key'], $this->sub_data['value'] ); // remove meta sub_data
-				if ( ! empty( $this->sub_data ) )
-					$this->data['comments'][] = $this->sub_data;
+				if ( ! empty( $this->sub_data ) ) {
+									$this->data['comments'][] = $this->sub_data;
+				}
 				$this->sub_data = false;
 				break;
 			case 'wp:commentmeta':
@@ -380,8 +396,9 @@ class WXR_Parser_XML {
 				$this->sub_data = false;
 				break;
 			case 'wp:postmeta':
-				if ( ! empty( $this->sub_data ) )
-					$this->data['postmeta'][] = $this->sub_data;
+				if ( ! empty( $this->sub_data ) ) {
+									$this->data['postmeta'][] = $this->sub_data;
+				}
 				$this->sub_data = false;
 				break;
 			case 'item':
@@ -396,8 +413,9 @@ class WXR_Parser_XML {
 				$this->data = false;
 				break;
 			case 'wp:author':
-				if ( ! empty($this->data['author_login']) )
-					$this->authors[$this->data['author_login']] = $this->data;
+				if ( ! empty($this->data['author_login']) ) {
+									$this->authors[$this->data['author_login']] = $this->data;
+				}
 				$this->data = false;
 				break;
 			case 'wp:base_site_url':
@@ -444,8 +462,9 @@ class WXR_Parser_Regex {
 			while ( ! $this->feof( $fp ) ) {
 				$importline = rtrim( $this->fgets( $fp ) );
 
-				if ( ! $wxr_version && preg_match( '|<wp:wxr_version>(\d+\.\d+)</wp:wxr_version>|', $importline, $version ) )
-					$wxr_version = $version[1];
+				if ( ! $wxr_version && preg_match( '|<wp:wxr_version>(\d+\.\d+)</wp:wxr_version>|', $importline, $version ) ) {
+									$wxr_version = $version[1];
+				}
 
 				if ( false !== strpos( $importline, '<wp:base_site_url>' ) ) {
 					preg_match( '|<wp:base_site_url>(.*?)</wp:base_site_url>|is', $importline, $url );
@@ -491,8 +510,9 @@ class WXR_Parser_Regex {
 			$this->fclose($fp);
 		}
 
-		if ( ! $wxr_version )
-			return new WP_Error( 'WXR_parse_error', __( 'This does not appear to be a WXR file, missing/invalid WXR version number', 'wordpress-importer' ) );
+		if ( ! $wxr_version ) {
+					return new WP_Error( 'WXR_parse_error', __( 'This does not appear to be a WXR file, missing/invalid WXR version number', 'wordpress-importer' ) );
+		}
 
 		return array(
 			'authors' => $this->authors,
@@ -512,8 +532,9 @@ class WXR_Parser_Regex {
 				if ( strpos( $return[1], ']]]]><![CDATA[>' ) !== false ) {
 					preg_match_all( '|<!\[CDATA\[(.*?)\]\]>|s', $return[1], $matches );
 					$return = '';
-					foreach( $matches[1] as $match )
-						$return .= $match;
+					foreach( $matches[1] as $match ) {
+											$return .= $match;
+					}
 				} else {
 					$return = preg_replace( '|^<!\[CDATA\[(.*)\]\]>$|s', '$1', $return[1] );
 				}
@@ -600,8 +621,9 @@ class WXR_Parser_Regex {
 		);
 
 		$attachment_url = $this->get_tag( $post, 'wp:attachment_url' );
-		if ( $attachment_url )
-			$postdata['attachment_url'] = $attachment_url;
+		if ( $attachment_url ) {
+					$postdata['attachment_url'] = $attachment_url;
+		}
 
 		preg_match_all( '|<category domain="([^"]+?)" nicename="([^"]+?)">(.+?)</category>|is', $post, $terms, PREG_SET_ORDER );
 		foreach ( $terms as $t ) {
@@ -611,7 +633,9 @@ class WXR_Parser_Regex {
 				'name' => str_replace( array( '<![CDATA[', ']]>' ), '', $t[3] ),
 			);
 		}
-		if ( ! empty( $post_terms ) ) $postdata['terms'] = $post_terms;
+		if ( ! empty( $post_terms ) ) {
+		    $postdata['terms'] = $post_terms;
+		}
 
 		preg_match_all( '|<wp:comment>(.+?)</wp:comment>|is', $post, $comments );
 		$comments = $comments[1];
@@ -644,7 +668,9 @@ class WXR_Parser_Regex {
 				);
 			}
 		}
-		if ( ! empty( $post_comments ) ) $postdata['comments'] = $post_comments;
+		if ( ! empty( $post_comments ) ) {
+		    $postdata['comments'] = $post_comments;
+		}
 
 		preg_match_all( '|<wp:postmeta>(.+?)</wp:postmeta>|is', $post, $postmeta );
 		$postmeta = $postmeta[1];
@@ -656,7 +682,9 @@ class WXR_Parser_Regex {
 				);
 			}
 		}
-		if ( ! empty( $post_postmeta ) ) $postdata['postmeta'] = $post_postmeta;
+		if ( ! empty( $post_postmeta ) ) {
+		    $postdata['postmeta'] = $post_postmeta;
+		}
 
 		return $postdata;
 	}
@@ -666,26 +694,30 @@ class WXR_Parser_Regex {
 	}
 
 	function fopen( $filename, $mode = 'r' ) {
-		if ( $this->has_gzip )
-			return gzopen( $filename, $mode );
+		if ( $this->has_gzip ) {
+					return gzopen( $filename, $mode );
+		}
 		return fopen( $filename, $mode );
 	}
 
 	function feof( $fp ) {
-		if ( $this->has_gzip )
-			return gzeof( $fp );
+		if ( $this->has_gzip ) {
+					return gzeof( $fp );
+		}
 		return feof( $fp );
 	}
 
 	function fgets( $fp, $len = 8192 ) {
-		if ( $this->has_gzip )
-			return gzgets( $fp, $len );
+		if ( $this->has_gzip ) {
+					return gzgets( $fp, $len );
+		}
 		return fgets( $fp, $len );
 	}
 
 	function fclose( $fp ) {
-		if ( $this->has_gzip )
-			return gzclose( $fp );
+		if ( $this->has_gzip ) {
+					return gzclose( $fp );
+		}
 		return fclose( $fp );
 	}
 }

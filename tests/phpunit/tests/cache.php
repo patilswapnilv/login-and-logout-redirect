@@ -99,8 +99,9 @@ class Tests_Cache extends WP_UnitTestCase {
 	function test_flush() {
 		global $_wp_using_ext_object_cache;
 
-		if ( $_wp_using_ext_object_cache )
-			return;
+		if ( $_wp_using_ext_object_cache ) {
+					return;
+		}
 
 		$key = __FUNCTION__;
 		$val = 'val';
@@ -234,8 +235,9 @@ class Tests_Cache extends WP_UnitTestCase {
 	}
 
 	function test_switch_to_blog() {
-		if ( ! method_exists( $this->cache, 'switch_to_blog' ) )
-			return;
+		if ( ! method_exists( $this->cache, 'switch_to_blog' ) ) {
+					return;
+		}
 
 		$key = __FUNCTION__;
 		$val = 'val1';

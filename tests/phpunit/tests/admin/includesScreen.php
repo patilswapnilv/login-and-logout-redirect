@@ -54,12 +54,14 @@ class Tests_Admin_includesScreen extends WP_UnitTestCase {
 
 			if ( ! empty( $hook['query'] ) ) {
 				$args = wp_parse_args( $hook['query'] );
-				if ( isset( $args['taxonomy'] ) )
-					$GLOBALS['taxnow'] = $_GET['taxonomy'] = $_POST['taxonomy'] = $_REQUEST['taxonomy'] = $args['taxonomy'];
-				if ( isset( $args['post_type'] ) )
-					$GLOBALS['typenow'] = $_GET['post_type'] = $_POST['post_type'] = $_REQUEST['post_type'] = $args['post_type'];
-				else if ( isset( $screen->post_type ) )
-					$GLOBALS['typenow'] = $_GET['post_type'] = $_POST['post_type'] = $_REQUEST['post_type'] = $screen->post_type;
+				if ( isset( $args['taxonomy'] ) ) {
+									$GLOBALS['taxnow'] = $_GET['taxonomy'] = $_POST['taxonomy'] = $_REQUEST['taxonomy'] = $args['taxonomy'];
+				}
+				if ( isset( $args['post_type'] ) ) {
+									$GLOBALS['typenow'] = $_GET['post_type'] = $_POST['post_type'] = $_REQUEST['post_type'] = $args['post_type'];
+				} else if ( isset( $screen->post_type ) ) {
+									$GLOBALS['typenow'] = $_GET['post_type'] = $_POST['post_type'] = $_REQUEST['post_type'] = $screen->post_type;
+				}
 			}
 
 			$GLOBALS['hook_suffix'] = $hook['path'];
@@ -67,14 +69,17 @@ class Tests_Admin_includesScreen extends WP_UnitTestCase {
 
 			$this->assertEquals( $screen->id, $current_screen->id, $hook_name );
 			$this->assertEquals( $screen->base, $current_screen->base, $hook_name );
-			if ( isset( $screen->action ) )
-				$this->assertEquals( $screen->action, $current_screen->action, $hook_name );
-			if ( isset( $screen->post_type ) )
-				$this->assertEquals( $screen->post_type, $current_screen->post_type, $hook_name );
-			else
-				$this->assertEmpty( $current_screen->post_type, $hook_name );
-			if ( isset( $screen->taxonomy ) )
-				$this->assertEquals( $screen->taxonomy, $current_screen->taxonomy, $hook_name );
+			if ( isset( $screen->action ) ) {
+							$this->assertEquals( $screen->action, $current_screen->action, $hook_name );
+			}
+			if ( isset( $screen->post_type ) ) {
+							$this->assertEquals( $screen->post_type, $current_screen->post_type, $hook_name );
+			} else {
+							$this->assertEmpty( $current_screen->post_type, $hook_name );
+			}
+			if ( isset( $screen->taxonomy ) ) {
+							$this->assertEquals( $screen->taxonomy, $current_screen->taxonomy, $hook_name );
+			}
 
 			$this->assertTrue( $current_screen->in_admin() );
 			$this->assertTrue( $current_screen->in_admin( 'site' ) );
@@ -87,8 +92,9 @@ class Tests_Admin_includesScreen extends WP_UnitTestCase {
 
 			// With convert_to_screen(), the hook_suffix should return the exact $current_screen.
 			// But, convert_to_screen() cannot figure out ?taxonomy and ?post_type.
-			if ( empty( $hook['query'] ) )
-				$this->assertSame( $current_screen, convert_to_screen( $GLOBALS['hook_suffix'] ), $hook_name );
+			if ( empty( $hook['query'] ) ) {
+							$this->assertSame( $current_screen, convert_to_screen( $GLOBALS['hook_suffix'] ), $hook_name );
+			}
 		}
 	}
 

@@ -38,9 +38,7 @@ class Comment_Callback_Test {
 		if ( 1 == $depth ) {
 			$this->test_walker->assertTrue( $this->walker->has_children );
 			$this->test_walker->assertTrue( $args['has_children']       ); // Back compat
-		}
-
-		else if ( 2 == $depth ) {
+		} else if ( 2 == $depth ) {
 			$this->test_walker->assertFalse( $this->walker->has_children );
 			$this->test_walker->assertFalse( $args['has_children']       ); // Back compat
 		}

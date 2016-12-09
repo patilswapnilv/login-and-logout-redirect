@@ -13,10 +13,11 @@ class Tests_Dependencies_jQuery extends WP_UnitTestCase {
 		$jquery_scripts = array(
 			'jquery-core' => '/wp-includes/js/jquery/jquery.js',
 		);
-		if ( SCRIPT_DEBUG )
-			$jquery_scripts['jquery-migrate'] = '/wp-includes/js/jquery/jquery-migrate.js';
-		else
-			$jquery_scripts['jquery-migrate'] = '/wp-includes/js/jquery/jquery-migrate.min.js';
+		if ( SCRIPT_DEBUG ) {
+					$jquery_scripts['jquery-migrate'] = '/wp-includes/js/jquery/jquery-migrate.js';
+		} else {
+					$jquery_scripts['jquery-migrate'] = '/wp-includes/js/jquery/jquery-migrate.min.js';
+		}
 
 		$object = $scripts->query( 'jquery', 'registered' );
 		$this->assertInstanceOf( '_WP_Dependency', $object );

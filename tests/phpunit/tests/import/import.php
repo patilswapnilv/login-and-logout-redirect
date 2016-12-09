@@ -9,11 +9,13 @@ class Tests_Import_Import extends WP_Import_UnitTestCase {
 	function setUp() {
 		parent::setUp();
 
-		if ( ! defined( 'WP_IMPORTING' ) )
-			define( 'WP_IMPORTING', true );
+		if ( ! defined( 'WP_IMPORTING' ) ) {
+					define( 'WP_IMPORTING', true );
+		}
 
-		if ( ! defined( 'WP_LOAD_IMPORTERS' ) )
-			define( 'WP_LOAD_IMPORTERS', true );
+		if ( ! defined( 'WP_LOAD_IMPORTERS' ) ) {
+					define( 'WP_LOAD_IMPORTERS', true );
+		}
 
 		add_filter( 'import_allow_create_users', '__return_true' );
 
@@ -25,8 +27,9 @@ class Tests_Import_Import extends WP_Import_UnitTestCase {
 
 		global $wpdb;
 		// crude but effective: make sure there's no residual data in the main tables
-		foreach ( array('posts', 'postmeta', 'comments', 'terms', 'term_taxonomy', 'term_relationships', 'users', 'usermeta') as $table)
-			$wpdb->query("DELETE FROM {$wpdb->$table}");
+		foreach ( array('posts', 'postmeta', 'comments', 'terms', 'term_taxonomy', 'term_relationships', 'users', 'usermeta') as $table) {
+					$wpdb->query("DELETE FROM {$wpdb->$table}");
+		}
 	}
 
 	function tearDown() {

@@ -53,8 +53,10 @@ abstract class WP_HTTP_UnitTestCase extends WP_UnitTestCase {
 		// Disable all transports aside from this one.
 		foreach ( array( 'curl', 'streams', 'fsockopen' ) as $t ) {
 			remove_filter( "use_{$t}_transport", '__return_false' ); // Just strip them all
-			if ( $t != $this->transport )
-				add_filter( "use_{$t}_transport", '__return_false' ); // and add it back if need be..
+			if ( $t != $this->transport ) {
+							add_filter( "use_{$t}_transport", '__return_false' );
+			}
+			// and add it back if need be..
 		}
 	}
 
@@ -194,8 +196,9 @@ abstract class WP_HTTP_UnitTestCase extends WP_UnitTestCase {
 
 		$headers = array();
 		foreach ( explode("\n", $res['body']) as $key => $value ) {
-			if ( empty($value) )
-				continue;
+			if ( empty($value) ) {
+							continue;
+			}
 			$parts = explode(':', $value,2);
 			unset($headers[$key]);
 			$headers[ $parts[0] ] = $parts[1];
@@ -383,8 +386,9 @@ abstract class WP_HTTP_UnitTestCase extends WP_UnitTestCase {
 	 * @ticket 25007
 	 */
 	function test_ssl() {
-		if ( ! wp_http_supports( array( 'ssl' ) ) )
-			$this->markTestSkipped( 'This install of PHP does not support SSL' );
+		if ( ! wp_http_supports( array( 'ssl' ) ) ) {
+					$this->markTestSkipped( 'This install of PHP does not support SSL' );
+		}
 
 		$res = wp_remote_get( 'https://wordpress.org/' );
 		$this->assertNotWPError( $res );

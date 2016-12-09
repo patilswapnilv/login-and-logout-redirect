@@ -56,9 +56,10 @@ foreach ( $wpdb->tables( 'ms_global' ) as $table => $prefixed_table ) {
 	$wpdb->query( "DROP TABLE IF EXISTS $prefixed_table" );
 
 	// We need to create references to ms global tables.
-	if ( $multisite )
-		$wpdb->$table = $prefixed_table;
-}
+	if ( $multisite ) {
+			$wpdb->$table = $prefixed_table;
+	}
+	}
 $wpdb->query( "SET foreign_key_checks = 1" );
 
 // Prefill a permalink structure so that WP doesn't try to determine one itself.

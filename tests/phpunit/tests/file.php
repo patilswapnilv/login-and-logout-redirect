@@ -40,8 +40,9 @@ class Tests_File extends WP_UnitTestCase {
 			'AuthorURI' => 'http://binarybonsai.com/',
 		);
 
-		foreach ( $actual as $header => $value )
-			$this->assertEquals( $expected[ $header ], $value, $header );
+		foreach ( $actual as $header => $value ) {
+					$this->assertEquals( $expected[ $header ], $value, $header );
+		}
 	}
 
 	/**
@@ -57,8 +58,9 @@ class Tests_File extends WP_UnitTestCase {
 			'Author' => 'A Very Old Mac',
 		);
 
-		foreach ( $actual as $header => $value )
-			$this->assertEquals( $expected[ $header ], $value, $header );
+		foreach ( $actual as $header => $value ) {
+					$this->assertEquals( $expected[ $header ], $value, $header );
+		}
 	}
 
 	function is_unique_writable_file($path, $filename) {
@@ -66,18 +68,20 @@ class Tests_File extends WP_UnitTestCase {
 
 		$fp = fopen( $fullpath, 'x' );
 		// file already exists?
-		if (!$fp)
-			return false;
+		if (!$fp) {
+					return false;
+		}
 
 		// write some random contents
 		$c = rand_str();
 		fwrite($fp, $c);
 		fclose($fp);
 
-		if ( file_get_contents($fullpath) === $c )
-			$result = true;
-		else
-			$result = false;
+		if ( file_get_contents($fullpath) === $c ) {
+					$result = true;
+		} else {
+					$result = false;
+		}
 
 		return $result;
 	}

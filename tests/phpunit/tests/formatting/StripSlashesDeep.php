@@ -19,8 +19,9 @@ class Tests_Formatting_StripSlashesDeep extends WP_UnitTestCase {
 		$this->assertEquals( array_values( $arr ), stripslashes_deep( array_values( $arr ) ) ); // Non-keyed
 
 		$obj = new stdClass;
-		foreach ( $arr as $k => $v )
-			$obj->$k = $v;
+		foreach ( $arr as $k => $v ) {
+					$obj->$k = $v;
+		}
 		$this->assertEquals( $obj, stripslashes_deep( $obj ) );
 	}
 

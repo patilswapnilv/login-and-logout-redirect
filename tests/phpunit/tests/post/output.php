@@ -22,8 +22,9 @@ class Tests_Post_Output extends WP_UnitTestCase {
 
 	function _shortcode_dumptag( $atts ) {
 		$out = '';
-		foreach ($atts as $k=>$v)
-			$out .= "$k = $v\n";
+		foreach ($atts as $k=>$v) {
+					$out .= "$k = $v\n";
+		}
 		return $out;
 	}
 

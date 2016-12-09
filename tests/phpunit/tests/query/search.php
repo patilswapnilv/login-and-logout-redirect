@@ -30,8 +30,9 @@ class Tests_Query_Search extends WP_UnitTestCase {
 	}
 
 	function test_search_order_title_relevance() {
-		foreach ( range( 1, 7 ) as $i )
-			self::factory()->post->create( array( 'post_content' => $i . rand_str() . ' about', 'post_type' => $this->post_type ) );
+		foreach ( range( 1, 7 ) as $i ) {
+					self::factory()->post->create( array( 'post_content' => $i . rand_str() . ' about', 'post_type' => $this->post_type ) );
+		}
 		$post_id = self::factory()->post->create( array( 'post_title' => 'About', 'post_type' => $this->post_type ) );
 
 		$posts = $this->get_search_results( 'About' );

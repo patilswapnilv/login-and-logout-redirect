@@ -121,8 +121,9 @@ abstract class WP_Ajax_UnitTestCase extends WP_UnitTestCase {
 	public function logout() {
 		unset( $GLOBALS['current_user'] );
 		$cookies = array(AUTH_COOKIE, SECURE_AUTH_COOKIE, LOGGED_IN_COOKIE, USER_COOKIE, PASS_COOKIE);
-		foreach ( $cookies as $c )
-			unset( $_COOKIE[$c] );
+		foreach ( $cookies as $c ) {
+					unset( $_COOKIE[$c] );
+		}
 	}
 
 	/**
@@ -197,7 +198,8 @@ abstract class WP_Ajax_UnitTestCase extends WP_UnitTestCase {
 
 		// Save the output
 		$buffer = ob_get_clean();
-		if ( !empty( $buffer ) )
-			$this->_last_response = $buffer;
+		if ( !empty( $buffer ) ) {
+					$this->_last_response = $buffer;
+		}
 	}
 }

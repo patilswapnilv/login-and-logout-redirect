@@ -40,8 +40,9 @@ class WP_UnitTest_Factory_For_Attachment extends WP_UnitTest_Factory_For_Post {
 			$type = $upload['type'];
 		} else {
 			$mime = wp_check_filetype( $upload['file'] );
-			if ($mime)
-				$type = $mime['type'];
+			if ($mime) {
+							$type = $mime['type'];
+			}
 		}
 
 		$attachment = array(

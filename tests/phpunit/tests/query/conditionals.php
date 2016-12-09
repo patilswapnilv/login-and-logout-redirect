@@ -407,8 +407,9 @@ class Tests_Query_Conditionals extends WP_UnitTestCase {
 	function test_tag_paged() {
 		update_option( 'posts_per_page', 2 );
 		$post_ids = self::factory()->post->create_many( 3 );
-		foreach ( $post_ids as $post_id )
-			self::factory()->term->add_post_terms( $post_id, 'tag-a', 'post_tag' );
+		foreach ( $post_ids as $post_id ) {
+					self::factory()->term->add_post_terms( $post_id, 'tag-a', 'post_tag' );
+		}
 		$this->go_to('/tag/tag-a/page/2/');
 		$this->assertQueryTrue('is_archive', 'is_tag', 'is_paged');
 	}

@@ -9,8 +9,9 @@ class Tests_Shortcode extends WP_UnitTestCase {
 	function setUp() {
 		parent::setUp();
 
-		foreach ( $this->shortcodes as $shortcode )
-			add_shortcode( $shortcode, array( $this, '_shortcode_' . str_replace( '-', '_', $shortcode ) ) );
+		foreach ( $this->shortcodes as $shortcode ) {
+					add_shortcode( $shortcode, array( $this, '_shortcode_' . str_replace( '-', '_', $shortcode ) ) );
+		}
 
 		$this->atts = null;
 		$this->content = null;
@@ -57,8 +58,9 @@ class Tests_Shortcode extends WP_UnitTestCase {
 
 	function _shortcode_dumptag( $atts ) {
 		$out = '';
-		foreach ($atts as $k=>$v)
-			$out .= "$k = $v\n";
+		foreach ($atts as $k=>$v) {
+					$out .= "$k = $v\n";
+		}
 		return $out;
 	}
 
@@ -391,12 +393,14 @@ EOF;
 	// Filter shortcode atts in various ways
 	function _filter_atts2( $out, $pairs, $atts ) {
 		// If foo attribute equals "foo1", change it to be default value
-		if ( isset( $out['foo'] ) && 'foo1' == $out['foo'] )
-			$out['foo'] = $pairs['foo'];
+		if ( isset( $out['foo'] ) && 'foo1' == $out['foo'] ) {
+					$out['foo'] = $pairs['foo'];
+		}
 
 		// If baz attribute is set, remove it
-		if ( isset( $out['baz'] ) )
-			unset( $out['baz'] );
+		if ( isset( $out['baz'] ) ) {
+					unset( $out['baz'] );
+		}
 
 		$this->filter_atts_out = $out;
 		return $out;
@@ -604,7 +608,9 @@ EOF;
 		add_shortcode( $input, '' );
 		$actual = shortcode_exists( $input );
 		$test = $this->assertEquals( $expected, $actual );
-		if ( $actual ) remove_shortcode( $input );
+		if ( $actual ) {
+		    remove_shortcode( $input );
+		}
 		return $test;
 	}
 

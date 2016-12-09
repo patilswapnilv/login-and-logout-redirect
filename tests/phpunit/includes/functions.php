@@ -33,8 +33,9 @@ function tests_add_filter($tag, $function_to_add, $priority = 10, $accepted_args
 }
 
 function _test_filter_build_unique_id($tag, $function, $priority) {
-	if ( is_string($function) )
-		return $function;
+	if ( is_string($function) ) {
+			return $function;
+	}
 
 	if ( is_object($function) ) {
 		// Closures are currently implemented as objects

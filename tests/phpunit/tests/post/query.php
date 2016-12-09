@@ -72,8 +72,9 @@ class Tests_Post_Query extends WP_UnitTestCase {
 	function test_the_posts_filter() {
 		// Create posts and clear their caches.
 		$post_ids = self::factory()->post->create_many( 4 );
-		foreach ( $post_ids as $post_id )
-			clean_post_cache( $post_id );
+		foreach ( $post_ids as $post_id ) {
+					clean_post_cache( $post_id );
+		}
 
 		add_filter( 'the_posts', array( $this, 'the_posts_filter' ) );
 
@@ -108,8 +109,9 @@ class Tests_Post_Query extends WP_UnitTestCase {
 		$posts[] = clone $posts[0];
 
 		// Add some custom data to each post.
-		foreach ( $posts as $key => $post )
-			$posts[ $key ]->custom_data = array( $post->ID, 'custom data' );
+		foreach ( $posts as $key => $post ) {
+					$posts[ $key ]->custom_data = array( $post->ID, 'custom data' );
+		}
 
 		return $posts;
 	}

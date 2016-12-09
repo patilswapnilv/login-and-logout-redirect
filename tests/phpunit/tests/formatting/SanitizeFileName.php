@@ -13,8 +13,9 @@ class Tests_Formatting_SanitizeFileName extends WP_UnitTestCase {
 	function test_removes_special_chars() {
 		$special_chars = array("?", "[", "]", "/", "\\", "=", "<", ">", ":", ";", ",", "'", "\"", "&", "$", "#", "*", "(", ")", "|", "~", "`", "!", "{", "}", "%", "+", chr(0));
 		$string = 'test';
-		foreach ( $special_chars as $char )
-			$string .= $char;
+		foreach ( $special_chars as $char ) {
+					$string .= $char;
+		}
 		$string .= 'test';
 		$this->assertEquals( 'testtest', sanitize_file_name( $string ) );
 	}

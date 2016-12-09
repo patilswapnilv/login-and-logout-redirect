@@ -19,13 +19,14 @@ define('DIR_TESTROOT', realpath(dirname(__FILE__)));
 define('TEST_WP', true);
 define('WP_DEBUG', array_key_exists('d', $opts) );
 
-if (!empty($opts['r']))
+if (!empty($opts['r'])) {
 	define('DIR_WP', realpath($opts['r']));
-else
-	if (!empty($opts['v']))
-		define('DIR_WP', DIR_TESTROOT.'/wordpress-'.$opts['v']);
-	else
-		define('DIR_WP', DIR_TESTROOT.'/wordpress');
+} else
+	if (!empty($opts['v'])) {
+			define('DIR_WP', DIR_TESTROOT.'/wordpress-'.$opts['v']);
+	} else {
+			define('DIR_WP', DIR_TESTROOT.'/wordpress');
+	}
 
 // make sure all useful errors are displayed during setup
 error_reporting(E_ALL & ~E_DEPRECATED);

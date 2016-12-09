@@ -193,8 +193,9 @@ class Tests_Actions extends WP_UnitTestCase {
 
 		// do action tag2 a random number of times
 		$count = rand(0, 10);
-		for ($i=0; $i<$count; $i++)
-			do_action($tag2);
+		for ($i=0; $i<$count; $i++) {
+					do_action($tag2);
+		}
 
 		// tag1's count hasn't changed, tag2 should be correct
 		$this->assertEquals(1, did_action($tag1));

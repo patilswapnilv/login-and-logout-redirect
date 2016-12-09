@@ -21,13 +21,15 @@ class WP_Filesystem_MockFS extends WP_Filesystem_Base {
 
 	// Copy of core's function, but accepts a path.
 	function abspath( $path = false ) {
-		if ( ! $path )
-			$path = ABSPATH;
+		if ( ! $path ) {
+					$path = ABSPATH;
+		}
 		$folder = $this->find_folder( $path );
 
 		// Perhaps the FTP folder is rooted at the WordPress install, Check for wp-includes folder in root, Could have some false positives, but rare.
-		if ( ! $folder && $this->is_dir('/wp-includes') )
-			$folder = '/';
+		if ( ! $folder && $this->is_dir('/wp-includes') ) {
+					$folder = '/';
+		}
 		return $folder;
 	}
 
@@ -51,21 +53,25 @@ class WP_Filesystem_MockFS extends WP_Filesystem_Base {
 	 * "Bulk Loads" a filesystem into the internal virtual filesystem
 	 */
 	function setfs( $paths ) {
-		if ( ! is_array($paths) )
-			$paths = explode( "\n", $paths );
+		if ( ! is_array($paths) ) {
+					$paths = explode( "\n", $paths );
+		}
 
 		$paths = array_filter( array_map( 'trim', $paths ) );
 
 		foreach ( $paths as $path ) {
 			// Allow for comments
-			if ( '#' == $path[0] )
-				continue;
+			if ( '#' == $path[0] ) {
+							continue;
+			}
 
 			// Directories
-			if ( '/' == $path[ strlen($path) -1 ] )
-				$this->mkdir( $path );
-			else // Files (with dummy content for now)
+			if ( '/' == $path[ strlen($path) -1 ] ) {
+							$this->mkdir( $path );
+			} else {
+			    // Files (with dummy content for now)
 				$this->put_contents( $path, 'This is a test file' );
+			}
 		}
 
 	}
@@ -95,8 +101,9 @@ class WP_Filesystem_MockFS extends WP_Filesystem_Base {
 			$dirname = str_replace( '\\', '/', dirname( $path ) );
 			$this->mkdir( $dirname );
 			$parent_node = $this->locate_parent_node( $path );
-			if ( ! $parent_node )
-				return false;
+			if ( ! $parent_node ) {
+							return false;
+			}
 		}
 
 		$node = new MockFS_Directory_Node( $path );
@@ -108,8 +115,9 @@ class WP_Filesystem_MockFS extends WP_Filesystem_Base {
 	}
 
 	function put_contents( $path, $contents = '', $mode = null ) {
-		if ( ! $this->is_dir( dirname( $path ) ) )
-			$this->mkdir( dirname( $path ) );
+		if ( ! $this->is_dir( dirname( $path ) ) ) {
+					$this->mkdir( dirname( $path ) );
+		}
 
 		$parent = $this->locate_parent_node( $path );
 		$new_file = new MockFS_File_Node( $path, $contents );
@@ -119,8 +127,9 @@ class WP_Filesystem_MockFS extends WP_Filesystem_Base {
 	}
 
 	function get_contents( $file ) {
-		if ( ! $this->is_file( $file ) )
-			return false;
+		if ( ! $this->is_file( $file ) ) {
+					return false;
+		}
 		return $this->fs_map[ $file ]->contents;
 	}
 
@@ -129,8 +138,9 @@ class WP_Filesystem_MockFS extends WP_Filesystem_Base {
 	}
 
 	function chdir( $path ) {
-		if ( ! isset( $this->fs_map[ $path ] ) )
-			return false;
+		if ( ! isset( $this->fs_map[ $path ] ) ) {
+					return false;
+		}
 
 		$this->cwd = $this->fs_map[ $path ];
 		return true;
@@ -152,11 +162,13 @@ class WP_Filesystem_MockFS extends WP_Filesystem_Base {
 
 	function dirlist( $path = '.', $include_hidden = true, $recursive = false ) {
 
-		if ( empty( $path ) || '.' == $path )
-			$path = $this->cwd();
+		if ( empty( $path ) || '.' == $path ) {
+					$path = $this->cwd();
+		}
 
-		if ( ! $this->exists( $path ) )
-			return false;
+		if ( ! $this->exists( $path ) ) {
+					return false;
+		}
 
 		$limit_file = false;
 		if ( $this->is_file( $path ) ) {
@@ -166,24 +178,28 @@ class WP_Filesystem_MockFS extends WP_Filesystem_Base {
 
 		$ret = array();
 		foreach ( $this->fs_map[ $path ]->children as $entry ) {
-			if ( '.' == $entry->name || '..' == $entry->name )
-				continue;
+			if ( '.' == $entry->name || '..' == $entry->name ) {
+							continue;
+			}
 
-			if ( ! $include_hidden && '.' == $entry->name )
-				continue;
+			if ( ! $include_hidden && '.' == $entry->name ) {
+							continue;
+			}
 
-			if ( $limit_file && $entry->name != $limit_file )
-				continue;
+			if ( $limit_file && $entry->name != $limit_file ) {
+							continue;
+			}
 
 			$struc = array();
 			$struc['name'] = $entry->name;
 			$struc['type'] = $entry->type;
 
 			if ( 'd' == $struc['type'] ) {
-				if ( $recursive )
-					$struc['files'] = $this->dirlist( trailingslashit( $path ) . trailingslashit( $struc['name'] ), $include_hidden, $recursive );
-				else
-					$struc['files'] = array();
+				if ( $recursive ) {
+									$struc['files'] = $this->dirlist( trailingslashit( $path ) . trailingslashit( $struc['name'] ), $include_hidden, $recursive );
+				} else {
+									$struc['files'] = array();
+				}
 			}
 
 			$ret[ $entry->name ] = $struc;

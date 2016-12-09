@@ -84,8 +84,7 @@ class WPProfiler {
 			$this->profile[$name]['queries'] = array_add( $this->profile[$name]['queries'], $item['queries'] );
 			#$this->_query_summary($item['queries'], $this->profile[$name]['queries']);
 
-		}
-		else {
+		} else {
 			$queries = array();
 			$this->_query_summary($item['queries'], $queries);
 			$this->profile[$name] = array(
@@ -115,17 +114,19 @@ class WPProfiler {
 	function log_filter($tag) {
 		if ($this->stack) {
 			global $wp_actions;
-			if ($tag == end($wp_actions))
-				@$this->stack[count($this->stack)-1]['actions'][$tag] ++;
-			else
-				@$this->stack[count($this->stack)-1]['filters'][$tag] ++;
+			if ($tag == end($wp_actions)) {
+							@$this->stack[count($this->stack)-1]['actions'][$tag] ++;
+			} else {
+							@$this->stack[count($this->stack)-1]['filters'][$tag] ++;
+			}
 		}
 		return $arg;
 	}
 
 	function log_action($tag) {
-		if ($this->stack)
-			@$this->stack[count($this->stack)-1]['actions'][$tag] ++;
+		if ($this->stack) {
+					@$this->stack[count($this->stack)-1]['actions'][$tag] ++;
+		}
 	}
 
 	function _current_action() {
@@ -153,36 +154,41 @@ class WPProfiler {
 		// this requires the savequeries patch at https://core.trac.wordpress.org/ticket/5218
 		$out = array();
 		foreach ($queries as $q) {
-			if (empty($q[2]))
-				@$out['unknown'] ++;
-			else
-				@$out[$q[2]] ++;
+			if (empty($q[2])) {
+							@$out['unknown'] ++;
+			} else {
+							@$out[$q[2]] ++;
+			}
 		}
 		return $out;
 	}
 
 	function _dirty_objects_count($dirty_objects) {
 		$out = array();
-		foreach (array_keys($dirty_objects) as $group)
-			$out[$group] = count($dirty_objects[$group]);
+		foreach (array_keys($dirty_objects) as $group) {
+					$out[$group] = count($dirty_objects[$group]);
+		}
 		return $out;
 	}
 
 	function array_add($a, $b) {
 		$out = $a;
-		foreach (array_keys($b) as $key)
-			if (array_key_exists($key, $out))
+		foreach (array_keys($b) as $key) {
+					if (array_key_exists($key, $out))
 				$out[$key] += $b[$key];
-			else
-				$out[$key] = $b[$key];
+		}
+			else {
+							$out[$key] = $b[$key];
+			}
 		return $out;
 	}
 
 	function array_sub($a, $b) {
 		$out = $a;
-		foreach (array_keys($b) as $key)
-			if (array_key_exists($key, $b))
+		foreach (array_keys($b) as $key) {
+					if (array_key_exists($key, $b))
 				$out[$key] -= $b[$key];
+		}
 		return $out;
 	}
 

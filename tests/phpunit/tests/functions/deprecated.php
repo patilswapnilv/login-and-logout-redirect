@@ -139,8 +139,9 @@ class Test_Functions_Deprecated extends WP_UnitTestCase {
 	 * @expectedDeprecated wp_save_image_file
 	 */
 	public function test_wp_save_image_file_deprecated_with_gd_resource() {
-		if ( !function_exists( 'imagejpeg' ) )
-			$this->markTestSkipped( 'jpeg support unavailable' );
+		if ( !function_exists( 'imagejpeg' ) ) {
+					$this->markTestSkipped( 'jpeg support unavailable' );
+		}
 
 		// Call wp_save_image_file
 		include_once( ABSPATH . 'wp-admin/includes/image-edit.php' );
@@ -160,8 +161,9 @@ class Test_Functions_Deprecated extends WP_UnitTestCase {
 	 * @ticket 6821
 	 */
 	public function test_wp_save_image_file_not_deprecated_with_wp_image_editor() {
-		if ( !function_exists( 'imagejpeg' ) )
-			$this->markTestSkipped( 'jpeg support unavailable' );
+		if ( !function_exists( 'imagejpeg' ) ) {
+					$this->markTestSkipped( 'jpeg support unavailable' );
+		}
 
 		// Call wp_save_image_file
 		include_once( ABSPATH . 'wp-admin/includes/image-edit.php' );

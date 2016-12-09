@@ -65,8 +65,9 @@ class Tests_XMLRPC_wp_getTerms extends WP_XMLRPC_UnitTestCase {
 		$tax_name = 'wp_getTerms_custom_taxonomy';
 		$num_terms = 12;
 		register_taxonomy( $tax_name, 'post' );
-		for( $i = 0; $i < $num_terms; $i++ )
-			wp_insert_term( "term_{$i}", $tax_name );
+		for( $i = 0; $i < $num_terms; $i++ ) {
+					wp_insert_term( "term_{$i}", $tax_name );
+		}
 
 
 		// test fetching all terms
@@ -117,8 +118,7 @@ class Tests_XMLRPC_wp_getTerms extends WP_XMLRPC_UnitTestCase {
 		foreach( $results as $term ) {
 			if ( $term['term_id'] == $cat1 ) {
 				break;  // found cat1 first as expected
-			}
-			else if ( $term['term_id'] == $cat2 ) {
+			} else if ( $term['term_id'] == $cat2 ) {
 				$this->assertFalse( false, 'Incorrect category ordering.' );
 			}
 		}

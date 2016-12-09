@@ -18,15 +18,17 @@ class WP_UnitTest_Factory_For_Term extends WP_UnitTest_Factory_For_Thing {
 	function create_object( $args ) {
 		$args = array_merge( array( 'taxonomy' => $this->taxonomy ), $args );
 		$term_id_pair = wp_insert_term( $args['name'], $args['taxonomy'], $args );
-		if ( is_wp_error( $term_id_pair ) )
-			return $term_id_pair;
+		if ( is_wp_error( $term_id_pair ) ) {
+					return $term_id_pair;
+		}
 		return $term_id_pair['term_id'];
 	}
 
 	function update_object( $term, $fields ) {
 		$fields = array_merge( array( 'taxonomy' => $this->taxonomy ), $fields );
-		if ( is_object( $term ) )
-			$taxonomy = $term->taxonomy;
+		if ( is_object( $term ) ) {
+					$taxonomy = $term->taxonomy;
+		}
 		$term_id_pair = wp_update_term( $term, $taxonomy, $fields );
 		return $term_id_pair['term_id'];
 	}

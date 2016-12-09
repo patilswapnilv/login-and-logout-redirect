@@ -23,8 +23,9 @@ class Tests_Ajax_Response extends WP_UnitTestCase {
 		parent::setUp();
 
 		add_filter( 'wp_die_ajax_handler', array( $this, 'getDieHandler' ), 1, 1 );
-		if ( !defined( 'DOING_AJAX' ) )
-			define( 'DOING_AJAX', true );
+		if ( !defined( 'DOING_AJAX' ) ) {
+					define( 'DOING_AJAX', true );
+		}
 
 		// Suppress warnings from "Cannot modify header information - headers already sent by"
 		$this->_error_level = error_reporting();

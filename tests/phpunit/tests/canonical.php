@@ -21,10 +21,12 @@ class Tests_Canonical extends WP_Canonical_UnitTestCase {
 	function test_canonical( $test_url, $expected, $ticket = 0, $expected_doing_it_wrong = array() ) {
 
 		if ( false !== strpos( $test_url, '%d' ) ) {
-			if ( false !== strpos( $test_url, '/?author=%d' ) )
-				$test_url = sprintf( $test_url, self::$author_id );
-			if ( false !== strpos( $test_url, '?cat=%d' ) )
-				$test_url = sprintf( $test_url, self::$terms[ $expected['url'] ] );
+			if ( false !== strpos( $test_url, '/?author=%d' ) ) {
+							$test_url = sprintf( $test_url, self::$author_id );
+			}
+			if ( false !== strpos( $test_url, '?cat=%d' ) ) {
+							$test_url = sprintf( $test_url, self::$terms[ $expected['url'] ] );
+			}
 		}
 
 		$this->assertCanonical( $test_url, $expected, $ticket, $expected_doing_it_wrong );

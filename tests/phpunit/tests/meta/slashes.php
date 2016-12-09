@@ -40,8 +40,7 @@ class Tests_Meta_Slashes extends WP_UnitTestCase {
 			$meta_1 = wp_add_post_meta( $id, 'slash_test_1', 'foo' );
 			$meta_2 = wp_add_post_meta( $id, 'slash_test_2', 'foo' );
 			$meta_3 = wp_add_post_meta( $id, 'slash_test_3', 'foo' );
-		}
-		else {
+		} else {
 			// expects slashed data
 			$meta_1 = add_post_meta( $id, 'slash_test_1', addslashes( 'foo' ) );
 			$meta_2 = add_post_meta( $id, 'slash_test_2', addslashes( 'foo' ) );

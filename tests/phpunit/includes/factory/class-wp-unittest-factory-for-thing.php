@@ -25,19 +25,22 @@ abstract class WP_UnitTest_Factory_For_Thing {
 	abstract function update_object( $object, $fields );
 
 	function create( $args = array(), $generation_definitions = null ) {
-		if ( is_null( $generation_definitions ) )
-			$generation_definitions = $this->default_generation_definitions;
+		if ( is_null( $generation_definitions ) ) {
+					$generation_definitions = $this->default_generation_definitions;
+		}
 
 		$generated_args = $this->generate_args( $args, $generation_definitions, $callbacks );
 		$created = $this->create_object( $generated_args );
-		if ( !$created || is_wp_error( $created ) )
-			return $created;
+		if ( !$created || is_wp_error( $created ) ) {
+					return $created;
+		}
 
 		if ( $callbacks ) {
 			$updated_fields = $this->apply_callbacks( $callbacks, $created );
 			$save_result = $this->update_object( $created, $updated_fields );
-			if ( !$save_result || is_wp_error( $save_result ) )
-				return $save_result;
+			if ( !$save_result || is_wp_error( $save_result ) ) {
+							return $save_result;
+			}
 		}
 		return $created;
 	}
@@ -59,8 +62,9 @@ abstract class WP_UnitTest_Factory_For_Thing {
 
 	function generate_args( $args = array(), $generation_definitions = null, &$callbacks = null ) {
 		$callbacks = array();
-		if ( is_null( $generation_definitions ) )
-			$generation_definitions = $this->default_generation_definitions;
+		if ( is_null( $generation_definitions ) ) {
+					$generation_definitions = $this->default_generation_definitions;
+		}
 
 		// Use the same incrementor for all fields belonging to this object.
 		$gen  = new WP_UnitTest_Generator_Sequence();

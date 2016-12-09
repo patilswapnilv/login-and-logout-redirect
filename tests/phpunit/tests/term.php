@@ -84,11 +84,13 @@ class Tests_Term extends WP_UnitTestCase {
 		$this->assertTrue( wp_remove_object_terms( $posts[1], $three_tags, 'post_tag' ) );
 		$this->assertEquals( 0, count( wp_get_object_terms( $posts[1], 'post_tag' ) ) );
 
-		foreach ( $tags as $term_id )
-			$this->assertTrue( wp_delete_term( $term_id, 'post_tag' ) );
+		foreach ( $tags as $term_id ) {
+					$this->assertTrue( wp_delete_term( $term_id, 'post_tag' ) );
+		}
 
-		foreach ( $posts as $post_id )
-			$this->assertTrue( (bool) wp_delete_post( $post_id ) );
+		foreach ( $posts as $post_id ) {
+					$this->assertTrue( (bool) wp_delete_post( $post_id ) );
+		}
 	}
 
 	/**

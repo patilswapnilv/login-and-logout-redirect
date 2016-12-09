@@ -23,16 +23,18 @@ class Tests_Post_getPages extends WP_UnitTestCase {
 		$this->assertEquals( 3, count( $pages ) );
 		$this->assertNotEmpty( $time1 = wp_cache_get( 'last_changed', 'posts' ) );
 		$num_queries = $wpdb->num_queries;
-		foreach ( $pages as $page )
-			$this->assertInstanceOf( 'WP_Post', $page );
+		foreach ( $pages as $page ) {
+					$this->assertInstanceOf( 'WP_Post', $page );
+		}
 
 		// Again. num_queries and last_changed should remain the same.
 		$pages = get_pages();
 		$this->assertEquals( 3, count( $pages ) );
 		$this->assertEquals( $time1, wp_cache_get( 'last_changed', 'posts' ) );
 		$this->assertEquals( $num_queries, $wpdb->num_queries );
-		foreach ( $pages as $page )
-			$this->assertInstanceOf( 'WP_Post', $page );
+		foreach ( $pages as $page ) {
+					$this->assertInstanceOf( 'WP_Post', $page );
+		}
 
 		// Again with different args. last_changed should not increment because of
 		// different args to get_pages(). num_queries should bump by 1.
@@ -40,8 +42,9 @@ class Tests_Post_getPages extends WP_UnitTestCase {
 		$this->assertEquals( 2, count( $pages ) );
 		$this->assertEquals( $time1, wp_cache_get( 'last_changed', 'posts' ) );
 		$this->assertEquals( $num_queries + 1, $wpdb->num_queries );
-		foreach ( $pages as $page )
-			$this->assertInstanceOf( 'WP_Post', $page );
+		foreach ( $pages as $page ) {
+					$this->assertInstanceOf( 'WP_Post', $page );
+		}
 
 		$num_queries = $wpdb->num_queries;
 
@@ -50,16 +53,18 @@ class Tests_Post_getPages extends WP_UnitTestCase {
 		$this->assertEquals( 2, count( $pages ) );
 		$this->assertEquals( $time1, wp_cache_get( 'last_changed', 'posts' ) );
 		$this->assertEquals( $num_queries, $wpdb->num_queries );
-		foreach ( $pages as $page )
-			$this->assertInstanceOf( 'WP_Post', $page );
+		foreach ( $pages as $page ) {
+					$this->assertInstanceOf( 'WP_Post', $page );
+		}
 
 		// Do the first query again. The interim queries should not affect it.
 		$pages = get_pages();
 		$this->assertEquals( 3, count( $pages ) );
 		$this->assertEquals( $time1, wp_cache_get( 'last_changed', 'posts' ) );
 		$this->assertEquals( $num_queries, $wpdb->num_queries );
-		foreach ( $pages as $page )
-			$this->assertInstanceOf( 'WP_Post', $page );
+		foreach ( $pages as $page ) {
+					$this->assertInstanceOf( 'WP_Post', $page );
+		}
 
 		// Force last_changed to increment.
 		clean_post_cache( $pages[0]->ID );
@@ -72,8 +77,9 @@ class Tests_Post_getPages extends WP_UnitTestCase {
 		$this->assertEquals( 2, count( $pages ) );
 		$this->assertEquals( $time2, wp_cache_get( 'last_changed', 'posts' ) );
 		$this->assertEquals( $num_queries + 1, $wpdb->num_queries );
-		foreach ( $pages as $page )
-			$this->assertInstanceOf( 'WP_Post', $page );
+		foreach ( $pages as $page ) {
+					$this->assertInstanceOf( 'WP_Post', $page );
+		}
 
 		$last_changed = wp_cache_get( 'last_changed', 'posts' );
 
@@ -91,8 +97,9 @@ class Tests_Post_getPages extends WP_UnitTestCase {
 		$this->assertEquals( 2, count( $pages ) );
 		$this->assertEquals( $last_changed, wp_cache_get( 'last_changed', 'posts' ) );
 		$this->assertEquals( $num_queries + 1, $wpdb->num_queries );
-		foreach ( $pages as $page )
-			$this->assertInstanceOf( 'WP_Post', $page );
+		foreach ( $pages as $page ) {
+					$this->assertInstanceOf( 'WP_Post', $page );
+		}
 	}
 
 	/**
@@ -115,8 +122,9 @@ class Tests_Post_getPages extends WP_UnitTestCase {
 	function test_get_pages_include_exclude() {
 		$page_ids = array();
 
-		foreach ( range( 1, 20 ) as $i )
-			$page_ids[] = self::factory()->post->create( array( 'post_type' => 'page' ) );
+		foreach ( range( 1, 20 ) as $i ) {
+					$page_ids[] = self::factory()->post->create( array( 'post_type' => 'page' ) );
+		}
 
 		$inc = array_slice( $page_ids, 0, 10 );
 		sort( $inc );

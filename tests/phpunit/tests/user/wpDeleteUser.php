@@ -91,10 +91,11 @@ class Tests_User_WpDeleteUser extends WP_UnitTestCase {
 
 		wp_delete_user( $user_id );
 		$user = new WP_User( $user_id );
-		if ( is_multisite() )
-			$this->assertTrue( $user->exists() );
-		else
-			$this->assertFalse( $user->exists() );
+		if ( is_multisite() ) {
+					$this->assertTrue( $user->exists() );
+		} else {
+					$this->assertFalse( $user->exists() );
+		}
 
 		$this->assertNotNull( get_post( $post_id ) );
 		$this->assertEquals( 'trash', get_post( $post_id )->post_status );

@@ -80,8 +80,9 @@ class Tests_DB extends WP_UnitTestCase {
 
 		// Switch to Russian
 		$flag = setlocale( LC_ALL, 'ru_RU.utf8', 'rus', 'fr_FR.utf8', 'fr_FR', 'de_DE.utf8', 'de_DE', 'es_ES.utf8', 'es_ES' );
-		if ( false === $flag )
-			$this->markTestSkipped( 'No European languages available for testing' );
+		if ( false === $flag ) {
+					$this->markTestSkipped( 'No European languages available for testing' );
+		}
 
 		// Try an update query
 		$wpdb->suppress_errors( true );
@@ -105,8 +106,9 @@ class Tests_DB extends WP_UnitTestCase {
 		foreach ( $current_locales as $locale_setting ) {
 			if ( false !== strpos( $locale_setting, '=' ) ) {
 				list( $category, $locale ) = explode( '=', $locale_setting );
-				if ( defined( $category ) )
-					setlocale( constant( $category ), $locale );
+				if ( defined( $category ) ) {
+									setlocale( constant( $category ), $locale );
+				}
 			} else {
 				setlocale( LC_ALL, $locale_setting );
 			}

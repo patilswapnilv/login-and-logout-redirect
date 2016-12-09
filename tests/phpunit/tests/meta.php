@@ -260,15 +260,17 @@ class Tests_Meta extends WP_UnitTestCase {
 	function test_meta_cache_order_asc() {
 		$post_id = self::factory()->post->create();
 		$colors = array( 'red', 'blue', 'yellow', 'green' );
-		foreach ( $colors as $color )
-			add_post_meta( $post_id, 'color', $color );
+		foreach ( $colors as $color ) {
+					add_post_meta( $post_id, 'color', $color );
+		}
 
 		foreach ( range( 1, 10 ) as $i ) {
 			$meta = get_post_meta( $post_id, 'color' );
 			$this->assertEquals( $meta, $colors );
 
-			if ( 0 === $i % 2 )
-				wp_cache_delete( $post_id, 'post_meta' );
+			if ( 0 === $i % 2 ) {
+							wp_cache_delete( $post_id, 'post_meta' );
+			}
 		}
 	}
 

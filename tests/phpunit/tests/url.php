@@ -272,8 +272,9 @@ class Tests_URL extends WP_UnitTestCase {
 	}
 
 	function test_set_url_scheme() {
-		if ( ! function_exists( 'set_url_scheme' ) )
-			return;
+		if ( ! function_exists( 'set_url_scheme' ) ) {
+					return;
+		}
 
 		$links = array(
 			'http://wordpress.org/',
@@ -339,8 +340,9 @@ class Tests_URL extends WP_UnitTestCase {
 		$post_id = self::factory()->post->create( array( 'post_date' => date( 'Y-m-d H:i:s', $now - 1 ) ) );
 		$post_id2 = self::factory()->post->create( array( 'post_date' => date( 'Y-m-d H:i:s', $now ) ) );
 
-		if ( ! isset( $GLOBALS['post'] ) )
-			$GLOBALS['post'] = null;
+		if ( ! isset( $GLOBALS['post'] ) ) {
+					$GLOBALS['post'] = null;
+		}
 		$orig_post = $GLOBALS['post'];
 		$GLOBALS['post'] = get_post( $post_id2 );
 

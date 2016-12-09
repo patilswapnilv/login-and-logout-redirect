@@ -236,10 +236,11 @@ class Tests_Theme extends WP_UnitTestCase {
 		for ( $i = 0; $i < 3; $i++ ) {
 			foreach ( $themes as $name => $theme ) {
 				// switch to this theme
-				if ( $i === 2 )
-					switch_theme( $theme['Template'], $theme['Stylesheet'] );
-				else
-					switch_theme( $theme['Stylesheet'] );
+				if ( $i === 2 ) {
+									switch_theme( $theme['Template'], $theme['Stylesheet'] );
+				} else {
+									switch_theme( $theme['Stylesheet'] );
+				}
 
 				$this->assertEquals($name, get_current_theme());
 

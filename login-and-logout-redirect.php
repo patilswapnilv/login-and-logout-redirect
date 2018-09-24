@@ -27,7 +27,7 @@
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
-	die;
+    die;
 }
 
 /**
@@ -42,8 +42,8 @@ define( 'PLUGIN_NAME_VERSION', '1.0.4' );
  * This action is documented in includes/class-login-and-logout-redirect-activator.php
  */
 function activate_login_and_logout_redirect() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-login-and-logout-redirect-activator.php';
-	Login_And_Logout_Redirect_Activator::activate();
+    require_once plugin_dir_path( __FILE__ ) . 'includes/class-login-and-logout-redirect-activator.php';
+    Login_And_Logout_Redirect_Activator::activate();
 }
 
 /**
@@ -51,8 +51,8 @@ function activate_login_and_logout_redirect() {
  * This action is documented in includes/class-login-and-logout-redirect-deactivator.php
  */
 function deactivate_login_and_logout_redirect() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-login-and-logout-redirect-deactivator.php';
-	Login_And_Logout_Redirect_Deactivator::deactivate();
+    require_once plugin_dir_path( __FILE__ ) . 'includes/class-login-and-logout-redirect-deactivator.php';
+    Login_And_Logout_Redirect_Deactivator::deactivate();
 }
 
 register_activation_hook( __FILE__, 'activate_login_and_logout_redirect' );
@@ -75,8 +75,8 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-login-and-logout-redirect.
  */
 function run_login_and_logout_redirect() {
 
-	$plugin = new Login_And_Logout_Redirect();
-	$plugin->run();
+    $plugin = new Login_And_Logout_Redirect();
+    $plugin->run();
 
 }
 run_login_and_logout_redirect();

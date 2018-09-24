@@ -1,101 +1,114 @@
-===Login and Logout Redirect===
-Contributors:      patilswapnilv
-Plugin Name:       Login and Logout redirect
-Plugin URI:        https://wordpress.org/plugins/login-and-logout-redirect/
-Tags:              redirect,login, logout, login and logout redirect, redirect on login, redirect on logout
-Author URI:        http://swapnilpatil.in
-Author:            patilswapnilv
-Donate link:       http://swapnilpatil.in/contribution
-License:           GPLv3 or later
-License URI:       https://www.gnu.org/licenses/gpl-3.0.en.html
-Requires at least: 3.5
-Tested up to:      4.7
-Stable tag:        1.0.3
+=== Plugin Name ===
+Contributors: (this should be a list of wordpress.org userid's)
+Donate link: https://swapnilpatil.in
+Tags: comments, spam
+Requires at least: 3.0.1
+Tested up to: 3.4
+Stable tag: 4.3
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-
-Redirects users to specified url after logging in, logging out OR both.
+Here is a short description of the plugin.  This should be no more than 150 characters.  No markup here.
 
 == Description ==
-This is an easy way to redirect user to specific URL, on login and logout.
-This plugin adds extra option in Settings page (Setting>General), for specifying redirect URL for login and logout.
 
-###Features
+This is the long description.  No limit, and you can use Markdown (as well as in the following sections).
 
-* Redirect users instantly on logout.
-* Redirect users instantly on login.
-* Not extra menu option, in the WordPress site. Just head over to Settings>General
+For backwards compatibility, if this section is missing, the full length of the short description will be used, and
+Markdown parsed.
+
+A few notes about the sections above:
+
+*   "Contributors" is a comma separated list of wp.org/wp-plugins.org usernames
+*   "Tags" is a comma separated list of tags that apply to the plugin
+*   "Requires at least" is the lowest version that the plugin will work on
+*   "Tested up to" is the highest version that you've *successfully used to test the plugin*. Note that it might work on
+higher versions... this is just the highest one you've verified.
+*   Stable tag should indicate the Subversion "tag" of the latest stable version, or "trunk," if you use `/trunk/` for
+stable.
+
+    Note that the `readme.txt` of the stable tag is the one that is considered the defining one for the plugin, so
+if the `/trunk/readme.txt` file says that the stable tag is `4.3`, then it is `/tags/4.3/readme.txt` that'll be used
+for displaying information about the plugin.  In this situation, the only thing considered from the trunk `readme.txt`
+is the stable tag pointer.  Thus, if you develop in trunk, you can update the trunk `readme.txt` to reflect changes in
+your in-development version, without having that information incorrectly disclosed about the current stable version
+that lacks those changes -- as long as the trunk's `readme.txt` points to the correct stable tag.
+
+    If no stable tag is provided, it is assumed that trunk is stable, but you should specify "trunk" if that's where
+you put the stable version, in order to eliminate any doubt.
 
 == Installation ==
 
-= For automatic installation: =
-The simplest way to install is to click on 'Plugins' then 'Add' and type 'Login and Logout Redirect' in the search field. Click install and let WordPress do the rest!
+This section describes how to install the plugin and get it working.
 
-= For manual installation 1: =
+e.g.
 
-1. Download the plugin zip file from [WordPress Plugin repo](https://wordpress.org/plugins/login-and-logout-redirect/)
-2. Login to your website and go to the Plugins section of your admin panel.
-3. Click the Add New button.
-4. Under Install Plugins, click the Upload link.
-5. Select the plugin zip file (login-and-logout-redirect.x.x.x.zip) from your computer then click the Install Now button.
-6. You should see a message stating that the plugin was installed successfully.
-7. Click the Activate Plugin link.
+1. Upload `login-and-logout-redirect.php` to the `/wp-content/plugins/` directory
+1. Activate the plugin through the 'Plugins' menu in WordPress
+1. Place `<?php do_action('plugin_name_hook'); ?>` in your templates
 
-= For manual installation 2: =
+== Frequently Asked Questions ==
 
-1. You should have access to the server where WordPress is installed. If you don't, ask your system administrator to help you out.
-2. Copy the plugin zip file (login-and-logout-redirect.zip) up to your server and unzip it somewhere on the file system.
-3. Copy the "login-and-logout-redirect" folder into the /wp-content/plugins directory of your WordPress installation.
-4. Login to your website and go to the Plugins section of your admin panel.
-5. Look for "Login and logout redirect" and click Activate.
+= A question that someone might have =
 
-= Usage =
+An answer to that question.
 
-1. Once the plugin is activated you should check Settings > General, to find options to add your URL's.
-2. Insert URL for redirect on login.
-3. Insert URL for redirect on logout.
-4. Save!
+= What about foo bar? =
 
-= Before you deactive OR uninstall =
-I strong suggest you delete the redirect URL's from Setting  => General and save the settings before you deactive or delete the plugin.
-Just the make sure the values are replaces with the default once.
+Answer to foo bar dilemma.
 
 == Screenshots ==
-1. The options
-2. The complete page screenshot
 
+1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
+the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
+directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
+(or jpg, jpeg, gif).
+2. This is the second screen shot
 
 == Changelog ==
 
-=Version 1.0=
-    First stable release.
+= 1.0 =
+* A change since the previous version.
+* Another change.
 
-=Version 1.0.1=
-    Minor Changes, added screenshots etc to explain working better.
-    Tested up to WordPress version 4.4
-
-=Version 1.0.2=
-      Made changes to make it ready for PHP 7. Now supports PHP 7 too.
-      Tested upto WordPress version 4.6 Beta 1
-
-=Version 1.0.3=
-      Tested for WordPress 4.7  
+= 0.5 =
+* List versions from most recent at top to oldest at bottom.
 
 == Upgrade Notice ==
 
-    = 1.0 =
-    This is the first stable release. Details would be provided from the next version onwards.
+= 1.0 =
+Upgrade notices describe the reason a user should upgrade.  No more than 300 characters.
 
+= 0.5 =
+This version fixes a security related bug.  Upgrade immediately.
 
-== Frequently Asked Questions ==
-1. *Where are the options to redirect? I could find any menu option.*
-    The plugin actually adds options in the settings panel. You can access them at Settings>General.
+== Arbitrary section ==
 
-2. *I think I found a bug. How do I report it?*
-    Though I have tested the plugin as much as I could, but in-case you come across a bug, there are two ways to report it.
-    First you can submit a issue via [github](https://github.com/patilswapnilv/login-and-logout-redirect).
-    OR
-    You can let me know about it via the support forum.
+You may provide arbitrary sections, in the same format as the ones above.  This may be of use for extremely complicated
+plugins where more information needs to be conveyed that doesn't fit into the categories of "description" or
+"installation."  Arbitrary sections will be shown below the built-in sections outlined above.
 
-== Donations ==
-More than any donations, Contribution will be more helpful. Hence, Contributors are always welcome.
-To contribute, just send a pull request over the [Github repo](https://github.com/patilswapnilv/login-and-logout-redirect)
+== A brief Markdown Example ==
+
+Ordered list:
+
+1. Some feature
+1. Another feature
+1. Something else about the plugin
+
+Unordered list:
+
+* something
+* something else
+* third thing
+
+Here's a link to [WordPress](http://wordpress.org/ "Your favorite software") and one to [Markdown's Syntax Documentation][markdown syntax].
+Titles are optional, naturally.
+
+[markdown syntax]: http://daringfireball.net/projects/markdown/syntax
+            "Markdown is what the parser uses to process much of the readme file"
+
+Markdown uses email style notation for blockquotes and I've been told:
+> Asterisks for *emphasis*. Double it up  for **strong**.
+
+`<?php code(); // goes in backticks ?>`

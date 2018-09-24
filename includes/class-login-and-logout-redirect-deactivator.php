@@ -22,15 +22,15 @@
  */
 class Login_And_Logout_Redirect_Deactivator {
 
-	/**
-	 * Short Description. (use period)
-	 *
-	 * Long Description.
-	 *
-	 * @since    1.0.4
-	 */
-	public static function deactivate() {
+    /**
+     * Short Description. (use period)
+     *
+     * Long Description.
+     *
+     * @since    1.0.4
+     */
+    public static function deactivate() {
 
-	}
+    }
 
 }

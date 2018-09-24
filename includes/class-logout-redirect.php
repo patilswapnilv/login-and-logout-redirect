@@ -15,7 +15,7 @@ class LogoutRedirect
     /**
      * PHP 4 constructor
      *
-     * @return boolean
+     * @return boolean|null
      * */
     function LogoutRedirect()
     {
@@ -27,45 +27,45 @@ class LogoutRedirect
      * */
     function __construct()
     {
-        add_action('login_init', array( $this, 'clean_redirect' ));
-        add_filter('wp_logout', array( &$this, 'redirect' ));
-        add_action('plugin_options', array( &$this, 'network_option' ));
+        add_action('login_init', array($this, 'clean_redirect'));
+        add_filter('wp_logout', array(&$this, 'redirect'));
+        add_action('plugin_options', array(&$this, 'network_option'));
         add_action(
             'update_plugin_options', array(
             &$this,
             'update_network_option',
             )
         );
-        add_action('admin_init', array( &$this, 'add_settings_field' ));
+        add_action('admin_init', array(&$this, 'add_settings_field'));
 
         // load text domain
         if (defined('SP_PLUGIN_DIR') && file_exists(
-            SP_PLUGIN_DIR . '/logout-redirect.php'
+            SP_PLUGIN_DIR.'/logout-redirect.php'
         )
         ) {
-               load_muplugin_textdomain(
-                   'login-and-logout-redirect', 'logout-redirect-files/languages'
-               );
+                load_muplugin_textdomain(
+                    'login-and-logout-redirect', 'logout-redirect-files/languages'
+                );
         } else {
-             load_plugin_textdomain(
-                 'login-and-logout-redirect', false, dirname(plugin_basename(__FILE__)) . '/languages'
-             );
+                load_plugin_textdomain(
+                    'login-and-logout-redirect', false, dirname(plugin_basename(__FILE__)) . '/languages'
+                );
         }
     }
 
     /**
-    * Make a clean redirect
-    */
+     * Make a clean redirect
+     */
     function clean_redirect()
     {
-        if (defined('LOGOUT_REDIRECT_DEFAULT_WP_BEHAVIOR') && LOGOUT_REDIRECT_DEFAULT_WP_BEHAVIOR ) {
+        if (defined('LOGOUT_REDIRECT_DEFAULT_WP_BEHAVIOR') && LOGOUT_REDIRECT_DEFAULT_WP_BEHAVIOR) {
             return false;
         }
-        $action = ! empty($_REQUEST['action']) ? $_REQUEST['action'] : false;
-        if ('logout' != $action ) {
+        $action = !empty($_REQUEST['action']) ? $_REQUEST['action'] : false;
+        if ('logout' != $action) {
             return false;
         }
-        if (is_user_logged_in() ) {
+        if (is_user_logged_in()) {
             return true; // User is still logged in, let WP do its job.
         }
 
@@ -79,7 +79,7 @@ class LogoutRedirect
      * */
     function redirect()
     {
-        $redirect_url = ! empty($_REQUEST['redirect_to']) && ! (defined('LOGOUT_REDIRECT_FORCED') && LOGOUT_REDIRECT_FORCED) ? $_REQUEST['redirect_to'] : $this->get_redirection_url();
+        $redirect_url = !empty($_REQUEST['redirect_to']) && !(defined('LOGOUT_REDIRECT_FORCED') && LOGOUT_REDIRECT_FORCED) ? $_REQUEST['redirect_to'] : $this->get_redirection_url();
         wp_redirect($redirect_url);
         exit();
     }
@@ -102,24 +102,24 @@ class LogoutRedirect
         );
     }
 
-    private function _expand_macro( $macro )
+    private function _expand_macro($macro)
     {
         $value = false;
         $user = wp_get_current_user();
-        switch ( $macro ) {
+        switch ($macro) {
         case 'BP_ACTIVITY_SLUG':logout_redirect_defined_macros:
 
-            if (function_exists('bp_get_activity_root_slug') ) {
+            if (function_exists('bp_get_activity_root_slug')) {
                 $value = bp_get_activity_root_slug();
             }
             break;
         case 'BP_GROUPS_SLUG':
-            if (function_exists('bp_get_groups_slug') ) {
+            if (function_exists('bp_get_groups_slug')) {
                 $value = bp_get_groups_slug();
             }
             break;
         case 'BP_MEMBERS_SLUG':
-            if (function_exists('bp_get_members_slug') ) {
+            if (function_exists('bp_get_members_slug')) {
                 $value = bp_get_members_slug();
             }
             break;
@@ -130,14 +130,14 @@ class LogoutRedirect
     function get_redirection_url()
     {
         $raw = $this->_get_raw_redirection_url();
-        foreach ( $this->_get_macros() as $macro ) {
+        foreach ($this->_get_macros() as $macro) {
             $value = $this->_expand_macro($macro);
-            if (! $value ) {
+            if (!$value) {
                 continue;
             }
-            $raw = preg_replace('/' . preg_quote($macro, '/') . '/', $value, $raw);
+            $raw = preg_replace('/'.preg_quote($macro, '/').'/', $value, $raw);
         }
-        if (! preg_match('/^https?:\/\//', $raw) ) {
+        if (!preg_match('/^https?:\/\//', $raw)) {
             $protocol = @$_SERVER['HTTPS'] == 'on' ? 'https' : 'http';
             $raw = site_url($raw, apply_filters('logout_redirect_url_protocol', $protocol));
         }
@@ -149,7 +149,7 @@ class LogoutRedirect
      * */
     function network_option()
     {
-        if (! $this->is_plugin_active_for_network(plugin_basename(__FILE__)) ) {
+        if (!$this->is_plugin_active_for_network(plugin_basename(__FILE__))) {
             return;
         }
         $url = $this->_get_raw_redirection_url();
@@ -163,8 +163,8 @@ class LogoutRedirect
         <br />
         <?php _e('The URL users will be redirected to after logout.', 'login-and-logout-redirect') ?>
         <?php
-        if (defined('BP_VERSION') ) {
-            printf(__('You can use these macros for your redirection: %s', 'login-and-logout-redirect'), '<code>' . join('</code>, <code>', $this->_get_macros()) . '</code>');
+        if (defined('BP_VERSION')) {
+            printf(__('You can use these macros for your redirection: %s', 'login-and-logout-redirect'), '<code>'.join('</code>, <code>', $this->_get_macros()).'</code>');
         }
         ?>
           </td>
@@ -186,13 +186,13 @@ class LogoutRedirect
      * */
     function add_settings_field()
     {
-        if ($this->is_plugin_active_for_network(plugin_basename(__FILE__)) ) {
+        if ($this->is_plugin_active_for_network(plugin_basename(__FILE__))) {
             return;
         }
 
         add_settings_section('logout_redirect_setting_section', __('Logout Redirect', 'login-and-logout-redirect'), '__return_false', 'general');
 
-        add_settings_field('logout_redirect_url', __('Redirect to', 'login-and-logout-redirect'), array( &$this, 'site_option' ), 'general', 'logout_redirect_setting_section');
+        add_settings_field('logout_redirect_url', __('Redirect to', 'login-and-logout-redirect'), array(&$this, 'site_option'), 'general', 'logout_redirect_setting_section');
 
         register_setting('general', 'logout_redirect_url');
     }
@@ -203,23 +203,23 @@ class LogoutRedirect
     function site_option()
     {
         $url = $this->_get_raw_redirection_url();
-        echo '<input name="logout_redirect_url" type="text" id="logout_redirect_url" value="' . esc_attr($url) . '" size="40" />';
-        if (defined('BP_VERSION') ) {
-            printf(__('You can use these macros for your redirection: %s', 'login-and-logout-redirect'), '<code>' . join('</code>, <code>', $this->_get_macros()) . '</code>');
+        echo '<input name="logout_redirect_url" type="text" id="logout_redirect_url" value="'.esc_attr($url).'" size="40" />';
+        if (defined('BP_VERSION')) {
+            printf(__('You can use these macros for your redirection: %s', 'login-and-logout-redirect'), '<code>'.join('</code>, <code>', $this->_get_macros()).'</code>');
         }
     }
 
     /**
      * Verify if plugin is network activated
      * */
-    function is_plugin_active_for_network( $plugin )
+    function is_plugin_active_for_network($plugin)
     {
-        if (! is_multisite() ) {
+        if (!is_multisite()) {
             return false;
         }
 
         $plugins = get_site_option('active_sitewide_plugins');
-        if (isset($plugins[ $plugin ]) ) {
+        if (isset($plugins[$plugin])) {
             return true;
         }
 

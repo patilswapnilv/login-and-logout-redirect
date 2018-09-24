@@ -26,37 +26,37 @@ class Login_Redirect
      * */
     function __construct()
     {
-        if (! isset($_REQUEST['redirect_to']) || $_REQUEST['redirect_to'] == admin_url() ) {
-            add_filter('login_redirect', array( &$this, 'redirect' ), 10, 3);
+        if (!isset($_REQUEST['redirect_to']) || $_REQUEST['redirect_to'] == admin_url()) {
+            add_filter('login_redirect', array(&$this, 'redirect'), 10, 3);
         }
 
-        add_action('plugin_options', array( &$this, 'network_option' ));
-        add_action('update_plugin_options', array( &$this, 'update_network_option' ));
-        add_action('admin_init', array( &$this, 'add_settings_field' ));
+        add_action('plugin_options', array(&$this, 'network_option'));
+        add_action('update_plugin_options', array(&$this, 'update_network_option'));
+        add_action('admin_init', array(&$this, 'add_settings_field'));
 
         // load text domain
-        if (defined('SP_PLUGIN_DIR') && file_exists(SP_PLUGIN_DIR . '/login-redirect.php') ) {
+        if (defined('SP_PLUGIN_DIR') && file_exists(SP_PLUGIN_DIR.'/login-redirect.php')) {
             load_muplugin_textdomain('login-and-logout-redirect', 'login-redirect-files/languages');
         } else {
-            load_plugin_textdomain('login-and-logout-redirect', false, dirname(plugin_basename(__FILE__)) . '/login-redirect-files/languages');
+            load_plugin_textdomain('login-and-logout-redirect', false, dirname(plugin_basename(__FILE__)).'/login-redirect-files/languages');
         }
     }
 
     /**
      * Redirect user on login
      * */
-    function redirect( $redirect_to, $requested_redirect_to, $user )
+    function redirect($redirect_to, $requested_redirect_to, $user)
     {
         $interim_login = isset($_REQUEST['interim-login']);
         $reauth = empty($_REQUEST['reauth']) ? false : true;
 
-        if ($this->is_plugin_active_for_network(plugin_basename(__FILE__)) ) {
+        if ($this->is_plugin_active_for_network(plugin_basename(__FILE__))) {
             $login_redirect_url = get_site_option('login_redirect_url');
         } else {
             $login_redirect_url = get_option('login_redirect_url');
         }
 
-        if (! is_wp_error($user) && ! $reauth && ! $interim_login && ! empty($login_redirect_url) ) {
+        if (!is_wp_error($user) && !$reauth && !$interim_login && !empty($login_redirect_url)) {
             wp_redirect($login_redirect_url);
             exit();
         }
@@ -69,7 +69,7 @@ class Login_Redirect
      * */
     function network_option()
     {
-        if (! $this->is_plugin_active_for_network(plugin_basename(__FILE__)) ) {
+        if (!$this->is_plugin_active_for_network(plugin_basename(__FILE__))) {
             return;
         }
         ?>
@@ -100,13 +100,13 @@ class Login_Redirect
      * */
     function add_settings_field()
     {
-        if ($this->is_plugin_active_for_network(plugin_basename(__FILE__)) ) {
+        if ($this->is_plugin_active_for_network(plugin_basename(__FILE__))) {
             return;
         }
 
         add_settings_section('login_redirect_setting_section', __('Login Redirect', 'login_redirect'), '__return_false', 'general');
 
-        add_settings_field('login_redirect_url', __('Redirect to', 'login_redirect'), array( &$this, 'site_option' ), 'general', 'login_redirect_setting_section');
+        add_settings_field('login_redirect_url', __('Redirect to', 'login_redirect'), array(&$this, 'site_option'), 'general', 'login_redirect_setting_section');
 
         register_setting('general', 'login_redirect_url');
     }
@@ -116,21 +116,21 @@ class Login_Redirect
      * */
     function site_option()
     {
-        echo '<input name="login_redirect_url" type="text" id="login_redirect_url" value="' . esc_attr(get_option('login_redirect_url')) . '" size="40" />';
+        echo '<input name="login_redirect_url" type="text" id="login_redirect_url" value="'.esc_attr(get_option('login_redirect_url')).'" size="40" />';
     }
 
     /**
      * Verify if plugin is network activated
      * @return boolean
      */
-    function is_plugin_active_for_network( $plugin )
+    function is_plugin_active_for_network($plugin)
     {
-        if (! is_multisite() ) {
+        if (!is_multisite()) {
             return false;
         }
 
         $plugins = get_site_option('active_sitewide_plugins');
-        if (isset($plugins[ $plugin ]) ) {
+        if (isset($plugins[$plugin])) {
             return true;
         }
 

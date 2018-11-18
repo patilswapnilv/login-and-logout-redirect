@@ -10,8 +10,8 @@ A WordPress plugin which enables you to redirect users on login and logout or bo
 **License:**           GPL-3.0+  
 **License URI:**       https://www.gnu.org/licenses/gpl-3.0.en.html  
 **Requires at least:** 3.5  
-**Tested up to:**      4.9.8  
-**Stable tag:**        1.0.4  
+**Tested up to:**      5.0
+**Stable tag:**        1.0.5  
 
 [![Build Status](https://travis-ci.org/patilswapnilv/login-and-logout-redirect.svg)](https://travis-ci.org/patilswapnilv/login-and-logout-redirect) ![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/patilswapnilv/login-and-logout-redirect/badges/quality-score.png?b=master) [![Code Climate](https://codeclimate.com/github/patilswapnilv/login-and-logout-redirect/badges/gpa.svg)](https://codeclimate.com/github/patilswapnilv/login-and-logout-redirect) [![WordPress](https://img.shields.io/wordpress/plugin/dt/login-and-logout-redirect.svg)](https://wordpress.org/plugins/login-and-logout-redirect/) [![WordPress](https://img.shields.io/wordpress/v/login-and-logout-redirect.svg)](https://wordpress.org/plugins/login-and-logout-redirect/) [![WordPress plugin](https://img.shields.io/wordpress/plugin/v/login-and-logout-redirect.svg)](https://wordpress.org/plugins/login-and-logout-redirect/) [![WordPress rating](https://img.shields.io/wordpress/plugin/r/login-and-logout-redirect.svg)](https://wordpress.org/plugins/login-and-logout-redirect/)
 
@@ -47,8 +47,12 @@ This Plug-in is released under the same license as the WordPress software is rel
 
 ### Changelog
 
+#### 1.0.5
+	* Tested upto WordPress 5.0
+
 #### 1.0.4
  * Tested upto WordPress 4.9.8
+ https://downloads.wordpress.org/plugin/login-and-logout-redirect.1.0.4.zip
 
 #### 1.0.3
  * Tested upto WordPress 4.7
@@ -65,7 +69,7 @@ This Plug-in is released under the same license as the WordPress software is rel
 * Archived version:
 https://downloads.wordpress.org/plugin/login-and-logout-redirect.1.0.1.zip
 
-#### 1.0.0 
+#### 1.0.0
 * Initial release
 * First stable release.
 * Archived version:           https://downloads.wordpress.org/plugin/login-and-logout-redirect.1.0.0.zip

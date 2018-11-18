@@ -3,7 +3,7 @@ Contributors: patilswapnilv
 Donate link: http://swapnilpatil.in/contribution
 Tags: redirect,login, logout, redirect on login, redirect on logout, login and logout redirect
 Requires at least: 3.5
-Tested up to: 4.9.8
+Tested up to: 5.0
 Stable tag: trunk
 Requires PHP: 5.2.4
 License: GPLv2 or later
@@ -16,7 +16,7 @@ This is an easy way to redirect user to specific URL, on login and logout.
 This plugin adds extra option in Settings page (Setting>General), for specifying redirect URL for login and logout.
 
 ### Features
-	
+
 	* Redirect users instantly on logout.
 	* Redirect users instantly on login.
 	* Not extra menu option, in the WordPress site. Just head over to Settings>General
@@ -82,7 +82,7 @@ Look for “Login and Logout Redirect” and click Activate.
 = 1.0.1 =
 * Minor Changes, added screenshots etc to explain working better.
 * Tested up to WordPress version 4.4
-* Archived version: 
+* Archived version:
 https://downloads.wordpress.org/plugin/login-and-logout-redirect.1.0.1.zip
 
 = 1.0.0 =

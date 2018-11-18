@@ -1,6 +1,5 @@
 === Login and Logout Redirect ===
 Contributors: patilswapnilv
-Donate link: http://swapnilpatil.in/contribution
 Tags: redirect,login, logout, redirect on login, redirect on logout, login and logout redirect
 Requires at least: 3.5
 Tested up to: 5.0

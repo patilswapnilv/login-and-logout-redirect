@@ -15,6 +15,11 @@
  * @wordpress-plugin
  * Plugin Name:       Login and Logout Redirect
  * Plugin URI:        https://github.com/patilswapnilv/login-and-logout-redirect/
+ * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Version:           1.0.6
+ * Author:            Swapnil V. Patil
+ * Author URI:        https://swapnilpatil.in
+ * License:           GPL-3.0+
  * Description:       A WordPress plugin which enables you to redirect users on login and logout or both, in a simplest way.
  * Version:           1.0.6
  * Author:            Swapnil V. Patil

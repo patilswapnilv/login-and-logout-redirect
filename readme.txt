@@ -1,5 +1,6 @@
 === Login and Logout Redirect ===
 Contributors: patilswapnilv
+Donate link: http://swapnilpatil.in/contribution
 Tags: redirect,login, logout, redirect on login, redirect on logout, login and logout redirect
 Requires at least: 3.5
 Tested up to: 5.0
@@ -110,3 +111,7 @@ Initial release
 == Contributions ==
 Contribution will be very helpful. Hence, Contributors are always welcome.
 To contribute, just send a pull request over the [Github repo](https://github.com/patilswapnilv/login-and-logout-redirect)
+
+If you liked this plugin, you might also like my other plugins:
+
+[Gravity Pre-submission Confirmation](https://wordpress.org/plugins/gravity-pre-submission-confirmation/) – adds a pre-submission confirmation page to your Graviy forms where users can preview their entered data before they submit it.

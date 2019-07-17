@@ -7,6 +7,14 @@ Stable tag: trunk
 Requires PHP: 5.6
 License: GPLv3+
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
+Donate link: http://swapnilpatil.in/contribution
+Tags: redirect,login, logout, redirect on login, redirect on logout, login and logout redirect
+Requires at least: 3.5
+Tested up to: 5.0
+Stable tag: trunk
+Requires PHP: 5.2.4
+License: GPLv2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 This is an easy way to redirect user to specific URL, on login and logout.
 
@@ -123,3 +131,52 @@ Initial release
 == Contributions ==
 Contribution will be very helpful. Hence, Contributors are always welcome.
 To contribute, just send a pull request over the [Github repo](https://github.com/patilswapnilv/login-and-logout-redirect)
+
+= 1.0.4 =
+ * Tested upto WordPress 4.9.8
+
+= 1.0.3 =
+ * Tested upto WordPress 4.7
+ * Archived version:  https://downloads.wordpress.org/plugin/login-and-logout-redirect.1.0.3.zip
+
+= 1.0.2 =
+ * Made changes to support PHP 7
+ * Tested upto version 4.6 Beta 1
+ * Archived version:  https://downloads.wordpress.org/plugin/login-and-logout-redirect.1.0.2.zip
+
+= 1.0.1 =
+* Minor Changes, added screenshots etc to explain working better.
+* Tested up to WordPress version 4.4
+* Archived version:
+https://downloads.wordpress.org/plugin/login-and-logout-redirect.1.0.1.zip
+
+= 1.0.0 =
+* Initial release
+* First stable release.
+* Archived version:           https://downloads.wordpress.org/plugin/login-and-logout-redirect.1.0.0.zip
+
+== Upgrade Notice ==
+
+= 1.0.4 =
+Tested for version 4.9.8
+
+= 1.0.3 =
+Tested for version 4.7
+
+= 1.0.2 =
+Tested for version 4.6
+
+= 1.0.1 =
+Tested for version 4.4
+
+= 1.0 =
+Initial release
+
+
+== Contributions ==
+Contribution will be very helpful. Hence, Contributors are always welcome.
+To contribute, just send a pull request over the [Github repo](https://github.com/patilswapnilv/login-and-logout-redirect)
+
+If you liked this plugin, you might also like my other plugins:
+
+[Gravity Pre-submission Confirmation](https://wordpress.org/plugins/gravity-pre-submission-confirmation/) – adds a pre-submission confirmation page to your Graviy forms where users can preview their entered data before they submit it.

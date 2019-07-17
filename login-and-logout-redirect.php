@@ -20,13 +20,18 @@
  * Author:            Swapnil V. Patil
  * Author URI:        https://swapnilpatil.in
  * License:           GPL-3.0+
+ * Description:       A WordPress plugin which enables you to redirect users on login and logout or both, in a simplest way.
+ * Version:           1.0.6
+ * Author:            Swapnil V. Patil
+ * Author URI:        https://swapnilpatil.in
+ * License:           GPL-3.0
  * License URI:       https://www.gnu.org/licenses/gpl-3.0.en.html
  * Text Domain:       login-and-logout-redirect
  * Domain Path:       /languages
  */
 
 // If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
+if (! defined('WPINC')) {
     die;
 }
 
@@ -35,14 +40,15 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.4 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'PLUGIN_NAME_VERSION', '1.0.4' );
+define('PLUGIN_NAME_VERSION', '1.0.6');
 
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-login-and-logout-redirect-activator.php
  */
-function activate_login_and_logout_redirect() {
-    require_once plugin_dir_path( __FILE__ ) . 'includes/class-login-and-logout-redirect-activator.php';
+function activate_login_and_logout_redirect()
+{
+    require_once plugin_dir_path(__FILE__) . 'includes/class-login-and-logout-redirect-activator.php';
     Login_And_Logout_Redirect_Activator::activate();
 }
 
@@ -50,19 +56,20 @@ function activate_login_and_logout_redirect() {
  * The code that runs during plugin deactivation.
  * This action is documented in includes/class-login-and-logout-redirect-deactivator.php
  */
-function deactivate_login_and_logout_redirect() {
-    require_once plugin_dir_path( __FILE__ ) . 'includes/class-login-and-logout-redirect-deactivator.php';
+function deactivate_login_and_logout_redirect()
+{
+    require_once plugin_dir_path(__FILE__) . 'includes/class-login-and-logout-redirect-deactivator.php';
     Login_And_Logout_Redirect_Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, 'activate_login_and_logout_redirect' );
-register_deactivation_hook( __FILE__, 'deactivate_login_and_logout_redirect' );
+register_activation_hook(__FILE__, 'activate_login_and_logout_redirect');
+register_deactivation_hook(__FILE__, 'deactivate_login_and_logout_redirect');
 
 /**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class-login-and-logout-redirect.php';
+require plugin_dir_path(__FILE__) . 'includes/class-login-and-logout-redirect.php';
 
 /**
  * Begins execution of the plugin.
@@ -73,10 +80,9 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-login-and-logout-redirect.
  *
  * @since    1.0.4
  */
-function run_login_and_logout_redirect() {
-
+function run_login_and_logout_redirect()
+{
     $plugin = new Login_And_Logout_Redirect();
     $plugin->run();
-
 }
 run_login_and_logout_redirect();

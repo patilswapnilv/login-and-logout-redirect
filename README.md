@@ -2,23 +2,15 @@
 
 A WordPress plugin which enables you to redirect users on login and logout or both, in a simplest way.
 
-**Contributors:** [patilswapnilv](https://github.com/patilswapnilv/)
-
 **Plugin Name:** Login and Logout redirect
 
-**Plugin URI:** [login-and-logout-redirect](https://wordpress.org/plugins/login-and-logout-redirect/)
+**WordPress.org URI:** [login-and-logout-redirect](https://wordpress.org/plugins/login-and-logout-redirect/)
 
 **Tags:** redirect,login, logout, login and logout redirect, redirect on login, redirect on logout
 
-**Author:** patilswapnilv
+**Author:** [patilswapnilv](https://swapnilpatil.in)
 
-**Author URI:** [patilswapnilv](https://swapnilpatil.in)
-
-**Donate link:** [patilswapnilv](https://swapnilpatil.in/contribution)
-
-**License:** GPL-3.0+
-
-**License URI:** [GPL-3.0+](https://www.gnu.org/licenses/gpl-3.0.en.html)
+**License:** [GPL-3.0+](https://www.gnu.org/licenses/gpl-3.0.en.html)
 
 **Requires at least:** 3.5
 
@@ -41,7 +33,7 @@ A WordPress plugin which enables you to redirect users on login and logout or bo
 ## Synopsis
 
 This is an easy way to redirect user to specific URL, on login and logout.
-This plugin adds extra option in Settings page (Setting>General), for specifing redirect URL for login and logout.
+This plugin adds extra option in Settings page (Setting>General), for specifying redirect URL for login and logout.
 
 ### Features
 
@@ -68,7 +60,7 @@ This plugin adds extra option in Settings page (Setting>General), for specifing 
 ### Contribution
 
 Contributors are always welcome.
-To contribute, just send a pull request. On this repo on [GIthub](https://github.com/patilswapnilv/login-and-logout-redirect)
+To contribute, just send a pull request. On this repo on [Github](https://github.com/patilswapnilv/login-and-logout-redirect)
 
 ### License
 

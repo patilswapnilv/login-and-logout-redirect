@@ -36,7 +36,7 @@ if (! defined('WPINC')) {
  * Start at version 1.0.4 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define('PLUGIN_NAME_VERSION', '1.0.6');
+define('PLUGIN_NAME_VERSION', '2.0.0');
 
 /**
  * The code that runs during plugin activation.

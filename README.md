@@ -26,8 +26,17 @@ A WordPress plugin which enables you to redirect users on login and logout or bo
 
 **Stable tag:** 1.0.6
 
-[![Build Status](https://travis-ci.org/patilswapnilv/login-and-logout-redirect.svg)](https://travis-ci.org/patilswapnilv/login-and-logout-redirect) ![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/patilswapnilv/login-and-logout-redirect/badges/quality-score.png?b=master) [![Code Climate](https://codeclimate.com/github/patilswapnilv/login-and-logout-redirect/badges/gpa.svg)](https://codeclimate.com/github/patilswapnilv/login-and-logout-redirect) ![WordPress](https://img.shields.io/wordpress/plugin/dt/login-and-logout-redirect.svg) ![WordPress](https://img.shields.io/wordpress/v/login-and-logout-redirect.svg) ![WordPress plugin](https://img.shields.io/wordpress/plugin/v/login-and-logout-redirect.svg) ![WordPress rating](https://img.shields.io/wordpress/plugin/r/login-and-logout-redirect.svg) [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=S2DYY5KZU42RW) 
+[![WP](https://img.shields.io/badge/WordPress-%E2%86%92-lightgrey.svg?style=flat-square)](https://wordpress.org/plugins/login-and-logout-redirect/)
+[![WP Plugin Version](https://img.shields.io/wordpress/plugin/v/login-and-logout-redirect.svg?style=flat-square&label=version)](https://wordpress.org/plugins/login-and-logout-redirect/)
+[![WP Downloads](https://img.shields.io/wordpress/plugin/dt/login-and-logout-redirect.svg?style=flat-square)](https://wordpress.org/plugins/login-and-logout-redirect/)
+[![WP Rating](https://img.shields.io/wordpress/plugin/r/login-and-logout-redirect.svg?style=flat-square)](https://wordpress.org/support/plugin/login-and-logout-redirect/reviews/?filter=5)
+![WordPress](https://img.shields.io/wordpress/v/login-and-logout-redirect.svg)
+[![License](https://img.shields.io/badge/license-GPL%20v2.0-l.svg?style=flat-square)](https://github.com/patilswapnilv/login-and-logout-redirect/blob/master/license.txt)
 
+[![Build Status](https://travis-ci.org/patilswapnilv/login-and-logout-redirect.svg)](https://travis-ci.org/patilswapnilv/login-and-logout-redirect)
+![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/patilswapnilv/login-and-logout-redirect/badges/quality-score.png?b=master)
+[![Code Climate](https://codeclimate.com/github/patilswapnilv/login-and-logout-redirect/badges/gpa.svg)](https://codeclimate.com/github/patilswapnilv/login-and-logout-redirect)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=S2DYY5KZU42RW)
 
 ## Synopsis
 
@@ -82,7 +91,7 @@ This Plug-in is released under the same license as the WordPress software is rel
 * Archived version: [version_1.0.4.zip](https://downloads.wordpress.org/plugin/login-and-logout-redirect.1.0.4.zip)
 
 #### 1.0.3
- 
+
 
 * Tested upto WordPress 4.7
 * Archived version: [version_1.0.3.zip](https://downloads.wordpress.org/plugin/login-and-logout-redirect.1.0.3.zip)

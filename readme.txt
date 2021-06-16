@@ -1,16 +1,14 @@
 === Login and Logout Redirect ===
 Contributors: patilswapnilv
-Tags: redirect,login, logout, redirect on login, redirect on logout, login and logout redirect
-Requires at least: 3.5
-Tested up to: 5.4.1
 Stable tag: trunk
-Requires PHP: 5.6
-Donate link: http://swapnilpatil.in/contribution
-Tags: redirect,login, logout, redirect on login, redirect on logout, login and logout redirect
 Requires at least: 3.5
-Stable tag: 2.0.0
-License: GPLv2 or later
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Tested up to: 5.7.2
+Requires PHP: 5.6
+Tags: redirect,login, logout, redirect on login, redirect on logout, login and logout redirect
+License: GPLv3+
+License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
+Donate link: http://swapnilpatil.in/wp-plugins/
+
 
 This is an easy way to redirect user to specific URL, on login and logout.
 

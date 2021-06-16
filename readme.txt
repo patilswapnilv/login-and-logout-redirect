@@ -96,7 +96,7 @@ Look for “Login and Logout Redirect” and click Activate.
 = 1.0.0 =
 * Initial release
 * First stable release.
-* Archived version:	https://downloads.wordpress.org/plugin/login-and-logout-redirect.1.0.0.zip
+* [Archived version:](https://downloads.wordpress.org/plugin/login-and-logout-redirect.1.0.0.zip)
 
 == Upgrade Notice ==
 
@@ -147,7 +147,7 @@ https://downloads.wordpress.org/plugin/login-and-logout-redirect.1.0.1.zip
 = 1.0.0 =
 * Initial release
 * First stable release.
-* Archived version:           https://downloads.wordpress.org/plugin/login-and-logout-redirect.1.0.0.zip
+* Archived version: https://downloads.wordpress.org/plugin/login-and-logout-redirect.1.0.0.zip
 
 == Upgrade Notice ==
 

@@ -19,10 +19,7 @@
  * Version:           2.0.1
  * Author:            Swapnil V. Patil
  * Author URI:        https://swapnilpatil.in
- * License:           GPL-3.0+
  * Description:       A WordPress plugin which enables you to redirect users on login and logout or both, in a simplest way.
- * Author:            Swapnil V. Patil
- * Author URI:        https://swapnilpatil.in
  * License:           GPL-3.0
  * License URI:       https://www.gnu.org/licenses/gpl-3.0.en.html
  * Text Domain:       login-and-logout-redirect
@@ -39,7 +36,7 @@ if (! defined('WPINC')) {
  * Start at version 1.0.4 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define('PLUGIN_NAME_VERSION', '1.0.6');
+define('PLUGIN_NAME_VERSION', '2.0.0');
 
 /**
  * The code that runs during plugin activation.

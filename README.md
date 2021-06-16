@@ -1,8 +1,4 @@
-  
-
 # Login-and-Logout-Redirect
-
-  
 
 A WordPress plugin which enables you to redirect users on login and logout or both, in a simplest way.
 

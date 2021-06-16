@@ -22,7 +22,7 @@ A WordPress plugin which enables you to redirect users on login and logout or bo
 
 **Tested up to:** 5.7.2
 
-**Stable tag:** 2.0.1
+**Stable tag:** 2.0.2
 
 [![WP](https://img.shields.io/badge/WordPress-%E2%86%92-lightgrey.svg?style=flat-square)](https://wordpress.org/plugins/login-and-logout-redirect/)
 [![WP Plugin Version](https://img.shields.io/wordpress/plugin/v/login-and-logout-redirect.svg?style=flat-square&label=version)](https://wordpress.org/plugins/login-and-logout-redirect/)

@@ -2,6 +2,7 @@
 Contributors: patilswapnilv
 Tags: redirect,login, logout, redirect on login, redirect on logout, login and logout redirect
 Requires at least: 3.5
+<<<<<<< Updated upstream
 Tested up to: 5.0.3
 Stable tag: trunk
 Requires PHP: 5.6
@@ -13,6 +14,15 @@ Requires at least: 3.5
 Tested up to: 5.0
 Stable tag: trunk
 Requires PHP: 5.2.4
+=======
+Tested up to: 5.7.2
+Stable tag: trunk
+Requires PHP: 5.6
+Donate link: http://swapnilpatil.in/plugins/
+Tags: redirect,login, logout, redirect on login, redirect on logout, login and logout redirect
+Requires at least: 3.5
+Stable tag: 2.0.1
+>>>>>>> Stashed changes
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 

@@ -16,9 +16,9 @@ A WordPress plugin which enables you to redirect users on login and logout or bo
 
 **Author:** patilswapnilv
 
-**Author URI:** [patilswapnilv](https://swapnilpatil.in)
+**Author URI:** [swapnilpatil.in](https://swapnilpatil.in)
 
-**Donate link:** [patilswapnilv](https://swapnilpatil.in/contribution)
+**Donate link:** [swapnilpatil.in](https://swapnilpatil.in/wp-plugins/)
 
 **License:** GPL-3.0+
 
@@ -26,9 +26,11 @@ A WordPress plugin which enables you to redirect users on login and logout or bo
 
 **Requires at least:** 3.5
 
-**Tested up to:** 5.0.3
+**Tested up to:** 5.7.2
 
-**Stable tag:** 1.0.6
+**Stable tag:** 2.0.1
+
+
 
 [![Build Status](https://travis-ci.org/patilswapnilv/login-and-logout-redirect.svg)](https://travis-ci.org/patilswapnilv/login-and-logout-redirect) ![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/patilswapnilv/login-and-logout-redirect/badges/quality-score.png?b=master) [![Code Climate](https://codeclimate.com/github/patilswapnilv/login-and-logout-redirect/badges/gpa.svg)](https://codeclimate.com/github/patilswapnilv/login-and-logout-redirect) [![WordPress](https://img.shields.io/wordpress/plugin/dt/login-and-logout-redirect.svg)]() [![WordPress](https://img.shields.io/wordpress/v/login-and-logout-redirect.svg)]() [![WordPress plugin](https://img.shields.io/wordpress/plugin/v/login-and-logout-redirect.svg)]() [![WordPress rating](https://img.shields.io/wordpress/plugin/r/login-and-logout-redirect.svg)]() [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=S2DYY5KZU42RW)
 

@@ -2,6 +2,16 @@
 
 This change log follows the [Keep a Changelog standards](http://keepachangelog.com/), for more information see the [git repo](https://github.com/olivierlacan/keep-a-changelog). Versions follows [Semantic Versioning](http://semver.org/).
 
+
+### 2.0.1 ###
+
+* Tested upto WordPress 5.7.2
+
+### 2.0.0 ###
+
+* Tested upto WordPress 5.4.1
+
+>>>>>>> Stashed changes
 ### 1.0.6 ###
 
 * Tested upto WordPress 5.0.3

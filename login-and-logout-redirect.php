@@ -32,27 +32,6 @@ if (! defined('WPINC')) {
 }
 
 /**
- * Initialize the plugin tracker
- *
- * @return void
- */
-function appsero_init_tracker_login_and_logout_redirect() {
-
-    if ( ! class_exists( 'Appsero\Client' ) ) {
-      require_once __DIR__ . '/appsero/src/Client.php';
-    }
-
-    $client = new Appsero\Client( '9c63d011-2a3e-4398-bc96-4215206a59c0', 'Login and Logout Redirect', __FILE__ );
-
-    // Active insights
-    $client->insights()->init();
-
-}
-
-appsero_init_tracker_login_and_logout_redirect();
-
-
-/**
  * Currently plugin version.
  * Start at version 1.0.4 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.

@@ -22,7 +22,7 @@ A WordPress plugin which enables you to redirect users on login and logout or bo
 
 **Tested up to:** 5.7.2
 
-**Stable tag:** 2.0.2
+**Stable tag:** 2.1.0
 
 [![WP](https://img.shields.io/badge/WordPress-%E2%86%92-lightgrey.svg?style=flat-square)](https://wordpress.org/plugins/login-and-logout-redirect/)
 [![WP Plugin Version](https://img.shields.io/wordpress/plugin/v/login-and-logout-redirect.svg?style=flat-square&label=version)](https://wordpress.org/plugins/login-and-logout-redirect/)
@@ -73,6 +73,12 @@ To contribute, just send a pull request. On this repo on [Github](https://github
 This Plug-in is released under the same license as the WordPress software is released ie; the [GPLv3](https://www.gnu.org/licenses/gpl-3.0.en.html) (or later) from the [Free Software Foundation](http://www.fsf.org/). A copy of the license is included with the Plug-in, but you can also read the text of the license [here](http://www.gnu.org/licenses/gpl-3.0.en.html).
 
 ### Changelog
+
+### 2.1.0
+
+* Added WooCommerce login compatibility
+* Removed wp_redirect in filters
+* Tested upto WordPress 6.2
 
 ### 2.0.0
 

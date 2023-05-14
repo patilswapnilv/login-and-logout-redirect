@@ -1,9 +1,9 @@
 === Login and Logout Redirect ===
-Contributors: patilswapnilv
+Contributors: patilswapnilv, joanrodas
 Stable tag: trunk
 Requires at least: 3.5
-Version: 2.0.2
-Tested up to: 5.7.2
+Version: 2.1.0
+Tested up to: 6.2
 Requires PHP: 5.6
 Tags: redirect,login, logout, redirect on login, redirect on logout, login and logout redirect
 License: GPLv3+
@@ -68,6 +68,14 @@ Look for “Login and Logout Redirect” and click Activate.
 		* Screenshot-2.png
 
 == Changelog ==
+
+= 2.1.0 =
+* Added WooCommerce login compatibility
+* Removed wp_redirect in filters
+* Tested upto WordPress 6.2
+
+= 2.0.0 =
+* Tested upto WordPress 5.4.1
 
 = 1.0.6 =
 * Tested upto WordPress 5.0.3

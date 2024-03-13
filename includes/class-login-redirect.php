@@ -57,7 +57,7 @@ class Login_Redirect
         }
 
         if (!is_wp_error($user) && !$reauth && !$interim_login && !empty($login_redirect_url)) {
-            wp_redirect($login_redirect_url);
+            wp_safe_redirect($login_redirect_url);
             exit();
         }
 

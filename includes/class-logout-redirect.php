@@ -80,7 +80,7 @@ class LogoutRedirect
     function redirect()
     {
         $redirect_url = !empty($_REQUEST['redirect_to']) && !(defined('LOGOUT_REDIRECT_FORCED') && LOGOUT_REDIRECT_FORCED) ? $_REQUEST['redirect_to'] : $this->get_redirection_url();
-        wp_redirect($redirect_url);
+        wp_safe_redirect($redirect_url);
         exit();
     }
 

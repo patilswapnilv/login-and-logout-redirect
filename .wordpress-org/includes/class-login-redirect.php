@@ -12,7 +12,6 @@
  * */
 class Login_Redirect
 {
-
     /**
      * PHP 4 constructor
      * */
@@ -35,10 +34,10 @@ class Login_Redirect
         add_action('admin_init', array(&$this, 'add_settings_field'));
 
         // load text domain
-        if (defined('SP_PLUGIN_DIR') && file_exists(SP_PLUGIN_DIR.'/login-redirect.php')) {
+        if (defined('SP_PLUGIN_DIR') && file_exists(SP_PLUGIN_DIR . '/login-redirect.php')) {
             load_muplugin_textdomain('login-and-logout-redirect', 'login-redirect-files/languages');
         } else {
-            load_plugin_textdomain('login-and-logout-redirect', false, dirname(plugin_basename(__FILE__)).'/login-redirect-files/languages');
+            load_plugin_textdomain('login-and-logout-redirect', false, dirname(plugin_basename(__FILE__)) . '/login-redirect-files/languages');
         }
     }
 
@@ -53,7 +52,18 @@ class Login_Redirect
         if ($this->is_plugin_active_for_network(plugin_basename(__FILE__))) {
             $login_redirect_url = get_site_option('login_redirect_url');
         } else {
-            $login_redirect_url = get_option('login_redirect_url');
+            try {
+                $login_redirect_url = get_option('login_redirect_url');
+            } catch (Exception $e) {
+                error_log(sprintf('Error getting login_redirect_url option: %s', $e->getMessage()));
+                $login_redirect_url = wp_login_url();
+            }
+
+            if (empty($login_redirect_url)) {
+                $login_redirect_url = wp_login_url();
+            }
+
+            return $login_redirect_url;
         }
 
         if (!is_wp_error($user) && !$reauth && !$interim_login && !empty($login_redirect_url)) {
@@ -116,7 +126,7 @@ class Login_Redirect
      * */
     function site_option()
     {
-        echo '<input name="login_redirect_url" type="text" id="login_redirect_url" value="'.esc_attr(get_option('login_redirect_url')).'" size="40" />';
+        echo '<input name="login_redirect_url" type="text" id="login_redirect_url" value="' . esc_attr(get_option('login_redirect_url')) . '" size="40" />';
     }
 
     /**
@@ -136,7 +146,6 @@ class Login_Redirect
 
         return false;
     }
-
 }
 
 $login_redirect = new Login_Redirect();

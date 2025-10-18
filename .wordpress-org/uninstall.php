@@ -26,6 +26,27 @@
  */
 
 // If uninstall not called from WordPress, then exit.
-if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
+if (! defined('WP_UNINSTALL_PLUGIN')) {
     exit;
 }
+
+// Check if the user has the necessary permissions to uninstall the plugin.
+if (! current_user_can('delete_plugins')) {
+    wp_die(__('You do not have sufficient permissions to uninstall this plugin.', 'login-and-logout-redirect'));
+}
+
+// Check if the uninstall request is valid.
+if (! isset($_GET['uninstall_login_logout_redirect']) || 'uninstall' !== $_GET['uninstall_login_logout_redirect']) {
+    return;
+}
+
+// Sanitize and validate the plugin name.
+$plugin = isset($_REQUEST['plugin']) ? sanitize_text_field($_REQUEST['plugin']) : '';
+
+if ('login-and-logout-redirect/login-and-logout-redirect.php' !== $plugin) {
+    return;
+}
+
+// Delete plugin options.
+delete_option('login_redirect_url');
+delete_option('logout_redirect_url');

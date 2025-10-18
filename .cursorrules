@@ -1,0 +1,9 @@
+{
+  "rules": {
+    "generic/code-quality": {
+      "severity": "warning",
+      "match": "*.php",
+      "message": "Ensure code quality and maintainability."
+    }
+  }
+}

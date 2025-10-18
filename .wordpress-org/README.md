@@ -115,3 +115,13 @@ This Plug-in is released under the same license as the WordPress software is rel
 * Initial release
 * First stable release.
 * Archived version: [version_1.0.0.zip](https://downloads.wordpress.org/plugin/login-and-logout-redirect.1.0.0.zip)
+
+## Cursor and GitHub Copilot Integration
+
+This plugin is configured to work seamlessly with Cursor and GitHub Copilot. The following configurations have been added to enhance the development experience:
+
+*   `.cursor/rules`: Defines rules for Cursor's AI agents.
+*   `.cursorrules`: Enforces coding standards and best practices.
+*   `.prettierrc`: Enforces code formatting.
+
+These configurations ensure consistent code quality and improve the efficiency of development with AI-powered tools.

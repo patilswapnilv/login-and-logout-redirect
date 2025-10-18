@@ -20,8 +20,8 @@
  * @subpackage Login_And_Logout_Redirect/includes
  * @author     Swapnil V. Patil <patilswapnilv@gmail.com>
  */
-class Login_And_Logout_Redirect_Deactivator {
-
+class Login_And_Logout_Redirect_Deactivator
+{
     /**
      * Short Description. (use period)
      *
@@ -29,8 +29,7 @@ class Login_And_Logout_Redirect_Deactivator {
      *
      * @since    1.0.4
      */
-    public static function deactivate() {
-
+    public static function deactivate()
+    {
     }
-
 }

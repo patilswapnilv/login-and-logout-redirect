@@ -27,8 +27,8 @@
  * @subpackage Login_And_Logout_Redirect/includes
  * @author     Swapnil V. Patil <patilswapnilv@gmail.com>
  */
-class Login_And_Logout_Redirect {
-
+class Login_And_Logout_Redirect
+{
     /**
      * The loader that's responsible for maintaining and registering all hooks that power
      * the plugin.
@@ -66,8 +66,9 @@ class Login_And_Logout_Redirect {
      *
      * @since    1.0.4
      */
-    public function __construct() {
-        if ( defined( 'PLUGIN_NAME_VERSION' ) ) {
+    public function __construct()
+    {
+        if (defined('PLUGIN_NAME_VERSION')) {
             $this->version = PLUGIN_NAME_VERSION;
         } else {
             $this->version = '1.0.4';
@@ -78,7 +79,6 @@ class Login_And_Logout_Redirect {
         $this->set_locale();
         $this->define_admin_hooks();
         $this->define_public_hooks();
-
     }
 
     /**
@@ -97,45 +97,45 @@ class Login_And_Logout_Redirect {
      * @since    1.0.4
      * @access   private
      */
-    private function load_dependencies() {
+    private function load_dependencies()
+    {
 
         /**
          * The class responsible for orchestrating the actions and filters of the
          * core plugin.
          */
-        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-login-and-logout-redirect-loader.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-login-and-logout-redirect-loader.php';
 
         /**
          * The class responsible for defining internationalization functionality
          * of the plugin.
          */
-        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-login-and-logout-redirect-i18n.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-login-and-logout-redirect-i18n.php';
 
                 /**
                  * The class responsible for defining login on redirect
                  * side of the plugin.
                  */
-        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-login-redirect.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-login-redirect.php';
 
         /**
          * The class responsible for defining logout on redirect
          * side of the plugin.
          */
-        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-logout-redirect.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-logout-redirect.php';
 
         /**
          * The class responsible for defining all actions that occur in the admin area.
          */
-        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-login-and-logout-redirect-admin.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'admin/class-login-and-logout-redirect-admin.php';
 
         /**
          * The class responsible for defining all actions that occur in the public-facing
          * side of the site.
          */
-        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-login-and-logout-redirect-public.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'public/class-login-and-logout-redirect-public.php';
 
         $this->loader = new Login_And_Logout_Redirect_Loader();
-
     }
 
     /**
@@ -147,12 +147,12 @@ class Login_And_Logout_Redirect {
      * @since    1.0.4
      * @access   private
      */
-    private function set_locale() {
+    private function set_locale()
+    {
 
         $plugin_i18n = new Login_And_Logout_Redirect_i18n();
 
-        $this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
-
+        $this->loader->add_action('plugins_loaded', $plugin_i18n, 'load_plugin_textdomain');
     }
 
     /**
@@ -162,13 +162,13 @@ class Login_And_Logout_Redirect {
      * @since    1.0.4
      * @access   private
      */
-    private function define_admin_hooks() {
+    private function define_admin_hooks()
+    {
 
-        $plugin_admin = new Login_And_Logout_Redirect_Admin( $this->get_plugin_name(), $this->get_version() );
+        $plugin_admin = new Login_And_Logout_Redirect_Admin($this->get_plugin_name(), $this->get_version());
 
-        $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-        $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-
+        $this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles');
+        $this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
     }
 
     /**
@@ -178,13 +178,13 @@ class Login_And_Logout_Redirect {
      * @since    1.0.4
      * @access   private
      */
-    private function define_public_hooks() {
+    private function define_public_hooks()
+    {
 
-        $plugin_public = new Login_And_Logout_Redirect_Public( $this->get_plugin_name(), $this->get_version() );
+        $plugin_public = new Login_And_Logout_Redirect_Public($this->get_plugin_name(), $this->get_version());
 
-        $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-        $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
-
+        $this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_styles');
+        $this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts');
     }
 
     /**
@@ -192,7 +192,8 @@ class Login_And_Logout_Redirect {
      *
      * @since    1.0.4
      */
-    public function run() {
+    public function run()
+    {
         $this->loader->run();
     }
 
@@ -203,7 +204,8 @@ class Login_And_Logout_Redirect {
      * @since     1.0.4
      * @return    string    The name of the plugin.
      */
-    public function get_plugin_name() {
+    public function get_plugin_name()
+    {
         return $this->plugin_name;
     }
 
@@ -213,7 +215,8 @@ class Login_And_Logout_Redirect {
      * @since     1.0.4
      * @return    Login_And_Logout_Redirect_Loader    Orchestrates the hooks of the plugin.
      */
-    public function get_loader() {
+    public function get_loader()
+    {
         return $this->loader;
     }
 
@@ -223,8 +226,8 @@ class Login_And_Logout_Redirect {
      * @since     1.0.4
      * @return    string    The version number of the plugin.
      */
-    public function get_version() {
+    public function get_version()
+    {
         return $this->version;
     }
-
 }

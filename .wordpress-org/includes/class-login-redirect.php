@@ -136,7 +136,7 @@ class LoginRedirect
                 <div class="form-field">
                     <label for="login_redirect_url" class="field-label">
                         <?php _e('Redirect URL', 'login-and-logout-redirect'); ?>
-                        <span class="required" aria-label="<?php esc_attr_e('Required', 'login-and-logout-redirect'); ?>">*</span>
+                        <span class="required" aria-label="<?php echo esc_attr__('Required', 'login-and-logout-redirect'); ?>">*</span>
                     </label>
                     <div class="field-input-wrapper">
                         <input

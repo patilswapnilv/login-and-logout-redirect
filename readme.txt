@@ -3,7 +3,7 @@ Contributors: patilswapnilv
 Stable tag: trunk
 Requires at least: 3.5
 Version: 2.0.2
-Tested up to: 5.7.2
+Tested up to: 6.4
 Requires PHP: 5.6
 Tags: redirect,login, logout, redirect on login, redirect on logout, login and logout redirect
 License: GPLv3+

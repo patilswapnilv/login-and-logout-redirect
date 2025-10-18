@@ -17,7 +17,6 @@ declare(strict_types=1);
  * @wordpress-plugin
  * Plugin Name:       Login and Logout Redirect
  * Plugin URI:        https://github.com/patilswapnilv/login-and-logout-redirect/
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
  * Version:           2.0.2
  * Author:            Swapnil V. Patil
  * Author URI:        https://swapnilpatil.in

@@ -1,5 +1,7 @@
 <?php
 
+namespace LoginAndLogoutRedirect;
+
 /**
  * Plugin class for logout-redirect
  *
@@ -13,22 +15,13 @@
 class LogoutRedirect
 {
     /**
-     * PHP 4 constructor
-     *
-     * @return boolean|null
-     * */
-    function LogoutRedirect()
-    {
-    }
-
-    /**
      * PHP 5 constructor
      * */
-    function __construct()
+    public function __construct()
     {
         add_action('login_init', array($this, 'clean_redirect'));
         add_filter('wp_logout', array(&$this, 'redirect'));
-        add_action('plugin_options', array(&$this, 'network_option'));
+        add_action('plugin_options', array($this, 'network_option'));
         add_action(
             'update_plugin_options',
             array(
@@ -36,7 +29,7 @@ class LogoutRedirect
             'update_network_option',
             )
         );
-        add_action('admin_init', array(&$this, 'add_settings_field'));
+        add_action('admin_init', array($this, 'add_settings_field'));
 
         // load text domain
         if (

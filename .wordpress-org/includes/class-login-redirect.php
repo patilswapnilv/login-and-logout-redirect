@@ -1,5 +1,7 @@
 <?php
 
+namespace LoginAndLogoutRedirect;
+
 /**
  * Plugin class for Login-redirect
  *
@@ -10,20 +12,12 @@
  *   @link     https://github.com/patilswapnilv/login-and-logout-redirect/readme.md
  *   @return   boolean
  * */
-class Login_Redirect
+class LoginRedirect
 {
-    /**
-     * PHP 4 constructor
-     * */
-    function Login_Redirect()
-    {
-        __construct();
-    }
-
     /**
      * PHP 5 constructor
      * */
-    function __construct()
+    public function __construct()
     {
         if (!isset($_REQUEST['redirect_to']) || $_REQUEST['redirect_to'] == admin_url()) {
             add_filter('login_redirect', array(&$this, 'redirect'), 10, 3);
@@ -44,7 +38,7 @@ class Login_Redirect
     /**
      * Redirect user on login
      * */
-    function redirect($redirect_to, $requested_redirect_to, $user)
+    public function redirect($redirect_to, $requested_redirect_to, $user)
     {
         $interim_login = isset($_REQUEST['interim-login']);
         $reauth = empty($_REQUEST['reauth']) ? false : true;
@@ -77,7 +71,7 @@ class Login_Redirect
     /**
      * Network option
      * */
-    function network_option()
+    public function network_option()
     {
         if (!$this->is_plugin_active_for_network(plugin_basename(__FILE__))) {
             return;
@@ -100,7 +94,7 @@ class Login_Redirect
     /**
      * Save option in the option
      * */
-    function update_network_option()
+    public function update_network_option()
     {
         update_site_option('login_redirect_url', stripslashes($_POST['login_redirect_url']));
     }
@@ -108,7 +102,7 @@ class Login_Redirect
     /**
      * Add setting field for singlesite
      * */
-    function add_settings_field()
+    public function add_settings_field()
     {
         if ($this->is_plugin_active_for_network(plugin_basename(__FILE__))) {
             return;
@@ -124,7 +118,7 @@ class Login_Redirect
     /**
      * Setting field for singlesite
      * */
-    function site_option()
+    public function site_option()
     {
         echo '<input name="login_redirect_url" type="text" id="login_redirect_url" value="' . esc_attr(get_option('login_redirect_url')) . '" size="40" />';
     }
@@ -133,7 +127,7 @@ class Login_Redirect
      * Verify if plugin is network activated
      * @return boolean
      */
-    function is_plugin_active_for_network($plugin)
+    public function is_plugin_active_for_network($plugin)
     {
         if (!is_multisite()) {
             return false;
@@ -147,5 +141,3 @@ class Login_Redirect
         return false;
     }
 }
-
-$login_redirect = new Login_Redirect();

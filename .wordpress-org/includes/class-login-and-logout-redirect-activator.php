@@ -1,5 +1,7 @@
 <?php
 
+namespace LoginAndLogoutRedirect;
+
 /**
  * Fired during plugin activation
  *
@@ -20,8 +22,7 @@
  * @subpackage Login_And_Logout_Redirect/includes
  * @author     Swapnil V. Patil <patilswapnilv@gmail.com>
  */
-class Login_And_Logout_Redirect_Activator
-{
+class LoginAndLogoutRedirectActivator {
     /**
      * Short Description. (use period)
      *
@@ -29,7 +30,6 @@ class Login_And_Logout_Redirect_Activator
      *
      * @since    1.0.4
      */
-    public static function activate()
-    {
+    public static function activate() {
     }
 }

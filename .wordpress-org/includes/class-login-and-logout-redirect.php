@@ -1,5 +1,7 @@
 <?php
 
+namespace LoginAndLogoutRedirect;
+
 /**
  * The file that defines the core plugin class
  *
@@ -27,15 +29,14 @@
  * @subpackage Login_And_Logout_Redirect/includes
  * @author     Swapnil V. Patil <patilswapnilv@gmail.com>
  */
-class Login_And_Logout_Redirect
-{
+class LoginAndLogoutRedirect {
     /**
      * The loader that's responsible for maintaining and registering all hooks that power
      * the plugin.
      *
      * @since    1.0.4
      * @access   protected
-     * @var      Login_And_Logout_Redirect_Loader    $loader    Maintains and registers all hooks for the plugin.
+     * @var      LoginAndLogoutRedirectLoader    $loader    Maintains and registers all hooks for the plugin.
      */
     protected $loader;
 
@@ -66,8 +67,7 @@ class Login_And_Logout_Redirect
      *
      * @since    1.0.4
      */
-    public function __construct()
-    {
+    public function __construct() {
         if (defined('PLUGIN_NAME_VERSION')) {
             $this->version = PLUGIN_NAME_VERSION;
         } else {
@@ -86,10 +86,10 @@ class Login_And_Logout_Redirect
      *
      * Include the following files that make up the plugin:
      *
-     * - Login_And_Logout_Redirect_Loader. Orchestrates the hooks of the plugin.
-     * - Login_And_Logout_Redirect_i18n. Defines internationalization functionality.
-     * - Login_And_Logout_Redirect_Admin. Defines all hooks for the admin area.
-     * - Login_And_Logout_Redirect_Public. Defines all hooks for the public side of the site.
+     * - LoginAndLogoutRedirectLoader. Orchestrates the hooks of the plugin.
+     * - LoginAndLogoutRedirectI18n. Defines internationalization functionality.
+     * - LoginAndLogoutRedirectAdmin. Defines all hooks for the admin area.
+     * - LoginAndLogoutRedirectPublic. Defines all hooks for the public side of the site.
      *
      * Create an instance of the loader which will be used to register the hooks
      * with WordPress.
@@ -97,8 +97,7 @@ class Login_And_Logout_Redirect
      * @since    1.0.4
      * @access   private
      */
-    private function load_dependencies()
-    {
+    private function load_dependencies() {
 
         /**
          * The class responsible for orchestrating the actions and filters of the
@@ -135,22 +134,21 @@ class Login_And_Logout_Redirect
          */
         require_once plugin_dir_path(dirname(__FILE__)) . 'public/class-login-and-logout-redirect-public.php';
 
-        $this->loader = new Login_And_Logout_Redirect_Loader();
+        $this->loader = new LoginAndLogoutRedirectLoader();
     }
 
     /**
      * Define the locale for this plugin for internationalization.
      *
-     * Uses the Login_And_Logout_Redirect_i18n class in order to set the domain and to register the hook
+     * Uses the LoginAndLogoutRedirectI18n class in order to set the domain and to register the hook
      * with WordPress.
      *
      * @since    1.0.4
      * @access   private
      */
-    private function set_locale()
-    {
+    private function set_locale() {
 
-        $plugin_i18n = new Login_And_Logout_Redirect_i18n();
+        $plugin_i18n = new LoginAndLogoutRedirectI18n();
 
         $this->loader->add_action('plugins_loaded', $plugin_i18n, 'load_plugin_textdomain');
     }
@@ -162,10 +160,9 @@ class Login_And_Logout_Redirect
      * @since    1.0.4
      * @access   private
      */
-    private function define_admin_hooks()
-    {
+    private function define_admin_hooks() {
 
-        $plugin_admin = new Login_And_Logout_Redirect_Admin($this->get_plugin_name(), $this->get_version());
+        $plugin_admin = new LoginAndLogoutRedirectAdmin($this->get_plugin_name(), $this->get_version());
 
         $this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles');
         $this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
@@ -178,10 +175,9 @@ class Login_And_Logout_Redirect
      * @since    1.0.4
      * @access   private
      */
-    private function define_public_hooks()
-    {
+    private function define_public_hooks() {
 
-        $plugin_public = new Login_And_Logout_Redirect_Public($this->get_plugin_name(), $this->get_version());
+        $plugin_public = new LoginAndLogoutRedirectPublic($this->get_plugin_name(), $this->get_version());
 
         $this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_styles');
         $this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts');
@@ -192,8 +188,7 @@ class Login_And_Logout_Redirect
      *
      * @since    1.0.4
      */
-    public function run()
-    {
+    public function run() {
         $this->loader->run();
     }
 
@@ -204,8 +199,7 @@ class Login_And_Logout_Redirect
      * @since     1.0.4
      * @return    string    The name of the plugin.
      */
-    public function get_plugin_name()
-    {
+    public function get_plugin_name() {
         return $this->plugin_name;
     }
 
@@ -213,10 +207,9 @@ class Login_And_Logout_Redirect
      * The reference to the class that orchestrates the hooks with the plugin.
      *
      * @since     1.0.4
-     * @return    Login_And_Logout_Redirect_Loader    Orchestrates the hooks of the plugin.
+     * @return    LoginAndLogoutRedirectLoader    Orchestrates the hooks of the plugin.
      */
-    public function get_loader()
-    {
+    public function get_loader() {
         return $this->loader;
     }
 
@@ -226,8 +219,7 @@ class Login_And_Logout_Redirect
      * @since     1.0.4
      * @return    string    The version number of the plugin.
      */
-    public function get_version()
-    {
+    public function get_version() {
         return $this->version;
     }
 }

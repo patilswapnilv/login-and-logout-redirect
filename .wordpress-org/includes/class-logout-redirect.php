@@ -207,10 +207,63 @@ class LogoutRedirect
     function site_option()
     {
         $url = $this->_get_raw_redirection_url();
-        echo '<input name="logout_redirect_url" type="text" id="logout_redirect_url" value="' . esc_attr($url) . '" size="40" />';
-        if (defined('BP_VERSION')) {
-            printf(__('You can use these macros for your redirection: %s', 'login-and-logout-redirect'), '<code>' . join('</code>, <code>', $this->_get_macros()) . '</code>');
-        }
+        ?>
+        <div class="logout-redirect-card">
+            <div class="card-header">
+                <h3 class="card-title">
+                    <span class="dashicons dashicons-exit" aria-hidden="true"></span>
+                    <?php _e('Logout Redirect Settings', 'login-and-logout-redirect'); ?>
+                </h3>
+                <p class="card-description">
+                    <?php _e('Configure where users should be redirected after logout.', 'login-and-logout-redirect'); ?>
+                </p>
+            </div>
+            <div class="card-content">
+                <div class="form-field">
+                    <label for="logout_redirect_url" class="field-label">
+                        <?php _e('Redirect URL', 'login-and-logout-redirect'); ?>
+                        <span class="required" aria-label="<?php esc_attr_e('Required', 'login-and-logout-redirect'); ?>">*</span>
+                    </label>
+                    <div class="field-input-wrapper">
+                        <input
+                            type="url"
+                            name="logout_redirect_url"
+                            id="logout_redirect_url"
+                            value="<?php echo esc_attr($url); ?>"
+                            class="regular-text code"
+                            placeholder="https://example.com/goodbye"
+                            aria-describedby="logout_redirect_description"
+                            required
+                        />
+                        <p id="logout_redirect_description" class="field-description">
+                            <?php _e('Enter the full URL where users should be redirected after logout. Leave empty to use WordPress default behavior.', 'login-and-logout-redirect'); ?>
+                        </p>
+                    </div>
+                </div>
+
+                <?php if (defined('BP_VERSION')) : ?>
+                <div class="form-field">
+                    <div class="field-info">
+                        <strong><?php _e('BuddyPress Integration:', 'login-and-logout-redirect'); ?></strong>
+                        <p><?php printf(__('You can use these macros for your redirection: %s', 'login-and-logout-redirect'), '<code>' . join('</code>, <code>', $this->_get_macros()) . '</code>'); ?></p>
+                    </div>
+                </div>
+                <?php endif; ?>
+
+                <?php if (!empty($url)) : ?>
+                <div class="form-field">
+                    <div class="field-preview">
+                        <strong><?php _e('Current Setting:', 'login-and-logout-redirect'); ?></strong>
+                        <a href="<?php echo esc_url($url); ?>" target="_blank" rel="noopener noreferrer">
+                            <?php echo esc_html($url); ?>
+                            <span class="dashicons dashicons-external" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                </div>
+                <?php endif; ?>
+            </div>
+        </div>
+        <?php
     }
 
     /**

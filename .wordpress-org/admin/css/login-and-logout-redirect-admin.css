@@ -1,4 +1,293 @@
 /**
- * All of the CSS for your admin-specific functionality should be
- * included in this file.
+ * Login and Logout Redirect - Enhanced Admin Styles
+ * Modern card-based design for settings page
  */
+
+/* Card Container Styles */
+.login-redirect-card,
+.logout-redirect-card {
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+    max-width: 800px;
+}
+
+.login-redirect-card {
+    border-left: 4px solid #007cba;
+}
+
+.logout-redirect-card {
+    border-left: 4px solid #d63638;
+}
+
+/* Card Header */
+.card-header {
+    padding: 20px 24px 16px;
+    border-bottom: 1px solid #e1e1e1;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+.card-title {
+    margin: 0 0 8px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1d2327;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.card-title .dashicons {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+}
+
+.login-redirect-card .card-title .dashicons {
+    color: #007cba;
+}
+
+.logout-redirect-card .card-title .dashicons {
+    color: #d63638;
+}
+
+.card-description {
+    margin: 0;
+    color: #646970;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* Card Content */
+.card-content {
+    padding: 24px;
+}
+
+/* Form Fields */
+.form-field {
+    margin-bottom: 24px;
+}
+
+.form-field:last-child {
+    margin-bottom: 0;
+}
+
+.field-label {
+    display: block;
+    font-weight: 600;
+    color: #1d2327;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.field-label .required {
+    color: #d63638;
+    font-weight: 400;
+    margin-left: 4px;
+}
+
+.field-input-wrapper {
+    position: relative;
+}
+
+.field-input-wrapper input[type="url"] {
+    font-family: 'Courier New', monospace;
+    background: #f6f7f7;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-size: 14px;
+    line-height: 1.4;
+    transition: all 0.2s ease;
+    width: 100%;
+    max-width: 500px;
+}
+
+.field-input-wrapper input[type="url"]:focus {
+    outline: none;
+    border-color: #007cba;
+    box-shadow: 0 0 0 2px rgba(0, 124, 186, 0.2);
+    background: #fff;
+}
+
+.field-input-wrapper input[type="url"]:invalid {
+    border-color: #d63638;
+    background: #fef7f0;
+}
+
+.field-description {
+    margin: 8px 0 0 0;
+    color: #646970;
+    font-size: 13px;
+    line-height: 1.4;
+    font-style: italic;
+}
+
+/* Field Info and Preview */
+.field-info {
+    background: #f8f9fa;
+    border: 1px solid #e1e1e1;
+    border-radius: 6px;
+    padding: 16px;
+    margin-top: 8px;
+}
+
+.field-info strong {
+    color: #1d2327;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.field-info p {
+    margin: 0;
+    color: #646970;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.field-info code {
+    background: #e1e1e1;
+    color: #1d2327;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-family: 'Courier New', monospace;
+}
+
+.field-preview {
+    background: #e8f5e8;
+    border: 1px solid #4ab04a;
+    border-radius: 6px;
+    padding: 16px;
+    margin-top: 8px;
+}
+
+.field-preview strong {
+    color: #1d2327;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.field-preview a {
+    color: #007cba;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+}
+
+.field-preview a:hover {
+    text-decoration: underline;
+}
+
+.field-preview a .dashicons {
+    font-size: 14px;
+    width: 14px;
+    height: 14px;
+}
+
+/* Responsive Design */
+@media (max-width: 782px) {
+    .login-redirect-card,
+    .logout-redirect-card {
+        margin: 16px 0;
+    }
+
+    .card-header,
+    .card-content {
+        padding: 16px;
+    }
+
+    .card-title {
+        font-size: 15px;
+    }
+
+    .field-input-wrapper input[type="url"] {
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+}
+
+/* Dark Mode Support (if WordPress implements it) */
+@media (prefers-color-scheme: dark) {
+    .login-redirect-card,
+    .logout-redirect-card {
+        background: #2c3338;
+        border-color: #464b50;
+    }
+
+    .card-header {
+        background: linear-gradient(135deg, #2c3338 0%, #3c434a 100%);
+        border-color: #464b50;
+    }
+
+    .card-title {
+        color: #f0f0f0;
+    }
+
+    .card-description {
+        color: #a7aaad;
+    }
+
+    .field-label {
+        color: #f0f0f0;
+    }
+
+    .field-description {
+        color: #a7aaad;
+    }
+
+    .field-input-wrapper input[type="url"] {
+        background: #3c434a;
+        border-color: #464b50;
+        color: #f0f0f0;
+    }
+
+    .field-info {
+        background: #3c434a;
+        border-color: #464b50;
+    }
+
+    .field-info strong,
+    .field-preview strong {
+        color: #f0f0f0;
+    }
+
+    .field-preview {
+        background: #2c3338;
+        border-color: #4ab04a;
+    }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+    .login-redirect-card,
+    .logout-redirect-card {
+        border-width: 2px;
+    }
+
+    .card-title .dashicons {
+        color: currentColor;
+    }
+
+    .field-input-wrapper input[type="url"]:focus {
+        box-shadow: 0 0 0 3px rgba(0, 124, 186, 0.5);
+    }
+}
+
+/* Print Styles */
+@media print {
+    .login-redirect-card,
+    .logout-redirect-card {
+        box-shadow: none;
+        border: 1px solid #000;
+        break-inside: avoid;
+    }
+
+    .card-title .dashicons {
+        display: none;
+    }
+}

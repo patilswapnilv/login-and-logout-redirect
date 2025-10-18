@@ -120,7 +120,55 @@ class LoginRedirect
      * */
     public function site_option()
     {
-        echo '<input name="login_redirect_url" type="text" id="login_redirect_url" value="' . esc_attr(get_option('login_redirect_url')) . '" size="40" />';
+        $login_redirect_url = get_option('login_redirect_url', '');
+        ?>
+        <div class="login-redirect-card">
+            <div class="card-header">
+                <h3 class="card-title">
+                    <span class="dashicons dashicons-admin-users" aria-hidden="true"></span>
+                    <?php _e('Login Redirect Settings', 'login-and-logout-redirect'); ?>
+                </h3>
+                <p class="card-description">
+                    <?php _e('Configure where users should be redirected after successful login.', 'login-and-logout-redirect'); ?>
+                </p>
+            </div>
+            <div class="card-content">
+                <div class="form-field">
+                    <label for="login_redirect_url" class="field-label">
+                        <?php _e('Redirect URL', 'login-and-logout-redirect'); ?>
+                        <span class="required" aria-label="<?php esc_attr_e('Required', 'login-and-logout-redirect'); ?>">*</span>
+                    </label>
+                    <div class="field-input-wrapper">
+                        <input
+                            type="url"
+                            name="login_redirect_url"
+                            id="login_redirect_url"
+                            value="<?php echo esc_attr($login_redirect_url); ?>"
+                            class="regular-text code"
+                            placeholder="https://example.com/dashboard"
+                            aria-describedby="login_redirect_description"
+                            required
+                        />
+                        <p id="login_redirect_description" class="field-description">
+                            <?php _e('Enter the full URL where users should be redirected after login. Leave empty to use WordPress default behavior.', 'login-and-logout-redirect'); ?>
+                        </p>
+                    </div>
+                </div>
+
+                <?php if (!empty($login_redirect_url)) : ?>
+                <div class="form-field">
+                    <div class="field-preview">
+                        <strong><?php _e('Current Setting:', 'login-and-logout-redirect'); ?></strong>
+                        <a href="<?php echo esc_url($login_redirect_url); ?>" target="_blank" rel="noopener noreferrer">
+                            <?php echo esc_html($login_redirect_url); ?>
+                            <span class="dashicons dashicons-external" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                </div>
+                <?php endif; ?>
+            </div>
+        </div>
+        <?php
     }
 
     /**

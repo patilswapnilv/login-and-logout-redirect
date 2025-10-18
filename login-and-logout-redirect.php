@@ -1,7 +1,18 @@
 <?php
 /**
- * Plugin Name: Login and Logout Redirect
- * Description: This plugin adds extra option in Settings page (Setting>General), for specifying redirect URL for login and logout.
+ * The plugin bootstrap file
+ * @wordpress-plugin
+ * Plugin Name:       Login and Logout Redirect
+ * Plugin URI:        https://github.com/patilswapnilv/login-and-logout-redirect/
+ * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Version:           2.0.2
+ * Author:            Swapnil V. Patil
+ * Author URI:        https://swapnilpatil.in
+ * Description:       A WordPress plugin which enables you to redirect users on login and logout or both, in a simplest way.
+ * License:           GPL-3.0
+ * License URI:       https://www.gnu.org/licenses/gpl-3.0.en.html
+ * Text Domain:       login-and-logout-redirect
+ * Domain Path:       /languages
  */
 
 // Load the plugin text domain
@@ -9,12 +20,5 @@ add_action( 'plugins_loaded', 'load_login_logout_redirect_textdomain' );
 function load_login_logout_redirect_textdomain() {
     load_plugin_textdomain( 'login-and-logout-redirect', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 }
-
-// Example of how to internationalize a string
-function my_plugin_function() {
-    echo esc_html__( 'Welcome to my plugin!', 'login-and-logout-redirect' );
-}
-
-add_action( 'wp_footer', 'my_plugin_function' );
 
 ?>

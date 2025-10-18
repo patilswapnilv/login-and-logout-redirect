@@ -20,4 +20,3 @@ function load_login_logout_redirect_textdomain() {
     load_plugin_textdomain( 'login-and-logout-redirect', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 }
 
-?>

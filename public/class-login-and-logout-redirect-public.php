@@ -1,5 +1,7 @@
 <?php
 
+namespace LoginAndLogoutRedirect;
+
 /**
  * The public-facing functionality of the plugin.
  *
@@ -20,7 +22,7 @@
  * @subpackage Login_And_Logout_Redirect/public
  * @author     Swapnil V. Patil <patilswapnilv@gmail.com>
  */
-class Login_And_Logout_Redirect_Public {
+class LoginAndLogoutRedirectPublic {
 
     /**
      * The ID of this plugin.
@@ -65,15 +67,21 @@ class Login_And_Logout_Redirect_Public {
          * This function is provided for demonstration purposes only.
          *
          * An instance of this class should be passed to the run() function
-         * defined in Login_And_Logout_Redirect_Loader as all of the hooks are defined
+         * defined in LoginAndLogoutRedirectLoader as all of the hooks are defined
          * in that particular class.
          *
-         * The Login_And_Logout_Redirect_Loader will then create the relationship
+         * The LoginAndLogoutRedirectLoader will then create the relationship
          * between the defined hooks and the functions defined in this
          * class.
          */
 
-        wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/login-and-logout-redirect-public.css', array(), $this->version, 'all' );
+        wp_enqueue_style(
+            $this->plugin_name,
+            plugin_dir_url( __FILE__ ) . 'css/login-and-logout-redirect-public.css',
+            array(),
+            $this->version,
+            'all'
+        );
 
     }
 
@@ -88,15 +96,21 @@ class Login_And_Logout_Redirect_Public {
          * This function is provided for demonstration purposes only.
          *
          * An instance of this class should be passed to the run() function
-         * defined in Login_And_Logout_Redirect_Loader as all of the hooks are defined
+         * defined in LoginAndLogoutRedirectLoader as all of the hooks are defined
          * in that particular class.
          *
-         * The Login_And_Logout_Redirect_Loader will then create the relationship
+         * The LoginAndLogoutRedirectLoader will then create the relationship
          * between the defined hooks and the functions defined in this
          * class.
          */
 
-        wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/login-and-logout-redirect-public.js', array( 'jquery' ), $this->version, false );
+        wp_enqueue_script(
+            $this->plugin_name,
+            plugin_dir_url( __FILE__ ) . 'js/login-and-logout-redirect-public.js',
+            array( 'jquery' ),
+            $this->version,
+            false
+        );
 
     }
 

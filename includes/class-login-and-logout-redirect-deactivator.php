@@ -1,5 +1,7 @@
 <?php
 
+namespace LoginAndLogoutRedirect;
+
 /**
  * Fired during plugin deactivation
  *
@@ -20,7 +22,7 @@
  * @subpackage Login_And_Logout_Redirect/includes
  * @author     Swapnil V. Patil <patilswapnilv@gmail.com>
  */
-class Login_And_Logout_Redirect_Deactivator {
+class LoginAndLogoutRedirectDeactivator {
 
     /**
      * Short Description. (use period)

@@ -1,5 +1,7 @@
 <?php
 
+namespace LoginAndLogoutRedirect;
+
 /**
  * The file that defines the core plugin class
  *
@@ -27,7 +29,7 @@
  * @subpackage Login_And_Logout_Redirect/includes
  * @author     Swapnil V. Patil <patilswapnilv@gmail.com>
  */
-class Login_And_Logout_Redirect {
+class LoginAndLogoutRedirect {
 
     /**
      * The loader that's responsible for maintaining and registering all hooks that power

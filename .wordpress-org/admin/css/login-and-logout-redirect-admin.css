@@ -9,17 +9,44 @@
     background: #fff;
     border: 1px solid #c3c4c7;
     border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.1);
     margin: 20px 0;
     max-width: 800px;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .login-redirect-card {
-    border-left: 4px solid #007cba;
+    border-left: 4px solid #0073AA;
+}
+
+.login-redirect-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #0073AA 0%, #00A0D2 100%);
+    opacity: 0;
+    transition: opacity 0.2s ease;
 }
 
 .logout-redirect-card {
-    border-left: 4px solid #d63638;
+    border-left: 4px solid #00A0D2;
+}
+
+.logout-redirect-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #00A0D2 0%, #0073AA 100%);
+    opacity: 0;
+    transition: opacity 0.2s ease;
 }
 
 /* Card Header */
@@ -27,35 +54,40 @@
     padding: 20px 24px 16px;
     border-bottom: 1px solid #e1e1e1;
     background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border-radius: 8px 8px 0 0;
+    position: relative;
 }
 
 .card-title {
     margin: 0 0 8px 0;
     font-size: 16px;
     font-weight: 600;
-    color: #1d2327;
+    color: #222222;
     display: flex;
     align-items: center;
     gap: 8px;
+    text-shadow: none;
 }
 
 .card-title .dashicons {
     font-size: 20px;
     width: 20px;
     height: 20px;
+    line-height: 1;
+    vertical-align: middle;
 }
 
 .login-redirect-card .card-title .dashicons {
-    color: #007cba;
+    color: #0073AA !important;
 }
 
 .logout-redirect-card .card-title .dashicons {
-    color: #d63638;
+    color: #00A0D2 !important;
 }
 
 .card-description {
     margin: 0;
-    color: #646970;
+    color: #333333;
     font-size: 14px;
     line-height: 1.4;
 }
@@ -63,6 +95,8 @@
 /* Card Content */
 .card-content {
     padding: 24px;
+    position: relative;
+    z-index: 1;
 }
 
 /* Form Fields */
@@ -77,7 +111,7 @@
 .field-label {
     display: block;
     font-weight: 600;
-    color: #1d2327;
+    color: #222222;
     margin-bottom: 8px;
     font-size: 14px;
 }
@@ -103,13 +137,15 @@
     transition: all 0.2s ease;
     width: 100%;
     max-width: 500px;
+    color: #222222;
 }
 
 .field-input-wrapper input[type="url"]:focus {
     outline: none;
-    border-color: #007cba;
-    box-shadow: 0 0 0 2px rgba(0, 124, 186, 0.2);
+    border-color: #0073AA;
+    box-shadow: 0 0 0 2px rgba(0, 115, 170, 0.2), 0 1px 3px rgba(0, 0, 0, 0.1);
     background: #fff;
+    transform: translateY(-1px);
 }
 
 .field-input-wrapper input[type="url"]:invalid {
@@ -119,7 +155,7 @@
 
 .field-description {
     margin: 8px 0 0 0;
-    color: #646970;
+    color: #333333;
     font-size: 13px;
     line-height: 1.4;
     font-style: italic;
@@ -132,24 +168,25 @@
     border-radius: 6px;
     padding: 16px;
     margin-top: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .field-info strong {
-    color: #1d2327;
+    color: #222222;
     display: block;
     margin-bottom: 8px;
 }
 
 .field-info p {
     margin: 0;
-    color: #646970;
+    color: #333333;
     font-size: 13px;
     line-height: 1.4;
 }
 
 .field-info code {
     background: #e1e1e1;
-    color: #1d2327;
+    color: #222222;
     padding: 2px 6px;
     border-radius: 3px;
     font-size: 12px;
@@ -157,31 +194,41 @@
 }
 
 .field-preview {
-    background: #e8f5e8;
-    border: 1px solid #4ab04a;
+    background: #f8f9fa;
+    border: 1px solid #e1e1e1;
     border-radius: 6px;
     padding: 16px;
     margin-top: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .field-preview strong {
-    color: #1d2327;
+    color: #222222;
     display: block;
     margin-bottom: 8px;
+    font-weight: 600;
 }
 
 .field-preview a {
-    color: #007cba;
+    color: #222222;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
     gap: 4px;
     font-family: 'Courier New', monospace;
     font-size: 13px;
+    font-weight: 500;
+    background: #ffffff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 1px solid #e1e1e1;
 }
 
 .field-preview a:hover {
     text-decoration: underline;
+    color: #0073AA;
+    background: #f0f8ff;
+    border-color: #0073AA;
 }
 
 .field-preview a .dashicons {
@@ -211,55 +258,158 @@
     }
 }
 
-/* Dark Mode Support (if WordPress implements it) */
-@media (prefers-color-scheme: dark) {
-    .login-redirect-card,
-    .logout-redirect-card {
-        background: #2c3338;
-        border-color: #464b50;
-    }
+/* Hover Effects */
+.login-redirect-card:hover,
+.logout-redirect-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.08);
+    transform: translateY(-1px);
+    transition: all 0.2s ease;
+}
 
-    .card-header {
-        background: linear-gradient(135deg, #2c3338 0%, #3c434a 100%);
-        border-color: #464b50;
-    }
+.login-redirect-card:hover {
+    border-left-color: #005a87;
+}
 
-    .card-title {
-        color: #f0f0f0;
-    }
+.login-redirect-card:hover::before {
+    opacity: 0.3;
+}
 
-    .card-description {
-        color: #a7aaad;
-    }
+.logout-redirect-card:hover {
+    border-left-color: #0085b3;
+}
 
-    .field-label {
-        color: #f0f0f0;
-    }
+.logout-redirect-card:hover::before {
+    opacity: 0.3;
+}
 
-    .field-description {
-        color: #a7aaad;
-    }
+/* Light Theme Only - Dark Mode Disabled for Better Readability */
+/* All styles above ensure proper contrast and readability in light theme */
 
-    .field-input-wrapper input[type="url"] {
-        background: #3c434a;
-        border-color: #464b50;
-        color: #f0f0f0;
-    }
+/* Additional Readability Enhancements */
+.login-redirect-card *,
+.logout-redirect-card * {
+    color: inherit;
+}
 
-    .field-info {
-        background: #3c434a;
-        border-color: #464b50;
-    }
+/* Ensure all text elements have proper contrast */
+.card-title,
+.card-description,
+.field-label,
+.field-description,
+.field-info strong,
+.field-info p,
+.field-preview strong,
+label,
+.form-field label,
+.form-field .field-label,
+.form-field .field-description {
+    color: #222222 !important;
+}
 
-    .field-info strong,
-    .field-preview strong {
-        color: #f0f0f0;
-    }
+/* Specific targeting for WordPress form labels */
+.login-redirect-card label,
+.logout-redirect-card label,
+.login-redirect-card .field-label,
+.logout-redirect-card .field-label,
+.login-redirect-card .field-description,
+.logout-redirect-card .field-description {
+    color: #222222 !important;
+    font-weight: 600 !important;
+}
 
-    .field-preview {
-        background: #2c3338;
-        border-color: #4ab04a;
-    }
+/* Ensure secondary text has good contrast */
+.card-description,
+.field-description,
+.field-info p {
+    color: #333333 !important;
+}
+
+/* Ensure input text is always dark on light background */
+.field-input-wrapper input[type="url"] {
+    color: #222222 !important;
+    background: #ffffff !important;
+}
+
+.field-input-wrapper input[type="url"]:focus {
+    color: #222222 !important;
+    background: #ffffff !important;
+}
+
+/* Ensure code elements have proper contrast */
+.field-info code {
+    color: #222222 !important;
+    background: #f0f0f0 !important;
+}
+
+/* WordPress form element overrides */
+.form-table th,
+.form-table td,
+.form-table label,
+.wp-admin .form-table th,
+.wp-admin .form-table td,
+.wp-admin .form-table label {
+    color: #222222 !important;
+}
+
+/* Specific targeting for plugin form elements */
+.login-redirect-card .form-table th,
+.login-redirect-card .form-table td,
+.logout-redirect-card .form-table th,
+.logout-redirect-card .form-table td,
+.login-redirect-card .form-table label,
+.logout-redirect-card .form-table label {
+    color: #222222 !important;
+    font-weight: 600 !important;
+}
+
+/* Override any WordPress admin styles that might be interfering */
+.wp-admin .login-redirect-card *,
+.wp-admin .logout-redirect-card * {
+    color: inherit !important;
+}
+
+.wp-admin .login-redirect-card label,
+.wp-admin .logout-redirect-card label,
+.wp-admin .login-redirect-card .field-label,
+.wp-admin .logout-redirect-card .field-label {
+    color: #222222 !important;
+    font-weight: 600 !important;
+}
+
+/* Current Setting Bar Styling for Light Theme */
+.field-preview,
+.current-setting,
+.setting-preview {
+    background: #f8f9fa !important;
+    border: 1px solid #e1e1e1 !important;
+    color: #222222 !important;
+}
+
+.field-preview strong,
+.current-setting strong,
+.setting-preview strong {
+    color: #222222 !important;
+    font-weight: 600 !important;
+}
+
+.field-preview a,
+.current-setting a,
+.setting-preview a {
+    color: #222222 !important;
+    background: #ffffff !important;
+    border: 1px solid #e1e1e1 !important;
+    padding: 4px 8px !important;
+    border-radius: 4px !important;
+    text-decoration: none !important;
+}
+
+.field-preview a:hover,
+.current-setting a:hover,
+.setting-preview a:hover {
+    color: #0073AA !important;
+    background: #f0f8ff !important;
+    border-color: #0073AA !important;
+    text-decoration: underline !important;
 }
 
 /* High Contrast Mode Support */
@@ -267,14 +417,32 @@
     .login-redirect-card,
     .logout-redirect-card {
         border-width: 2px;
+        border-color: #222222;
+    }
+
+    .card-title {
+        color: #000000;
+    }
+
+    .card-description {
+        color: #000000;
+    }
+
+    .field-label {
+        color: #000000;
+    }
+
+    .field-description {
+        color: #000000;
     }
 
     .card-title .dashicons {
-        color: currentColor;
+        color: #0073AA;
     }
 
     .field-input-wrapper input[type="url"]:focus {
-        box-shadow: 0 0 0 3px rgba(0, 124, 186, 0.5);
+        box-shadow: 0 0 0 3px rgba(0, 115, 170, 0.5);
+        border-color: #000000;
     }
 }
 

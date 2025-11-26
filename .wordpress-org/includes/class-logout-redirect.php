@@ -20,15 +20,9 @@ class LogoutRedirect
     public function __construct()
     {
         add_action('login_init', array($this, 'clean_redirect'));
-        add_filter('wp_logout', array(&$this, 'redirect'));
-        add_action('plugin_options', array($this, 'network_option'));
-        add_action(
-            'update_plugin_options',
-            array(
-            &$this,
-            'update_network_option',
-            )
-        );
+        add_action('wp_logout', array($this, 'redirect'));
+        add_action('wpmu_options', array($this, 'network_option'));
+        add_action('update_wpmu_options', array($this, 'update_network_option'));
         add_action('admin_init', array($this, 'add_settings_field'));
 
         // load text domain
@@ -84,10 +78,18 @@ class LogoutRedirect
     private function _get_raw_redirection_url()
     {
         try {
-            $logout_redirect_url = $this->is_plugin_active_for_network(plugin_basename(__FILE__)) ? get_site_option('logout_redirect_url') : get_option('logout_redirect_url');
+            if ($this->is_network_active()) {
+                $logout_redirect_url = get_site_option('logout_redirect_url', '');
+            } else {
+                $logout_redirect_url = get_option('logout_redirect_url', '');
+            }
         } catch (Exception $e) {
             error_log(sprintf('Error getting logout_redirect_url option: %s', $e->getMessage()));
             $logout_redirect_url = wp_login_url();
+        }
+
+        if (! is_string($logout_redirect_url)) {
+            return '';
         }
 
         return $logout_redirect_url;
@@ -153,7 +155,7 @@ class LogoutRedirect
      * */
     function network_option()
     {
-        if (!$this->is_plugin_active_for_network(plugin_basename(__FILE__))) {
+        if (!$this->is_network_active()) {
             return;
         }
         $url = $this->_get_raw_redirection_url();
@@ -182,7 +184,15 @@ class LogoutRedirect
      * */
     function update_network_option()
     {
-        update_site_option('logout_redirect_url', stripslashes($_POST['logout_redirect_url']));
+        if (!$this->is_network_active()) {
+            return;
+        }
+
+        if (!isset($_POST['logout_redirect_url'])) {
+            return;
+        }
+
+        update_site_option('logout_redirect_url', $this->sanitize_logout_redirect_url($_POST['logout_redirect_url']));
     }
 
     /**
@@ -190,15 +200,21 @@ class LogoutRedirect
      * */
     function add_settings_field()
     {
-        if ($this->is_plugin_active_for_network(plugin_basename(__FILE__))) {
+        if ($this->is_network_active()) {
             return;
         }
 
         add_settings_section('logout_redirect_setting_section', __('Logout Redirect', 'login-and-logout-redirect'), '__return_false', 'general');
 
-        add_settings_field('logout_redirect_url', __('Redirect to', 'login-and-logout-redirect'), array(&$this, 'site_option'), 'general', 'logout_redirect_setting_section');
+        add_settings_field('logout_redirect_url', __('Redirect to', 'login-and-logout-redirect'), array($this, 'site_option'), 'general', 'logout_redirect_setting_section');
 
-        register_setting('general', 'logout_redirect_url');
+        register_setting(
+            'general',
+            'logout_redirect_url',
+            array(
+                'sanitize_callback' => array($this, 'sanitize_logout_redirect_url'),
+            )
+        );
     }
 
     /**
@@ -214,20 +230,40 @@ class LogoutRedirect
     }
 
     /**
+     * Sanitize the logout redirect URL.
+     *
+     * @param mixed $value Raw value from the request.
+     * @return string
+     */
+    function sanitize_logout_redirect_url($value)
+    {
+        if (is_array($value)) {
+            return '';
+        }
+
+        if (is_string($value)) {
+            $value = wp_unslash($value);
+        } else {
+            $value = '';
+        }
+
+        return sanitize_text_field($value);
+    }
+
+    /**
      * Verify if plugin is network activated
      * */
-    function is_plugin_active_for_network($plugin)
+    function is_network_active()
     {
         if (!is_multisite()) {
             return false;
         }
 
-        $plugins = get_site_option('active_sitewide_plugins');
-        if (isset($plugins[$plugin])) {
-            return true;
+        if (!function_exists('is_plugin_active_for_network')) {
+            require_once ABSPATH . 'wp-admin/includes/plugin.php';
         }
 
-        return false;
+        return is_plugin_active_for_network(plugin_basename(dirname(__DIR__) . '/login-and-logout-redirect.php'));
     }
 }
 

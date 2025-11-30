@@ -47,7 +47,7 @@ define('PLUGIN_NAME_VERSION', '2.0.0');
 function activate_login_and_logout_redirect()
 {
     require_once plugin_dir_path(__FILE__) . 'includes/class-login-and-logout-redirect-activator.php';
-    Login_And_Logout_Redirect_Activator::activate();
+    LoginAndLogoutRedirect\LoginAndLogoutRedirectActivator::activate();
 }
 
 /**
@@ -57,7 +57,7 @@ function activate_login_and_logout_redirect()
 function deactivate_login_and_logout_redirect()
 {
     require_once plugin_dir_path(__FILE__) . 'includes/class-login-and-logout-redirect-deactivator.php';
-    Login_And_Logout_Redirect_Deactivator::deactivate();
+    LoginAndLogoutRedirect\LoginAndLogoutRedirectDeactivator::deactivate();
 }
 
 register_activation_hook(__FILE__, 'activate_login_and_logout_redirect');
@@ -80,7 +80,7 @@ require plugin_dir_path(__FILE__) . 'includes/class-login-and-logout-redirect.ph
  */
 function run_login_and_logout_redirect()
 {
-    $plugin = new Login_And_Logout_Redirect();
+    $plugin = new LoginAndLogoutRedirect\LoginAndLogoutRedirect();
     $plugin->run();
 }
 run_login_and_logout_redirect();

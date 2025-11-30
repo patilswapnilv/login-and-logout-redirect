@@ -213,9 +213,4 @@
 		$('#redirect-accessibility-updates').text(message);
 	}
 
-	// Utility function to check if we're on the settings page
-	function isSettingsPage() {
-		return window.location.href.indexOf('options-general.php') !== -1;
-	}
-
 })( jQuery );
